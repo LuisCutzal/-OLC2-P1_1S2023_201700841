@@ -15,6 +15,9 @@ public:
     Proyecto1_OLC2(QWidget *parent = nullptr);
     ~Proyecto1_OLC2();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Proyecto1_OLC2 *ui;
 };
