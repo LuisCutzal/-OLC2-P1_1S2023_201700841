@@ -10,7 +10,6 @@ public:
     expression *Op_izq;
     expression *Op_der;
     std::string Operator;
-
     operation(int line, int col, expression *op_izq, expression *op_der, std::string operador);
     symbol ejecutar(environment *env, ast *tree) override;
 };

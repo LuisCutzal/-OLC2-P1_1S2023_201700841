@@ -55,8 +55,12 @@ OBJECTS_DIR   = ./
 SOURCES       = ../Proyecto1/Environment/ast.cpp \
 		../Proyecto1/Environment/environment.cpp \
 		../Proyecto1/Environment/symbol.cpp \
+		../Proyecto1/Expression/access.cpp \
+		../Proyecto1/Expression/array_access.cpp \
 		../Proyecto1/Expression/operation.cpp \
 		../Proyecto1/Expression/primitive.cpp \
+		../Proyecto1/Instruction/declaration.cpp \
+		../Proyecto1/Instruction/func_if.cpp \
 		../Proyecto1/Instruction/func_main.cpp \
 		../Proyecto1/Instruction/list_instruction.cpp \
 		../Proyecto1/Instruction/print.cpp \
@@ -69,8 +73,12 @@ SOURCES       = ../Proyecto1/Environment/ast.cpp \
 OBJECTS       = ast.o \
 		environment.o \
 		symbol.o \
+		access.o \
+		array_access.o \
 		operation.o \
 		primitive.o \
+		declaration.o \
+		func_if.o \
 		func_main.o \
 		list_instruction.o \
 		print.o \
@@ -299,8 +307,12 @@ DIST          = ../Proyecto1/Parser/lexer.l \
 		../Proyecto1/Environment/environment.hpp \
 		../Proyecto1/Environment/symbol.hpp \
 		../Proyecto1/Environment/type.h \
+		../Proyecto1/Expression/access.hpp \
+		../Proyecto1/Expression/array_access.hpp \
 		../Proyecto1/Expression/operation.hpp \
 		../Proyecto1/Expression/primitive.hpp \
+		../Proyecto1/Instruction/declaration.hpp \
+		../Proyecto1/Instruction/func_if.hpp \
 		../Proyecto1/Instruction/func_main.hpp \
 		../Proyecto1/Instruction/list_instruction.hpp \
 		../Proyecto1/Instruction/print.hpp \
@@ -308,14 +320,18 @@ DIST          = ../Proyecto1/Parser/lexer.l \
 		../Proyecto1/Interfaces/instruction.hpp \
 		../Proyecto1/Parser/location.hh \
 		../Proyecto1/Parser/parser.hpp \
-		../Proyecto1/Parser/position.hh \
-		../Proyecto1/Parser/stack.hh \
+		Parser/position.hh \
+		Parser/stack.hh \
 		../Proyecto1/parserctx.hpp \
 		../Proyecto1/proyecto1_olc2.hpp ../Proyecto1/Environment/ast.cpp \
 		../Proyecto1/Environment/environment.cpp \
 		../Proyecto1/Environment/symbol.cpp \
+		../Proyecto1/Expression/access.cpp \
+		../Proyecto1/Expression/array_access.cpp \
 		../Proyecto1/Expression/operation.cpp \
 		../Proyecto1/Expression/primitive.cpp \
+		../Proyecto1/Instruction/declaration.cpp \
+		../Proyecto1/Instruction/func_if.cpp \
 		../Proyecto1/Instruction/func_main.cpp \
 		../Proyecto1/Instruction/list_instruction.cpp \
 		../Proyecto1/Instruction/print.cpp \
@@ -776,8 +792,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/luis/Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.hpp ../Proyecto1/Environment/environment.hpp ../Proyecto1/Environment/symbol.hpp ../Proyecto1/Environment/type.h ../Proyecto1/Expression/operation.hpp ../Proyecto1/Expression/primitive.hpp ../Proyecto1/Instruction/func_main.hpp ../Proyecto1/Instruction/list_instruction.hpp ../Proyecto1/Instruction/print.hpp ../Proyecto1/Interfaces/expression.hpp ../Proyecto1/Interfaces/instruction.hpp ../Proyecto1/Parser/location.hh ../Proyecto1/Parser/parser.hpp ../Proyecto1/Parser/position.hh ../Proyecto1/Parser/stack.hh ../Proyecto1/parserctx.hpp ../Proyecto1/proyecto1_olc2.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.cpp ../Proyecto1/Environment/environment.cpp ../Proyecto1/Environment/symbol.cpp ../Proyecto1/Expression/operation.cpp ../Proyecto1/Expression/primitive.cpp ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/Instruction/print.cpp ../Proyecto1/Interfaces/expression.cpp ../Proyecto1/Interfaces/instruction.cpp ../Proyecto1/Parser/parser.cpp ../Proyecto1/main.cpp ../Proyecto1/parserctx.cpp ../Proyecto1/proyecto1_olc2.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.hpp ../Proyecto1/Environment/environment.hpp ../Proyecto1/Environment/symbol.hpp ../Proyecto1/Environment/type.h ../Proyecto1/Expression/access.hpp ../Proyecto1/Expression/array_access.hpp ../Proyecto1/Expression/operation.hpp ../Proyecto1/Expression/primitive.hpp ../Proyecto1/Instruction/declaration.hpp ../Proyecto1/Instruction/func_if.hpp ../Proyecto1/Instruction/func_main.hpp ../Proyecto1/Instruction/list_instruction.hpp ../Proyecto1/Instruction/print.hpp ../Proyecto1/Interfaces/expression.hpp ../Proyecto1/Interfaces/instruction.hpp ../Proyecto1/Parser/location.hh ../Proyecto1/Parser/parser.hpp Parser/position.hh Parser/stack.hh ../Proyecto1/parserctx.hpp ../Proyecto1/proyecto1_olc2.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.cpp ../Proyecto1/Environment/environment.cpp ../Proyecto1/Environment/symbol.cpp ../Proyecto1/Expression/access.cpp ../Proyecto1/Expression/array_access.cpp ../Proyecto1/Expression/operation.cpp ../Proyecto1/Expression/primitive.cpp ../Proyecto1/Instruction/declaration.cpp ../Proyecto1/Instruction/func_if.cpp ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/Instruction/print.cpp ../Proyecto1/Interfaces/expression.cpp ../Proyecto1/Interfaces/instruction.cpp ../Proyecto1/Parser/parser.cpp ../Proyecto1/main.cpp ../Proyecto1/parserctx.cpp ../Proyecto1/proyecto1_olc2.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Proyecto1/proyecto1_olc2.ui $(DISTDIR)/
 
 
@@ -957,6 +973,22 @@ symbol.o: ../Proyecto1/Environment/symbol.cpp ../Proyecto1/Environment/symbol.hp
 		../Proyecto1/Environment/type.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o symbol.o ../Proyecto1/Environment/symbol.cpp
 
+access.o: ../Proyecto1/Expression/access.cpp ../Proyecto1/Expression/access.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		../Proyecto1/Environment/environment.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o access.o ../Proyecto1/Expression/access.cpp
+
+array_access.o: ../Proyecto1/Expression/array_access.cpp ../Proyecto1/Expression/array_access.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		../Proyecto1/Environment/environment.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o array_access.o ../Proyecto1/Expression/array_access.cpp
+
 operation.o: ../Proyecto1/Expression/operation.cpp ../Proyecto1/Expression/operation.hpp \
 		../Proyecto1/Interfaces/expression.hpp \
 		../Proyecto1/Environment/ast.hpp \
@@ -972,6 +1004,24 @@ primitive.o: ../Proyecto1/Expression/primitive.cpp ../Proyecto1/Expression/primi
 		../Proyecto1/Environment/type.h \
 		../Proyecto1/Environment/environment.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o primitive.o ../Proyecto1/Expression/primitive.cpp
+
+declaration.o: ../Proyecto1/Instruction/declaration.cpp ../Proyecto1/Instruction/declaration.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Interfaces/instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o declaration.o ../Proyecto1/Instruction/declaration.cpp
+
+func_if.o: ../Proyecto1/Instruction/func_if.cpp ../Proyecto1/Instruction/func_if.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Interfaces/instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o func_if.o ../Proyecto1/Instruction/func_if.cpp
 
 func_main.o: ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/func_main.hpp \
 		../Proyecto1/Instruction/list_instruction.hpp \
@@ -1141,8 +1191,12 @@ parser.o: ../Proyecto1/Parser/parser.cpp ../Proyecto1/Parser/parser.hpp \
 		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
 		../Proyecto1/Interfaces/expression.hpp \
 		../Proyecto1/Expression/primitive.hpp \
+		../Proyecto1/Expression/access.hpp \
+		../Proyecto1/Expression/array_access.hpp \
 		../Proyecto1/Expression/operation.hpp \
 		../Proyecto1/Instruction/print.hpp \
+		../Proyecto1/Instruction/func_if.hpp \
+		../Proyecto1/Instruction/declaration.hpp \
 		../Proyecto1/Parser/location.hh
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parser.o ../Proyecto1/Parser/parser.cpp
 
@@ -1313,8 +1367,12 @@ parserctx.o: ../Proyecto1/parserctx.cpp ../Proyecto1/parserctx.hpp \
 		../Proyecto1/Parser/location.hh \
 		../Proyecto1/Parser/parser.hpp \
 		../Proyecto1/Expression/primitive.hpp \
+		../Proyecto1/Expression/access.hpp \
+		../Proyecto1/Expression/array_access.hpp \
 		../Proyecto1/Expression/operation.hpp \
 		../Proyecto1/Instruction/print.hpp \
+		../Proyecto1/Instruction/func_if.hpp \
+		../Proyecto1/Instruction/declaration.hpp \
 		../Proyecto1/Parser/lex.yy.c
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parserctx.o ../Proyecto1/parserctx.cpp
 

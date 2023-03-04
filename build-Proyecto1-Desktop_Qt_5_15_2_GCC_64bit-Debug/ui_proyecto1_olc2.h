@@ -39,10 +39,10 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(100, 90, 251, 101));
+        textEdit->setGeometry(QRect(50, 60, 371, 211));
         textEdit_2 = new QTextEdit(centralwidget);
         textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        textEdit_2->setGeometry(QRect(140, 300, 461, 201));
+        textEdit_2->setGeometry(QRect(110, 330, 581, 201));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(500, 100, 151, 31));

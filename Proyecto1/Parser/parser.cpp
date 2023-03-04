@@ -42,7 +42,7 @@
 
 
 // Unqualified %code blocks.
-#line 55 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 59 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
  yy::Parser::symbol_type yylex(void* yyscanner, yy::location& loc, class OCL2Calc::ParserCtx & ctx); 
 
 #line 49 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
@@ -207,8 +207,14 @@ namespace yy {
   {
     switch (that.kind ())
     {
+      case symbol_kind::S_TYPES: // TYPES
+        value.YY_MOVE_OR_COPY< TipoDato > (YY_MOVE (that.value));
+        break;
+
       case symbol_kind::S_EXP: // EXP
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
+      case symbol_kind::S_BOOL: // BOOL
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
         value.YY_MOVE_OR_COPY< expression* > (YY_MOVE (that.value));
         break;
 
@@ -219,10 +225,15 @@ namespace yy {
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
       case symbol_kind::S_PRINT: // PRINT
+      case symbol_kind::S_DECLARATION: // DECLARATION
+      case symbol_kind::S_IF: // IF
+      case symbol_kind::S_ELSEIF: // ELSEIF
         value.YY_MOVE_OR_COPY< instruction* > (YY_MOVE (that.value));
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+      case symbol_kind::S_ELSE: // ELSE
         value.YY_MOVE_OR_COPY< list_instruction* > (YY_MOVE (that.value));
         break;
 
@@ -234,14 +245,29 @@ namespace yy {
       case symbol_kind::S_POR: // POR
       case symbol_kind::S_DIV: // DIV
       case symbol_kind::S_PRINTF: // PRINTF
+      case symbol_kind::S_RIF: // RIF
+      case symbol_kind::S_RELSE: // RELSE
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
+      case symbol_kind::S_TSTRING: // TSTRING
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
       case symbol_kind::S_PARA: // PARA
       case symbol_kind::S_PARC: // PARC
       case symbol_kind::S_RMAIN: // RMAIN
       case symbol_kind::S_LLAVA: // LLAVA
       case symbol_kind::S_LLAVC: // LLAVC
-      case symbol_kind::S_TYPES: // TYPES
+      case symbol_kind::S_RTRUE: // RTRUE
+      case symbol_kind::S_RFALSE: // RFALSE
+      case symbol_kind::S_CORA: // CORA
+      case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_MAY: // MAY
+      case symbol_kind::S_MEN: // MEN
+      case symbol_kind::S_MAY_IG: // MAY_IG
+      case symbol_kind::S_MEN_IG: // MEN_IG
+      case symbol_kind::S_DIF: // DIF
+      case symbol_kind::S_IG: // IG
+      case symbol_kind::S_AND: // AND
+      case symbol_kind::S_OR: // OR
         value.YY_MOVE_OR_COPY< std::string > (YY_MOVE (that.value));
         break;
 
@@ -260,8 +286,14 @@ namespace yy {
   {
     switch (that.kind ())
     {
+      case symbol_kind::S_TYPES: // TYPES
+        value.move< TipoDato > (YY_MOVE (that.value));
+        break;
+
       case symbol_kind::S_EXP: // EXP
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
+      case symbol_kind::S_BOOL: // BOOL
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
         value.move< expression* > (YY_MOVE (that.value));
         break;
 
@@ -272,10 +304,15 @@ namespace yy {
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
       case symbol_kind::S_PRINT: // PRINT
+      case symbol_kind::S_DECLARATION: // DECLARATION
+      case symbol_kind::S_IF: // IF
+      case symbol_kind::S_ELSEIF: // ELSEIF
         value.move< instruction* > (YY_MOVE (that.value));
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+      case symbol_kind::S_ELSE: // ELSE
         value.move< list_instruction* > (YY_MOVE (that.value));
         break;
 
@@ -287,14 +324,29 @@ namespace yy {
       case symbol_kind::S_POR: // POR
       case symbol_kind::S_DIV: // DIV
       case symbol_kind::S_PRINTF: // PRINTF
+      case symbol_kind::S_RIF: // RIF
+      case symbol_kind::S_RELSE: // RELSE
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
+      case symbol_kind::S_TSTRING: // TSTRING
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
       case symbol_kind::S_PARA: // PARA
       case symbol_kind::S_PARC: // PARC
       case symbol_kind::S_RMAIN: // RMAIN
       case symbol_kind::S_LLAVA: // LLAVA
       case symbol_kind::S_LLAVC: // LLAVC
-      case symbol_kind::S_TYPES: // TYPES
+      case symbol_kind::S_RTRUE: // RTRUE
+      case symbol_kind::S_RFALSE: // RFALSE
+      case symbol_kind::S_CORA: // CORA
+      case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_MAY: // MAY
+      case symbol_kind::S_MEN: // MEN
+      case symbol_kind::S_MAY_IG: // MAY_IG
+      case symbol_kind::S_MEN_IG: // MEN_IG
+      case symbol_kind::S_DIF: // DIF
+      case symbol_kind::S_IG: // IG
+      case symbol_kind::S_AND: // AND
+      case symbol_kind::S_OR: // OR
         value.move< std::string > (YY_MOVE (that.value));
         break;
 
@@ -313,8 +365,14 @@ namespace yy {
     state = that.state;
     switch (that.kind ())
     {
+      case symbol_kind::S_TYPES: // TYPES
+        value.copy< TipoDato > (that.value);
+        break;
+
       case symbol_kind::S_EXP: // EXP
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
+      case symbol_kind::S_BOOL: // BOOL
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
         value.copy< expression* > (that.value);
         break;
 
@@ -325,10 +383,15 @@ namespace yy {
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
       case symbol_kind::S_PRINT: // PRINT
+      case symbol_kind::S_DECLARATION: // DECLARATION
+      case symbol_kind::S_IF: // IF
+      case symbol_kind::S_ELSEIF: // ELSEIF
         value.copy< instruction* > (that.value);
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+      case symbol_kind::S_ELSE: // ELSE
         value.copy< list_instruction* > (that.value);
         break;
 
@@ -340,14 +403,29 @@ namespace yy {
       case symbol_kind::S_POR: // POR
       case symbol_kind::S_DIV: // DIV
       case symbol_kind::S_PRINTF: // PRINTF
+      case symbol_kind::S_RIF: // RIF
+      case symbol_kind::S_RELSE: // RELSE
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
+      case symbol_kind::S_TSTRING: // TSTRING
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
       case symbol_kind::S_PARA: // PARA
       case symbol_kind::S_PARC: // PARC
       case symbol_kind::S_RMAIN: // RMAIN
       case symbol_kind::S_LLAVA: // LLAVA
       case symbol_kind::S_LLAVC: // LLAVC
-      case symbol_kind::S_TYPES: // TYPES
+      case symbol_kind::S_RTRUE: // RTRUE
+      case symbol_kind::S_RFALSE: // RFALSE
+      case symbol_kind::S_CORA: // CORA
+      case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_MAY: // MAY
+      case symbol_kind::S_MEN: // MEN
+      case symbol_kind::S_MAY_IG: // MAY_IG
+      case symbol_kind::S_MEN_IG: // MEN_IG
+      case symbol_kind::S_DIF: // DIF
+      case symbol_kind::S_IG: // IG
+      case symbol_kind::S_AND: // AND
+      case symbol_kind::S_OR: // OR
         value.copy< std::string > (that.value);
         break;
 
@@ -365,8 +443,14 @@ namespace yy {
     state = that.state;
     switch (that.kind ())
     {
+      case symbol_kind::S_TYPES: // TYPES
+        value.move< TipoDato > (that.value);
+        break;
+
       case symbol_kind::S_EXP: // EXP
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
+      case symbol_kind::S_BOOL: // BOOL
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
         value.move< expression* > (that.value);
         break;
 
@@ -377,10 +461,15 @@ namespace yy {
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
       case symbol_kind::S_PRINT: // PRINT
+      case symbol_kind::S_DECLARATION: // DECLARATION
+      case symbol_kind::S_IF: // IF
+      case symbol_kind::S_ELSEIF: // ELSEIF
         value.move< instruction* > (that.value);
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+      case symbol_kind::S_ELSE: // ELSE
         value.move< list_instruction* > (that.value);
         break;
 
@@ -392,14 +481,29 @@ namespace yy {
       case symbol_kind::S_POR: // POR
       case symbol_kind::S_DIV: // DIV
       case symbol_kind::S_PRINTF: // PRINTF
+      case symbol_kind::S_RIF: // RIF
+      case symbol_kind::S_RELSE: // RELSE
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
+      case symbol_kind::S_TSTRING: // TSTRING
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
       case symbol_kind::S_PARA: // PARA
       case symbol_kind::S_PARC: // PARC
       case symbol_kind::S_RMAIN: // RMAIN
       case symbol_kind::S_LLAVA: // LLAVA
       case symbol_kind::S_LLAVC: // LLAVC
-      case symbol_kind::S_TYPES: // TYPES
+      case symbol_kind::S_RTRUE: // RTRUE
+      case symbol_kind::S_RFALSE: // RFALSE
+      case symbol_kind::S_CORA: // CORA
+      case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_MAY: // MAY
+      case symbol_kind::S_MEN: // MEN
+      case symbol_kind::S_MAY_IG: // MAY_IG
+      case symbol_kind::S_MEN_IG: // MEN_IG
+      case symbol_kind::S_DIF: // DIF
+      case symbol_kind::S_IG: // IG
+      case symbol_kind::S_AND: // AND
+      case symbol_kind::S_OR: // OR
         value.move< std::string > (that.value);
         break;
 
@@ -440,141 +544,279 @@ namespace yy {
         switch (yykind)
     {
       case symbol_kind::S_NUMERO: // NUMERO
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 446 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 550 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_ID: // ID
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 452 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 556 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_STRING: // STRING
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 458 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 562 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_SUMA: // SUMA
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 464 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 568 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MENOS: // MENOS
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 470 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 574 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_POR: // POR
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 476 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 580 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_DIV: // DIV
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 482 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 586 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRINTF: // PRINTF
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 488 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 592 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_RIF: // RIF
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 598 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_RELSE: // RELSE
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 604 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_VOID: // VOID
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 494 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 610 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_INT: // INT
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 500 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 616 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_TSTRING: // TSTRING
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 622 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 628 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PARA: // PARA
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 506 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 634 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PARC: // PARC
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 512 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 640 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RMAIN: // RMAIN
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 518 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 646 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LLAVA: // LLAVA
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 524 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 652 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LLAVC: // LLAVC
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 530 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 658 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_RTRUE: // RTRUE
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 664 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_RFALSE: // RFALSE
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 670 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_CORA: // CORA
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 676 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_CORC: // CORC
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 682 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_MAY: // MAY
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 688 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_MEN: // MEN
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 694 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_MAY_IG: // MAY_IG
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 700 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_MEN_IG: // MEN_IG
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 706 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_DIF: // DIF
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 712 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_IG: // IG
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 718 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_AND: // AND
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 724 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_OR: // OR
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 730 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_START: // START
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < func_main* > (); }
-#line 536 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 736 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MAIN: // MAIN
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < func_main* > (); }
-#line 542 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 742 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < list_instruction* > (); }
-#line 548 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 748 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 554 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 754 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRINT: // PRINT
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 560 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 760 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_DECLARATION: // DECLARATION
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < instruction* > (); }
+#line 766 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_IF: // IF
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < instruction* > (); }
+#line 772 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < list_instruction* > (); }
+#line 778 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_ELSEIF: // ELSEIF
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < instruction* > (); }
+#line 784 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_ELSE: // ELSE
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < list_instruction* > (); }
+#line 790 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_TYPES: // TYPES
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                 { yyoutput << yysym.value.template as < std::string > (); }
-#line 566 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < TipoDato > (); }
+#line 796 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_EXP: // EXP
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 572 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 802 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
-#line 83 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 578 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 808 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_BOOL: // BOOL
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < expression* > (); }
+#line 814 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
+#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < expression* > (); }
+#line 820 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       default:
@@ -804,8 +1046,14 @@ namespace yy {
          when using variants.  */
       switch (yyr1_[yyn])
     {
+      case symbol_kind::S_TYPES: // TYPES
+        yylhs.value.emplace< TipoDato > ();
+        break;
+
       case symbol_kind::S_EXP: // EXP
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
+      case symbol_kind::S_BOOL: // BOOL
+      case symbol_kind::S_LIST_ARR: // LIST_ARR
         yylhs.value.emplace< expression* > ();
         break;
 
@@ -816,10 +1064,15 @@ namespace yy {
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
       case symbol_kind::S_PRINT: // PRINT
+      case symbol_kind::S_DECLARATION: // DECLARATION
+      case symbol_kind::S_IF: // IF
+      case symbol_kind::S_ELSEIF: // ELSEIF
         yylhs.value.emplace< instruction* > ();
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
+      case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
+      case symbol_kind::S_ELSE: // ELSE
         yylhs.value.emplace< list_instruction* > ();
         break;
 
@@ -831,14 +1084,29 @@ namespace yy {
       case symbol_kind::S_POR: // POR
       case symbol_kind::S_DIV: // DIV
       case symbol_kind::S_PRINTF: // PRINTF
+      case symbol_kind::S_RIF: // RIF
+      case symbol_kind::S_RELSE: // RELSE
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
+      case symbol_kind::S_TSTRING: // TSTRING
+      case symbol_kind::S_BOOLEAN: // BOOLEAN
       case symbol_kind::S_PARA: // PARA
       case symbol_kind::S_PARC: // PARC
       case symbol_kind::S_RMAIN: // RMAIN
       case symbol_kind::S_LLAVA: // LLAVA
       case symbol_kind::S_LLAVC: // LLAVC
-      case symbol_kind::S_TYPES: // TYPES
+      case symbol_kind::S_RTRUE: // RTRUE
+      case symbol_kind::S_RFALSE: // RFALSE
+      case symbol_kind::S_CORA: // CORA
+      case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_MAY: // MAY
+      case symbol_kind::S_MEN: // MEN
+      case symbol_kind::S_MAY_IG: // MAY_IG
+      case symbol_kind::S_MEN_IG: // MEN_IG
+      case symbol_kind::S_DIF: // DIF
+      case symbol_kind::S_IG: // IG
+      case symbol_kind::S_AND: // AND
+      case symbol_kind::S_OR: // OR
         yylhs.value.emplace< std::string > ();
         break;
 
@@ -863,118 +1131,285 @@ namespace yy {
           switch (yyn)
             {
   case 2: // START: MAIN
-#line 91 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 107 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
     {
         ctx.Main = yystack_[0].value.as < func_main* > ();
         ctx.Salida = "!Ejecución realizada con éxito!";
         yylhs.value.as < func_main* > () = yystack_[0].value.as < func_main* > ();
     }
-#line 873 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1141 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 3: // MAIN: TYPES RMAIN PARA PARC LLAVA LIST_INST LLAVC
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 3: // MAIN: VOID RMAIN PARA PARC LLAVA LIST_INST LLAVC
+#line 115 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
 {
     yylhs.value.as < func_main* > () = new func_main(0, 0, yystack_[6].value.as < std::string > (), yystack_[1].value.as < list_instruction* > ());
 }
-#line 881 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1149 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 4: // LIST_INST: LIST_INST INSTRUCTION
-#line 105 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-        { 
+#line 121 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
             yystack_[1].value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
             yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > ();
         }
-#line 890 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1158 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 5: // LIST_INST: INSTRUCTION
-#line 110 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 126 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yylhs.value.as < list_instruction* > () = new list_instruction();
             yylhs.value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
         }
-#line 899 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1167 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 6: // INSTRUCTION: PRINT ';'
-#line 116 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 132 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                         { yylhs.value.as < instruction* > () = yystack_[1].value.as < instruction* > (); }
-#line 905 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1173 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 7: // PRINT: PRINTF PARA EXP PARC
-#line 119 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                             { yylhs.value.as < instruction* > () = new print(0,0,yystack_[1].value.as < expression* > ()); }
-#line 911 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+  case 7: // INSTRUCTION: DECLARATION ';'
+#line 133 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                              { yylhs.value.as < instruction* > () = yystack_[1].value.as < instruction* > (); }
+#line 1179 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 8: // TYPES: VOID
-#line 122 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-             { yylhs.value.as < std::string > () = "void"; }
-#line 917 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 9: // TYPES: INT
-#line 123 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-          { yylhs.value.as < std::string > () = "int"; }
-#line 923 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 10: // EXP: EXP SUMA EXP
-#line 126 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                   { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "+"); }
-#line 929 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 11: // EXP: EXP MENOS EXP
-#line 127 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                    { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "-"); }
-#line 935 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 12: // EXP: EXP POR EXP
-#line 128 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "*"); }
-#line 941 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 13: // EXP: EXP DIV EXP
-#line 129 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "/"); }
-#line 947 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 14: // EXP: PARA EXP PARC
-#line 130 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                    { yylhs.value.as < expression* > () = yystack_[1].value.as < expression* > (); }
-#line 953 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 15: // EXP: PRIMITIVE
-#line 131 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
-#line 959 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 16: // PRIMITIVE: NUMERO
+  case 8: // INSTRUCTION: IF
 #line 134 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                   { yylhs.value.as < expression* > () = new primitive(0,0,INTEGER, "", std::stod(yystack_[0].value.as < std::string > ())); }
-#line 965 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                 { yylhs.value.as < instruction* > () = yystack_[0].value.as < instruction* > (); }
+#line 1185 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 17: // PRIMITIVE: STRING
-#line 136 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-        { 
-            std::string cadena = yystack_[0].value.as < std::string > ().erase(0,1);
-            yylhs.value.as < expression* > () = new primitive(0,0,STRING, cadena.erase(cadena.length()-1,1), 0);
+  case 9: // PRINT: PRINTF PARA EXP PARC
+#line 137 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                             { yylhs.value.as < instruction* > () = new print(0,0,yystack_[1].value.as < expression* > ()); }
+#line 1191 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 10: // DECLARATION: TYPES ID '=' EXP
+#line 140 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                               { yylhs.value.as < instruction* > () = new declaration(0,0,yystack_[3].value.as < TipoDato > (),yystack_[2].value.as < std::string > (),yystack_[0].value.as < expression* > ()); }
+#line 1197 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 11: // IF: RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST ELSE
+#line 144 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+    {
+        yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[5].value.as < expression* > (),yystack_[3].value.as < list_instruction* > (),yystack_[1].value.as < list_instruction* > (),yystack_[0].value.as < list_instruction* > ());
+    }
+#line 1205 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 12: // IF: RIF EXP LLAVA LIST_INST LLAVC ELSE
+#line 148 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+    {
+        yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[4].value.as < expression* > (),yystack_[2].value.as < list_instruction* > (),nullptr,yystack_[0].value.as < list_instruction* > ());
+    }
+#line 1213 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 13: // ELSEIF_LIST: ELSEIF_LIST ELSEIF
+#line 154 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
+            yystack_[1].value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
+            yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > ();
         }
-#line 974 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1222 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 14: // ELSEIF_LIST: ELSEIF
+#line 159 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
+            yylhs.value.as < list_instruction* > () = new list_instruction();
+            yylhs.value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
+        }
+#line 1231 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 15: // ELSEIF: RELSE RIF EXP LLAVA LIST_INST LLAVC
+#line 166 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
+            yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[3].value.as < expression* > (),yystack_[1].value.as < list_instruction* > (), nullptr, nullptr);
+        }
+#line 1239 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 16: // ELSE: RELSE LLAVA LIST_INST LLAVC
+#line 171 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                                   { yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > (); }
+#line 1245 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 17: // ELSE: %empty
+#line 172 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+             { }
+#line 1251 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 18: // TYPES: INT
+#line 175 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+            { yylhs.value.as < TipoDato > () = INTEGER; }
+#line 1257 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 19: // TYPES: TSTRING
+#line 176 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+              { yylhs.value.as < TipoDato > () = STRING; }
+#line 1263 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 20: // TYPES: BOOLEAN
+#line 177 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+              { yylhs.value.as < TipoDato > () = BOOL; }
+#line 1269 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 21: // EXP: EXP SUMA EXP
+#line 180 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                   { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "+"); }
+#line 1275 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 22: // EXP: EXP MENOS EXP
+#line 181 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                    { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "-"); }
+#line 1281 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 23: // EXP: EXP POR EXP
+#line 182 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "*"); }
+#line 1287 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 24: // EXP: EXP DIV EXP
+#line 183 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "/"); }
+#line 1293 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 25: // EXP: EXP MEN EXP
+#line 184 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<"); }
+#line 1299 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 26: // EXP: EXP MAY EXP
+#line 185 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">"); }
+#line 1305 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 27: // EXP: EXP MEN_IG EXP
+#line 186 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<="); }
+#line 1311 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 28: // EXP: EXP MAY_IG EXP
+#line 187 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">="); }
+#line 1317 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 29: // EXP: EXP DIF EXP
+#line 188 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "!="); }
+#line 1323 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 30: // EXP: EXP IG EXP
+#line 189 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "=="); }
+#line 1329 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 31: // EXP: EXP AND EXP
+#line 190 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "&&"); }
+#line 1335 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 32: // EXP: EXP OR EXP
+#line 191 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "||"); }
+#line 1341 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 33: // EXP: PARA EXP PARC
+#line 192 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                    { yylhs.value.as < expression* > () = yystack_[1].value.as < expression* > (); }
+#line 1347 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 34: // EXP: PRIMITIVE
+#line 193 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1353 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 35: // PRIMITIVE: NUMERO
+#line 197 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
+            int num = stoi(yystack_[0].value.as < std::string > ());
+            yylhs.value.as < expression* > () = new primitive(0,0,INTEGER,"",num,false);
+        }
+#line 1362 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 36: // PRIMITIVE: STRING
+#line 202 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+        {
+            std::string str1 = yystack_[0].value.as < std::string > ().erase(0,1);
+            std::string str2 = str1.erase(str1.length()-1,1);
+            yylhs.value.as < expression* > () = new primitive(0,0,STRING,str2,0,false);
+        }
+#line 1372 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 37: // PRIMITIVE: BOOL
+#line 207 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+               { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1378 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 38: // PRIMITIVE: LIST_ARR
+#line 208 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                   { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1384 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 39: // BOOL: RTRUE
+#line 211 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+             { yylhs.value.as < expression* > () = new primitive(0,0,BOOL,"",0,true); }
+#line 1390 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 40: // BOOL: RFALSE
+#line 212 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+             { yylhs.value.as < expression* > () = new primitive(0,0,BOOL,"",0,false); }
+#line 1396 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 41: // LIST_ARR: LIST_ARR CORA EXP CORC
+#line 215 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                                  { yylhs.value.as < expression* > () = new array_access(0,0,yystack_[3].value.as < expression* > (),yystack_[1].value.as < expression* > ()); }
+#line 1402 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 42: // LIST_ARR: ID
+#line 216 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+             {
+            yylhs.value.as < expression* > () = new access(0,0,yystack_[0].value.as < std::string > ()); }
+#line 1409 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
 
-#line 978 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1413 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
 
             default:
               break;
@@ -1326,79 +1761,134 @@ namespace yy {
   }
 
 
-  const signed char Parser::yypact_ninf_ = -10;
+  const signed char Parser::yypact_ninf_ = -41;
 
   const signed char Parser::yytable_ninf_ = -1;
 
-  const signed char
+  const short
   Parser::yypact_[] =
   {
-       6,   -10,   -10,     3,   -10,    -6,   -10,    15,     5,    -5,
-      19,    17,    -9,   -10,    13,    -3,   -10,   -10,   -10,   -10,
-     -10,    -3,    -2,   -10,     7,    -3,    -3,    -3,    -3,   -10,
-     -10,    14,    14,   -10,   -10
+      -3,    -8,    46,   -41,    30,   -41,    33,    29,    66,    38,
+      31,   -41,   -41,   -41,    -7,   -41,    16,    22,   -41,    62,
+      31,   -41,   -41,   -41,    31,   -41,   -41,    32,   -41,   -41,
+      44,   -41,   -41,   -41,   -41,    34,    65,    81,    31,    31,
+      31,    31,    66,    31,    31,    31,    31,    31,    31,    31,
+      31,    31,    31,   -41,   -41,    35,    35,   -41,   -41,     2,
+     184,   184,   184,   184,   152,   152,   137,   137,    94,   124,
+      63,   -41,    -5,    63,   -41,   -41,    31,    66,   -41,   -41,
+     109,   161,    66,   -41,   173,   -41
   };
 
   const signed char
   Parser::yydefact_[] =
   {
-       0,     8,     9,     0,     2,     0,     1,     0,     0,     0,
-       0,     0,     0,     5,     0,     0,     3,     4,     6,    16,
-      17,     0,     0,    15,     0,     0,     0,     0,     0,     7,
-      14,    10,    11,    12,    13
+       0,     0,     0,     2,     0,     1,     0,     0,     0,     0,
+       0,    18,    19,    20,     0,     5,     0,     0,     8,     0,
+       0,    35,    42,    36,     0,    39,    40,     0,    34,    37,
+      38,     3,     4,     6,     7,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     9,    33,    21,    22,    23,    24,     0,
+      26,    25,    28,    27,    29,    30,    31,    32,     0,    10,
+      17,    41,     0,    17,    14,    12,     0,     0,    13,    11,
+       0,     0,     0,    16,     0,    15
   };
 
   const signed char
   Parser::yypgoto_[] =
   {
-     -10,   -10,   -10,   -10,    20,   -10,   -10,    -1,   -10
+     -41,   -41,   -41,   -40,   -14,   -41,   -41,   -41,   -41,     5,
+       6,   -41,   -19,   -41,   -41,   -41
   };
 
   const signed char
   Parser::yydefgoto_[] =
   {
-       0,     3,     4,    12,    13,    14,     5,    22,    23
+       0,     2,     3,    14,    15,    16,    17,    18,    73,    74,
+      75,    19,    27,    28,    29,    30
   };
 
   const signed char
   Parser::yytable_[] =
   {
-      19,    11,    20,     6,    25,    26,    27,    28,    16,     7,
-      21,    10,    29,    25,    26,    27,    28,     1,     2,     9,
-      24,    30,    27,    28,    31,    32,    33,    34,     8,    11,
-      15,    18,    17
+      32,    36,    59,     9,    10,    37,    76,    11,    12,    13,
+       1,     4,     9,    10,    31,    77,    11,    12,    13,    55,
+      56,    57,    58,    70,    60,    61,    62,    63,    64,    65,
+      66,    67,    68,    69,    21,    22,    23,    81,    38,    39,
+      40,    41,    84,    40,    41,    32,     5,     6,    24,     8,
+      33,     7,    42,    25,    26,    20,    34,    80,    43,    44,
+      45,    46,    47,    48,    49,    50,    35,    32,    51,    52,
+      32,    38,    39,    40,    41,    72,     9,    10,    78,    79,
+      11,    12,    13,    53,     0,     0,     0,    38,    39,    40,
+      41,    43,    44,    45,    46,    47,    48,    49,    50,    54,
+      38,    39,    40,    41,     0,     0,     0,    43,    44,    45,
+      46,    47,    48,    49,    50,    38,    39,    40,    41,    71,
+      43,    44,    45,    46,    47,    48,    49,    50,     0,    82,
+      38,    39,    40,    41,     0,    43,    44,    45,    46,    47,
+      48,    49,    50,    38,    39,    40,    41,     0,     0,     0,
+      43,    44,    45,    46,    47,    48,    49,    50,    38,    39,
+      40,    41,     0,    43,    44,    45,    46,    47,    48,     0,
+       0,     9,    10,     0,     0,    11,    12,    13,    43,    44,
+      45,    46,    83,     9,    10,     0,     0,    11,    12,    13,
+      38,    39,    40,    41,    85
   };
 
   const signed char
   Parser::yycheck_[] =
   {
-       3,    10,     5,     0,     6,     7,     8,     9,    17,    15,
-      13,    16,    14,     6,     7,     8,     9,    11,    12,    14,
-      21,    14,     8,     9,    25,    26,    27,    28,    13,    10,
-      13,    18,    12
+      14,    20,    42,    10,    11,    24,    11,    14,    15,    16,
+      13,    19,    10,    11,    21,    20,    14,    15,    16,    38,
+      39,    40,    41,    21,    43,    44,    45,    46,    47,    48,
+      49,    50,    51,    52,     3,     4,     5,    77,     6,     7,
+       8,     9,    82,     8,     9,    59,     0,    17,    17,    20,
+      34,    18,    20,    22,    23,    17,    34,    76,    26,    27,
+      28,    29,    30,    31,    32,    33,     4,    81,    24,    35,
+      84,     6,     7,     8,     9,    12,    10,    11,    73,    73,
+      14,    15,    16,    18,    -1,    -1,    -1,     6,     7,     8,
+       9,    26,    27,    28,    29,    30,    31,    32,    33,    18,
+       6,     7,     8,     9,    -1,    -1,    -1,    26,    27,    28,
+      29,    30,    31,    32,    33,     6,     7,     8,     9,    25,
+      26,    27,    28,    29,    30,    31,    32,    33,    -1,    20,
+       6,     7,     8,     9,    -1,    26,    27,    28,    29,    30,
+      31,    32,    33,     6,     7,     8,     9,    -1,    -1,    -1,
+      26,    27,    28,    29,    30,    31,    32,    33,     6,     7,
+       8,     9,    -1,    26,    27,    28,    29,    30,    31,    -1,
+      -1,    10,    11,    -1,    -1,    14,    15,    16,    26,    27,
+      28,    29,    21,    10,    11,    -1,    -1,    14,    15,    16,
+       6,     7,     8,     9,    21
   };
 
   const signed char
   Parser::yystos_[] =
   {
-       0,    11,    12,    20,    21,    25,     0,    15,    13,    14,
-      16,    10,    22,    23,    24,    13,    17,    23,    18,     3,
-       5,    13,    26,    27,    26,     6,     7,     8,     9,    14,
-      14,    26,    26,    26,    26
+       0,    13,    37,    38,    19,     0,    17,    18,    20,    10,
+      11,    14,    15,    16,    39,    40,    41,    42,    43,    47,
+      17,     3,     4,     5,    17,    22,    23,    48,    49,    50,
+      51,    21,    40,    34,    34,     4,    48,    48,     6,     7,
+       8,     9,    20,    26,    27,    28,    29,    30,    31,    32,
+      33,    24,    35,    18,    18,    48,    48,    48,    48,    39,
+      48,    48,    48,    48,    48,    48,    48,    48,    48,    48,
+      21,    25,    12,    44,    45,    46,    11,    20,    45,    46,
+      48,    39,    20,    21,    39,    21
   };
 
   const signed char
   Parser::yyr1_[] =
   {
-       0,    19,    20,    21,    22,    22,    23,    24,    25,    25,
-      26,    26,    26,    26,    26,    26,    27,    27
+       0,    36,    37,    38,    39,    39,    40,    40,    40,    41,
+      42,    43,    43,    44,    44,    45,    46,    46,    47,    47,
+      47,    48,    48,    48,    48,    48,    48,    48,    48,    48,
+      48,    48,    48,    48,    48,    49,    49,    49,    49,    50,
+      50,    51,    51
   };
 
   const signed char
   Parser::yyr2_[] =
   {
-       0,     2,     1,     7,     2,     1,     2,     4,     1,     1,
-       3,     3,     3,     3,     3,     1,     1,     1
+       0,     2,     1,     7,     2,     1,     2,     2,     1,     4,
+       4,     7,     6,     2,     1,     6,     4,     0,     1,     1,
+       1,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     3,     3,     1,     1,     1,     1,     1,     1,
+       1,     4,     1
   };
 
 
@@ -1409,9 +1899,12 @@ namespace yy {
   const Parser::yytname_[] =
   {
   "END", "error", "\"invalid token\"", "NUMERO", "ID", "STRING", "SUMA",
-  "MENOS", "POR", "DIV", "PRINTF", "VOID", "INT", "PARA", "PARC", "RMAIN",
-  "LLAVA", "LLAVC", "';'", "$accept", "START", "MAIN", "LIST_INST",
-  "INSTRUCTION", "PRINT", "TYPES", "EXP", "PRIMITIVE", YY_NULLPTR
+  "MENOS", "POR", "DIV", "PRINTF", "RIF", "RELSE", "VOID", "INT",
+  "TSTRING", "BOOLEAN", "PARA", "PARC", "RMAIN", "LLAVA", "LLAVC", "RTRUE",
+  "RFALSE", "CORA", "CORC", "MAY", "MEN", "MAY_IG", "MEN_IG", "DIF", "IG",
+  "AND", "OR", "';'", "'='", "$accept", "START", "MAIN", "LIST_INST",
+  "INSTRUCTION", "PRINT", "DECLARATION", "IF", "ELSEIF_LIST", "ELSEIF",
+  "ELSE", "TYPES", "EXP", "PRIMITIVE", "BOOL", "LIST_ARR", YY_NULLPTR
   };
 #endif
 
@@ -1420,8 +1913,11 @@ namespace yy {
   const unsigned char
   Parser::yyrline_[] =
   {
-       0,    90,    90,    98,   104,   109,   116,   119,   122,   123,
-     126,   127,   128,   129,   130,   131,   134,   135
+       0,   106,   106,   114,   120,   125,   132,   133,   134,   137,
+     140,   143,   147,   153,   158,   165,   171,   172,   175,   176,
+     177,   180,   181,   182,   183,   184,   185,   186,   187,   188,
+     189,   190,   191,   192,   193,   196,   201,   207,   208,   211,
+     212,   215,   216
   };
 
   void
@@ -1453,14 +1949,14 @@ namespace yy {
 
 
 } // yy
-#line 1457 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1953 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
 
-#line 142 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 220 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
 
 
 /* función de error */
 void yy::Parser::error(const yy::location& l, const std::string& m)
 {
-	std::cerr << l << ": " << m << std::endl;
+    std::cerr << l << ": " << m << std::endl;
 }
 
