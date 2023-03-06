@@ -1,12 +1,13 @@
 #include "primitive.hpp"
-
-primitive::primitive(int line, int col, TipoDato tipo, std::string strval, int numval, bool boolval){
+using namespace std;
+primitive::primitive(int line, int col, TipoDato tipo, string strval, int numval, bool boolval,float floatval){
     Line = line;
     Col = col;
     Tipo = tipo;
     strVal = strval;
     numVal = numval;
     boolVal = boolval;
+    floatVal = floatval;
 }
 
 symbol primitive::ejecutar(environment *env, ast* tree)
@@ -15,6 +16,9 @@ symbol primitive::ejecutar(environment *env, ast* tree)
     switch (Tipo) {
     case INTEGER:
         sym = symbol(Line,Col,"",Tipo,&numVal);
+        break;
+    case FLOAT:
+        sym = symbol(Line,Col,"",Tipo,&floatVal);
         break;
     case STRING:
         sym = symbol(Line,Col,"",Tipo,&strVal);

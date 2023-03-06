@@ -426,6 +426,7 @@ namespace yy {
       // ELSE
       char dummy5[sizeof (list_instruction*)];
 
+      // DECIMAL
       // NUMERO
       // ID
       // STRING
@@ -449,6 +450,7 @@ namespace yy {
       // RFALSE
       // CORA
       // CORC
+      // TSFLOAT
       // MAY
       // MEN
       // MAY_IG
@@ -507,37 +509,39 @@ namespace yy {
     END = 0,                       // END
     YYerror = 256,                 // error
     YYUNDEF = 257,                 // "invalid token"
-    NUMERO = 258,                  // NUMERO
-    ID = 259,                      // ID
-    STRING = 260,                  // STRING
-    SUMA = 261,                    // SUMA
-    MENOS = 262,                   // MENOS
-    POR = 263,                     // POR
-    DIV = 264,                     // DIV
-    PRINTF = 265,                  // PRINTF
-    RIF = 266,                     // RIF
-    RELSE = 267,                   // RELSE
-    VOID = 268,                    // VOID
-    INT = 269,                     // INT
-    TSTRING = 270,                 // TSTRING
-    BOOLEAN = 271,                 // BOOLEAN
-    PARA = 272,                    // PARA
-    PARC = 273,                    // PARC
-    RMAIN = 274,                   // RMAIN
-    LLAVA = 275,                   // LLAVA
-    LLAVC = 276,                   // LLAVC
-    RTRUE = 277,                   // RTRUE
-    RFALSE = 278,                  // RFALSE
-    CORA = 279,                    // CORA
-    CORC = 280,                    // CORC
-    MAY = 281,                     // MAY
-    MEN = 282,                     // MEN
-    MAY_IG = 283,                  // MAY_IG
-    MEN_IG = 284,                  // MEN_IG
-    DIF = 285,                     // DIF
-    IG = 286,                      // IG
-    AND = 287,                     // AND
-    OR = 288                       // OR
+    DECIMAL = 258,                 // DECIMAL
+    NUMERO = 259,                  // NUMERO
+    ID = 260,                      // ID
+    STRING = 261,                  // STRING
+    SUMA = 262,                    // SUMA
+    MENOS = 263,                   // MENOS
+    POR = 264,                     // POR
+    DIV = 265,                     // DIV
+    PRINTF = 266,                  // PRINTF
+    RIF = 267,                     // RIF
+    RELSE = 268,                   // RELSE
+    VOID = 269,                    // VOID
+    INT = 270,                     // INT
+    TSTRING = 271,                 // TSTRING
+    BOOLEAN = 272,                 // BOOLEAN
+    PARA = 273,                    // PARA
+    PARC = 274,                    // PARC
+    RMAIN = 275,                   // RMAIN
+    LLAVA = 276,                   // LLAVA
+    LLAVC = 277,                   // LLAVC
+    RTRUE = 278,                   // RTRUE
+    RFALSE = 279,                  // RFALSE
+    CORA = 280,                    // CORA
+    CORC = 281,                    // CORC
+    TSFLOAT = 282,                 // TSFLOAT
+    MAY = 283,                     // MAY
+    MEN = 284,                     // MEN
+    MAY_IG = 285,                  // MAY_IG
+    MEN_IG = 286,                  // MEN_IG
+    DIF = 287,                     // DIF
+    IG = 288,                      // IG
+    AND = 289,                     // AND
+    OR = 290                       // OR
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -554,60 +558,62 @@ namespace yy {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 36, ///< Number of tokens.
+        YYNTOKENS = 38, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // END
         S_YYerror = 1,                           // error
         S_YYUNDEF = 2,                           // "invalid token"
-        S_NUMERO = 3,                            // NUMERO
-        S_ID = 4,                                // ID
-        S_STRING = 5,                            // STRING
-        S_SUMA = 6,                              // SUMA
-        S_MENOS = 7,                             // MENOS
-        S_POR = 8,                               // POR
-        S_DIV = 9,                               // DIV
-        S_PRINTF = 10,                           // PRINTF
-        S_RIF = 11,                              // RIF
-        S_RELSE = 12,                            // RELSE
-        S_VOID = 13,                             // VOID
-        S_INT = 14,                              // INT
-        S_TSTRING = 15,                          // TSTRING
-        S_BOOLEAN = 16,                          // BOOLEAN
-        S_PARA = 17,                             // PARA
-        S_PARC = 18,                             // PARC
-        S_RMAIN = 19,                            // RMAIN
-        S_LLAVA = 20,                            // LLAVA
-        S_LLAVC = 21,                            // LLAVC
-        S_RTRUE = 22,                            // RTRUE
-        S_RFALSE = 23,                           // RFALSE
-        S_CORA = 24,                             // CORA
-        S_CORC = 25,                             // CORC
-        S_MAY = 26,                              // MAY
-        S_MEN = 27,                              // MEN
-        S_MAY_IG = 28,                           // MAY_IG
-        S_MEN_IG = 29,                           // MEN_IG
-        S_DIF = 30,                              // DIF
-        S_IG = 31,                               // IG
-        S_AND = 32,                              // AND
-        S_OR = 33,                               // OR
-        S_34_ = 34,                              // ';'
-        S_35_ = 35,                              // '='
-        S_YYACCEPT = 36,                         // $accept
-        S_START = 37,                            // START
-        S_MAIN = 38,                             // MAIN
-        S_LIST_INST = 39,                        // LIST_INST
-        S_INSTRUCTION = 40,                      // INSTRUCTION
-        S_PRINT = 41,                            // PRINT
-        S_DECLARATION = 42,                      // DECLARATION
-        S_IF = 43,                               // IF
-        S_ELSEIF_LIST = 44,                      // ELSEIF_LIST
-        S_ELSEIF = 45,                           // ELSEIF
-        S_ELSE = 46,                             // ELSE
-        S_TYPES = 47,                            // TYPES
-        S_EXP = 48,                              // EXP
-        S_PRIMITIVE = 49,                        // PRIMITIVE
-        S_BOOL = 50,                             // BOOL
-        S_LIST_ARR = 51                          // LIST_ARR
+        S_DECIMAL = 3,                           // DECIMAL
+        S_NUMERO = 4,                            // NUMERO
+        S_ID = 5,                                // ID
+        S_STRING = 6,                            // STRING
+        S_SUMA = 7,                              // SUMA
+        S_MENOS = 8,                             // MENOS
+        S_POR = 9,                               // POR
+        S_DIV = 10,                              // DIV
+        S_PRINTF = 11,                           // PRINTF
+        S_RIF = 12,                              // RIF
+        S_RELSE = 13,                            // RELSE
+        S_VOID = 14,                             // VOID
+        S_INT = 15,                              // INT
+        S_TSTRING = 16,                          // TSTRING
+        S_BOOLEAN = 17,                          // BOOLEAN
+        S_PARA = 18,                             // PARA
+        S_PARC = 19,                             // PARC
+        S_RMAIN = 20,                            // RMAIN
+        S_LLAVA = 21,                            // LLAVA
+        S_LLAVC = 22,                            // LLAVC
+        S_RTRUE = 23,                            // RTRUE
+        S_RFALSE = 24,                           // RFALSE
+        S_CORA = 25,                             // CORA
+        S_CORC = 26,                             // CORC
+        S_TSFLOAT = 27,                          // TSFLOAT
+        S_MAY = 28,                              // MAY
+        S_MEN = 29,                              // MEN
+        S_MAY_IG = 30,                           // MAY_IG
+        S_MEN_IG = 31,                           // MEN_IG
+        S_DIF = 32,                              // DIF
+        S_IG = 33,                               // IG
+        S_AND = 34,                              // AND
+        S_OR = 35,                               // OR
+        S_36_ = 36,                              // ';'
+        S_37_ = 37,                              // '='
+        S_YYACCEPT = 38,                         // $accept
+        S_START = 39,                            // START
+        S_MAIN = 40,                             // MAIN
+        S_LIST_INST = 41,                        // LIST_INST
+        S_INSTRUCTION = 42,                      // INSTRUCTION
+        S_PRINT = 43,                            // PRINT
+        S_DECLARATION = 44,                      // DECLARATION
+        S_IF = 45,                               // IF
+        S_ELSEIF_LIST = 46,                      // ELSEIF_LIST
+        S_ELSEIF = 47,                           // ELSEIF
+        S_ELSE = 48,                             // ELSE
+        S_TYPES = 49,                            // TYPES
+        S_EXP = 50,                              // EXP
+        S_PRIMITIVE = 51,                        // PRIMITIVE
+        S_BOOL = 52,                             // BOOL
+        S_LIST_ARR = 53                          // LIST_ARR
       };
     };
 
@@ -674,6 +680,7 @@ namespace yy {
         value.move< list_instruction* > (std::move (that.value));
         break;
 
+      case symbol_kind::S_DECIMAL: // DECIMAL
       case symbol_kind::S_NUMERO: // NUMERO
       case symbol_kind::S_ID: // ID
       case symbol_kind::S_STRING: // STRING
@@ -697,6 +704,7 @@ namespace yy {
       case symbol_kind::S_RFALSE: // RFALSE
       case symbol_kind::S_CORA: // CORA
       case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_TSFLOAT: // TSFLOAT
       case symbol_kind::S_MAY: // MAY
       case symbol_kind::S_MEN: // MEN
       case symbol_kind::S_MAY_IG: // MAY_IG
@@ -869,6 +877,7 @@ switch (yykind)
         value.template destroy< list_instruction* > ();
         break;
 
+      case symbol_kind::S_DECIMAL: // DECIMAL
       case symbol_kind::S_NUMERO: // NUMERO
       case symbol_kind::S_ID: // ID
       case symbol_kind::S_STRING: // STRING
@@ -892,6 +901,7 @@ switch (yykind)
       case symbol_kind::S_RFALSE: // RFALSE
       case symbol_kind::S_CORA: // CORA
       case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_TSFLOAT: // TSFLOAT
       case symbol_kind::S_MAY: // MAY
       case symbol_kind::S_MEN: // MEN
       case symbol_kind::S_MAY_IG: // MAY_IG
@@ -1098,6 +1108,21 @@ switch (yykind)
       make_YYUNDEF (const location_type& l)
       {
         return symbol_type (token::YYUNDEF, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_DECIMAL (std::string v, location_type l)
+      {
+        return symbol_type (token::DECIMAL, std::move (v), std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_DECIMAL (const std::string& v, const location_type& l)
+      {
+        return symbol_type (token::DECIMAL, v, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1443,6 +1468,21 @@ switch (yykind)
       make_CORC (const std::string& v, const location_type& l)
       {
         return symbol_type (token::CORC, v, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_TSFLOAT (std::string v, location_type l)
+      {
+        return symbol_type (token::TSFLOAT, std::move (v), std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_TSFLOAT (const std::string& v, const location_type& l)
+      {
+        return symbol_type (token::TSFLOAT, v, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1895,7 +1935,7 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 194,     ///< Last index in yytable_.
+      yylast_ = 235,     ///< Last index in yytable_.
       yynnts_ = 16,  ///< Number of nonterminal symbols.
       yyfinal_ = 5 ///< Termination state number.
     };
@@ -1923,8 +1963,8 @@ switch (yykind)
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    34,
-       2,    35,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    36,
+       2,    37,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -1946,10 +1986,11 @@ switch (yykind)
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30,    31,    32,    33
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35
     };
     // Last valid token kind.
-    const int code_max = 288;
+    const int code_max = 290;
 
     if (t <= 0)
       return symbol_kind::S_YYEOF;
@@ -1998,6 +2039,7 @@ switch (yykind)
         value.copy< list_instruction* > (YY_MOVE (that.value));
         break;
 
+      case symbol_kind::S_DECIMAL: // DECIMAL
       case symbol_kind::S_NUMERO: // NUMERO
       case symbol_kind::S_ID: // ID
       case symbol_kind::S_STRING: // STRING
@@ -2021,6 +2063,7 @@ switch (yykind)
       case symbol_kind::S_RFALSE: // RFALSE
       case symbol_kind::S_CORA: // CORA
       case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_TSFLOAT: // TSFLOAT
       case symbol_kind::S_MAY: // MAY
       case symbol_kind::S_MEN: // MEN
       case symbol_kind::S_MAY_IG: // MAY_IG
@@ -2093,6 +2136,7 @@ switch (yykind)
         value.move< list_instruction* > (YY_MOVE (s.value));
         break;
 
+      case symbol_kind::S_DECIMAL: // DECIMAL
       case symbol_kind::S_NUMERO: // NUMERO
       case symbol_kind::S_ID: // ID
       case symbol_kind::S_STRING: // STRING
@@ -2116,6 +2160,7 @@ switch (yykind)
       case symbol_kind::S_RFALSE: // RFALSE
       case symbol_kind::S_CORA: // CORA
       case symbol_kind::S_CORC: // CORC
+      case symbol_kind::S_TSFLOAT: // TSFLOAT
       case symbol_kind::S_MAY: // MAY
       case symbol_kind::S_MEN: // MEN
       case symbol_kind::S_MAY_IG: // MAY_IG
@@ -2193,7 +2238,7 @@ switch (yykind)
 
 
 } // yy
-#line 2197 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
+#line 2242 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
 
 
 

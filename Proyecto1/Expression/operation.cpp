@@ -19,7 +19,7 @@ symbol operation::ejecutar(environment *env, ast *tree)
         {INTEGER, FLOAT, STRING, INTEGER, NULO},//00,01,02,03,04
         {FLOAT, FLOAT, STRING, FLOAT, NULO},//10,11,12,13,14
         {STRING, STRING, STRING, STRING, NULO},//20,21,22,23,24
-        {INTEGER, FLOAT, STRING, BOOL, NULO},//30,31,32,33,34
+        {INTEGER, FLOAT, STRING, INTEGER, NULO},//30,31,32,33,34
         {NULO, NULO, NULO, NULO, NULO}//40,41,42,43,44
     };
     //INTEGER=0, FLOAT=1, STRING=2, BOOL=3, NULO=4
@@ -29,7 +29,50 @@ symbol operation::ejecutar(environment *env, ast *tree)
     {
         if(Dominante == INTEGER)
         {
-            int result = *static_cast<int*>(op1.Value) + *static_cast<int*>(op2.Value);
+            int result=0;
+            bool val;
+            bool val2;
+            int *val3=0;
+            int *val4=0;
+            /*if(op1.Tipo==INTEGER && op2.Tipo==INTEGER){
+                val = static_cast<int*>(op1.Value);
+                val2 = static_cast<int*>(op2.Value);
+                result = *val + *val2;
+            }
+
+            if(op1.Tipo==BOOL && op2.Tipo == BOOL){
+                result = *static_cast<int*>(op1.Value) + *static_cast<int*>(op2.Value);
+            }
+            if(op1.Tipo == BOOL && op2.Tipo==INTEGER){
+                result = 1+*static_cast<int*>(op2.Value);
+            }
+            if(op1.Tipo == INTEGER && op2.Tipo==BOOL){
+                result = *static_cast<int*>(op1.Value) + 1;
+            }
+            sym = symbol(Line,Col,"",Dominante,&result);*/
+
+            if(op1.Tipo == BOOL){
+                val = *static_cast<bool*>(op1.Value);
+                if(val == true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val3 = static_cast<int*>(op1.Value);
+                result += *val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result +=1;
+                }else{
+                    result+=0;
+                }
+            }else{
+                val4 = static_cast<int*>(op2.Value);
+                result += *val4;
+            }
             sym = symbol(Line,Col,"",Dominante,&result);
         }
         else if(Dominante == STRING)
@@ -41,33 +84,81 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int res2=0;
             float rersf=0.0;
             float rersf2=0.0;
-            if(op1.Tipo == INTEGER){
+            bool resb;
+            bool resb2;
+            if(op1.Tipo == INTEGER){//cuando el primer valor es un entero
                 res = *static_cast<int*>(op1.Value);
                 result +=to_string(res);
-            }else if (op1.Tipo == FLOAT){
+            }else if (op1.Tipo == FLOAT){//cuando el primer valor es un decimal
                 rersf = *static_cast<float *>(op1.Value);
                 result +=to_string(rersf);
+            }else if(op1.Tipo == BOOL){//cuando el primer valor es un boolean
+                resb = *static_cast<bool *>(op1.Value);
+                if(resb==1){
+                    result +="true";
+                }else{
+                    result +="false";
+                }
             }else{
                 val1 = (string *)op1.Value;
                 result +=*val1;
             }
-
+            //para el tipo 2
             if(op2.Tipo == INTEGER){
                 res2 = *static_cast<int*>(op2.Value);
                 result +=to_string(res2);
             }else if(op2.Tipo == FLOAT){
-                rersf2 = *static_cast<float *>(op1.Value);
+                rersf2 = *static_cast<float *>(op2.Value);
                 result +=to_string(rersf2);
+            }else if(op2.Tipo == BOOL){
+                resb2 = *static_cast<bool *>(op2.Value);
+                if(resb2 == 1){
+                    result +="true";//esta parte no estoy tan seguro
+                }else{
+                    result +="false";
+                }
             }else{
                 val2 = (string *)op2.Value;
                 result +=*val2;
             }
             sym = symbol(Line,Col,"",Dominante, &result);
-
-            /*std::string *val1 = (std::string *)op1.Value;
-            std::string *val2 = (std::string *)op2.Value;
-            std::string result = *val1 + *val2;
-            sym = symbol(Line,Col,"",op1.Tipo,&result);*/
+        }else if(Dominante == FLOAT){
+            float result=0;
+            bool val;
+            bool val2;
+            int *val3=0;
+            int *val4=0;
+            float val5=0.0;
+            float val6=0.0;
+            if(op1.Tipo==INTEGER){
+                val3=static_cast<int*>(op1.Value);
+                result += *val3;
+            }else if(op1.Tipo == BOOL){
+                val=*static_cast<bool*>(op1.Value);
+                if(val==true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val5 = *static_cast<float*>(op1.Value);
+                result += val5;
+            }
+            if(op2.Tipo==INTEGER){
+                val4=static_cast<int*>(op2.Value);
+                result +=*val4;
+            }else if(op2.Tipo==BOOL){
+                val2=*static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result+=1;
+                }else{
+                    result+=0;
+                }
+            }else{
+                val6 = *static_cast<float*>(op2.Value);
+                result += val6;
+            }
+            sym = symbol(Line,Col,"",Dominante,&result);
         }
         else
         {

@@ -3,7 +3,7 @@
 #include "Instruction/func_main.hpp"
 #include "Interfaces/expression.hpp"
 #include <string>
-
+using namespace std;
 namespace yy {
 class Parser;
 class location;
@@ -21,7 +21,7 @@ public:
 
     ParserCtx();
     ~ParserCtx();
-    std::string Analizar(std::string entrada);
+    string Analizar(string entrada);
 };
 
 }

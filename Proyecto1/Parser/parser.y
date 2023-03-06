@@ -62,8 +62,8 @@
 %token END 0;
 
 /*tokens*/
-%token <std::string> NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE
-%token <std::string> VOID INT TSTRING BOOLEAN PARA PARC RMAIN LLAVA LLAVC RTRUE RFALSE CORA CORC
+%token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE
+%token <std::string> VOID INT TSTRING BOOLEAN PARA PARC RMAIN LLAVA LLAVC RTRUE RFALSE CORA CORC TSFLOAT
 %token <std::string> MAY MEN MAY_IG MEN_IG DIF IG AND OR
 %token ';' '='
 
@@ -138,6 +138,7 @@ PRINT : PRINTF PARA EXP PARC { $$ = new print(0,0,$3); }
 ;
 
 DECLARATION : TYPES ID '=' EXP { $$ = new declaration(0,0,$1,$2,$4); }
+                                                   //| TYPES ID ';'{ $$ = new declaration() }
 ;
 
 IF : RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST ELSE
@@ -175,6 +176,7 @@ ELSE : RELSE LLAVA LIST_INST LLAVC { $$ = $3; }
 TYPES : INT { $$ = INTEGER; }
     | TSTRING { $$ = STRING; }
     | BOOLEAN { $$ = BOOL; }
+    | TSFLOAT { $$ = FLOAT; }
 ;
 
 EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+"); }
@@ -193,23 +195,25 @@ EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+"); }
     | PRIMITIVE { $$ = $1; }
 ;
 
-PRIMITIVE : NUMERO
-        {
-            int num = stoi($1);
-            $$ = new primitive(0,0,INTEGER,"",num,false);
+PRIMITIVE : NUMERO{
+            int num = std::stoi($1);
+            $$ = new primitive(0,0,INTEGER,"",num,false,0.0);
         }
-        | STRING
-        {
+        | STRING{
             std::string str1 = $1.erase(0,1);
             std::string str2 = str1.erase(str1.length()-1,1);
-            $$ = new primitive(0,0,STRING,str2,0,false);
+            $$ = new primitive(0,0,STRING,str2,0,false,0.0);
         }
         | BOOL { $$ = $1; }
         | LIST_ARR { $$ = $1; }
+        | DECIMAL{
+            float num2 = std::stof($1);
+            $$ = new primitive(0,0,FLOAT,"",0,false,num2);
+        }
 ;
 
-BOOL : RTRUE { $$ = new primitive(0,0,BOOL,"",0,true); }
-    | RFALSE { $$ = new primitive(0,0,BOOL,"",0,false); }
+BOOL : RTRUE { $$ = new primitive(0,0,BOOL,"",0,true,0.0); }
+    | RFALSE { $$ = new primitive(0,0,BOOL,"",0,false,0.0); }
 ;
 
 LIST_ARR : LIST_ARR CORA EXP CORC { $$ = new array_access(0,0,$1,$3); }

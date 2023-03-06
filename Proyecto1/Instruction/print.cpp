@@ -1,5 +1,5 @@
 #include "print.hpp"
-
+using namespace std;
 print::print(int line, int col, expression *valor)
 {
     this->Line = line;
@@ -12,10 +12,13 @@ void print::ejecutar(environment *env, ast *tree)
     symbol sym = this->Valor->ejecutar(env, tree);
     switch (sym.Tipo) {
     case STRING:
-        tree->ConsoleOut += *static_cast<std::string*>(sym.Value)+"\n";
+        tree->ConsoleOut += *static_cast<string*>(sym.Value)+"\n";
         break;
     case INTEGER:
-        tree->ConsoleOut += std::to_string(*static_cast<int*>(sym.Value))+ "\n";
+        tree->ConsoleOut += to_string(*static_cast<int*>(sym.Value))+ "\n";
+        break;
+    case FLOAT:
+        tree->ConsoleOut += to_string(*static_cast<float*>(sym.Value))+ "\n";
         break;
     case BOOL:
         if(*static_cast<bool*>(sym.Value)){

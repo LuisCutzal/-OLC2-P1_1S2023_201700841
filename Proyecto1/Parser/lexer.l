@@ -28,7 +28,8 @@
 DIGITO [0-9]
 LETRAS [a-zA-ZñÑ]
 NUMERO {DIGITO}+
-ID  {LETRAS}({DIGITO}|{LETRAS}|"_")*
+DECIMAL [0-9]+("."[0-9]+)
+ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 
 %%
 
@@ -80,19 +81,25 @@ ID  {LETRAS}({DIGITO}|{LETRAS}|"_")*
 
     /* TOKENS  */
 "printf"    return Parser::symbol_type( token::PRINTF, loc );
-"void"    return Parser::symbol_type( token::VOID, loc );
-"int"    return Parser::symbol_type( token::INT, loc );
+"void"      return Parser::symbol_type( token::VOID, loc );
+"int"       return Parser::symbol_type( token::INT, loc );
 "string"    return Parser::symbol_type( token::TSTRING, loc );
-"boolean"    return Parser::symbol_type( token::BOOLEAN, loc );
-"main"    return Parser::symbol_type( token::RMAIN, loc );
-"true"    return Parser::symbol_type( token::RTRUE, loc );
-"false"    return Parser::symbol_type( token::RFALSE, loc );
-"if"    return Parser::symbol_type( token::RIF, loc );
-"else"    return Parser::symbol_type( token::RELSE, loc );
+"bool"      return Parser::symbol_type( token::BOOLEAN, loc );
+"main"      return Parser::symbol_type( token::RMAIN, loc );
+"true"      return Parser::symbol_type( token::RTRUE, loc );
+"false"     return Parser::symbol_type( token::RFALSE, loc );
+"if"        return Parser::symbol_type( token::RIF, loc );
+"else"      return Parser::symbol_type( token::RELSE, loc );
+
+"float"     return Parser::symbol_type( token::TSFLOAT, loc );
 
 {ID}  return Parser::make_ID(yytext, loc);
 {NUMERO} return Parser::make_NUMERO(yytext, loc);
+{DECIMAL} return Parser::make_DECIMAL(yytext, loc);
 \"(\\.|[^"\\])*\" return Parser::make_STRING (yytext, loc);
+
+
+
 
 .  {std::cerr<<loc <<": "<<"error token no esperado"<<  std::endl; }
 

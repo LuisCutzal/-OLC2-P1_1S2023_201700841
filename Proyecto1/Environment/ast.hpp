@@ -1,13 +1,13 @@
 #ifndef AST_HPP
 #define AST_HPP
 #include <string>
-
+using namespace std;
 class ast
 {
 public:
-    std::string ConsoleOut;
-    std::string ErrorOut;
-    std::string GraphOut;
+    string ConsoleOut;
+    string ErrorOut;
+    string GraphOut;
     bool ElseIfFlag;
     bool IfReturn;
     ast();
