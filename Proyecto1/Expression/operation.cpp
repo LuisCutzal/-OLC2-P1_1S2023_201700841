@@ -170,13 +170,83 @@ symbol operation::ejecutar(environment *env, ast *tree)
     {
         if(Dominante == INTEGER)
         {
+            //en esta resta op1 siempre sera positivo y op2 siempre sera negativo
+            int result=0;
+            bool val1;
+            bool val2;
+            int *val3;
+            int *val4;
+            float val5;
+            float val6;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1==true){
+                    result +=1;
+                }else{
+                    result += 0;
+                }
+            }else {
+                val3 = static_cast<int*>(op1.Value);
+                result +=*val3;
+            }
+
+            if(op2.Tipo == BOOL){
+                val2=*static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result -=1;
+                }else{
+                    result -=0;
+                }
+            }else{
+                val4 = static_cast<int*>(op2.Value);
+                result =result -*val4;
+            }
+            sym = symbol(Line,Col,"",Dominante,&result);
+
+            /*
             int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
             int result = *val1 - *val2;
+            sym = symbol(Line,Col,"",Dominante,&result);*/
+        }else if(Dominante == FLOAT){
+            float result=0.0;
+            int val1=0;
+            int val2=0;
+            bool val3=true;
+            bool val4=true;
+            float val5=0.0;
+            float val6=0.0;
+            if(op1.Tipo == INTEGER){
+                val1=*static_cast<int*>(op1.Value);
+                result +=val1;
+            }else if(op1.Tipo == BOOL){
+                val3=*static_cast<bool*>(op1.Value);
+                if(val3==true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result +=val5;
+            }
+            if(op2.Tipo == INTEGER){
+                val2=*static_cast<int*>(op2.Value);
+                result -=val2;
+            }else if(op2.Tipo == BOOL){
+                val4=*static_cast<bool*>(op2.Value);
+                if(val4==true){
+                    result -=1;
+                }else{
+                    result -=0;
+                }
+            }else{
+                val6 = *static_cast<float*>(op2.Value);
+                result -= val6;
+            }
             sym = symbol(Line,Col,"",Dominante,&result);
-        }
-        else
-        {
+
+        }else{
             //se reporta un error
             tree->ErrorOut += "Error: tipo incorrecto para la resta";
         }
