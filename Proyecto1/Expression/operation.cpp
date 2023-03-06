@@ -255,13 +255,76 @@ symbol operation::ejecutar(environment *env, ast *tree)
     {
         if(Dominante == INTEGER)
         {
-            int *val1 = (int *)op1.Value;
+            int result=0;
+            bool val1;
+            bool val2;
+            int val3;
+            int val4;
+            if(op1.Tipo==BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1==true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result +=val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2=*static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result *=1;
+                }else{
+                    result *=0;
+                }
+            }else{
+                val4=*static_cast<int*>(op2.Value);
+                result *=val4;
+            }
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 * *val2;
+            int result = *val1 * *val2;*/
             sym = symbol(Line,Col,"",Dominante,&result);
-        }
-        else
-        {
+        }else if(Dominante == FLOAT){
+            float result=0.0;
+            int val1=0;
+            int val2=0;
+            bool val3=true;
+            bool val4=true;
+            float val5;
+            float val6;
+            if(op1.Tipo==INTEGER){
+                val1=*static_cast<int*>(op1.Value);
+                result +=val1;
+            }else if(op1.Tipo ==BOOL){
+                val3=*static_cast<bool*>(op1.Value);
+                if(val3==true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result +=val5;
+            }
+
+            if(op2.Tipo==INTEGER){
+                val2=*static_cast<int*>(op2.Value);
+                result *=val2;
+            }else if(op2.Tipo==BOOL){
+                val4*=*static_cast<bool*>(op2.Value);
+                if(val4==true){
+                    result *=1;
+                }else{
+                    result *=0;
+                }
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                result *=val6;
+            }
+            sym = symbol(Line,Col,"",Dominante,&result);
+        }else{
             //se reporta un error
             tree->ErrorOut += "Error: tipo incorrecto para multiplicacion";
         }
@@ -269,15 +332,109 @@ symbol operation::ejecutar(environment *env, ast *tree)
     else if(Operator == "/")
     {
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
-            int *val2 = (int *)op2.Value;
-            if (*val1 != 0)
+            int result=0;
+            int *val1 =0;
+            int *val2 =0;
+            bool val3=true;
+            bool val4=true;
+            if(op1.Tipo==BOOL){
+                val3=*static_cast<bool*>(op1.Value);
+                if(val3==true){
+                    result +=val3;
+                }else{
+                    result+=0;
+                }
+            }else{
+                val1=static_cast<int*>(op1.Value);
+                if(val1!=0){
+                    result += *val1;
+                }else{
+                    result+=0;
+                }
+            }
+
+            if(op2.Tipo==BOOL){
+                val4=*static_cast<bool*>(op2.Value);
+                if(val4==true){
+                    result /=val4;
+                    sym = symbol(Line,Col,"",Dominante,&result);
+                }else{
+                    tree->ErrorOut += "Error: no se puede dividir cero";
+                }
+            }else{
+                val2=static_cast<int*>(op2.Value);
+                if(val2!=0){
+                    result /=*val2;
+                    sym = symbol(Line,Col,"",Dominante,&result);
+                }else{
+                    tree->ErrorOut += "Error: no se puede dividir cero";
+                }
+            }
+            //sym = symbol(Line,Col,"",Dominante,&result);
+
+            /*if (*val1 != 0)
             {
-                int result = *val1 / *val2;
+                 result = *val1 / *val2;
                 sym = symbol(Line,Col,"",Dominante,&result);
             }else{
                 tree->ErrorOut += "Error: no se puede dividir cero";
-            }            
+            }*/
+
+        }else if(Dominante == FLOAT){
+            float result=0.0;
+            int val1=0;
+            int val2=0;
+            bool val3=true;
+            bool val4=true;
+            float val5;
+            float val6;
+            if(op1.Tipo==INTEGER){
+                val1=*static_cast<int*>(op1.Value);
+                if(val1!=0){
+                    result +=val1;
+                }else{
+                    result +=0;
+                }
+            }else if(op1.Tipo ==BOOL){
+                val3=*static_cast<bool*>(op1.Value);
+                if(val3==true){
+                    result +=1;
+                }else{
+                    result +=0;
+                }
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                if(val5 != 0.0){
+                    result +=val5;
+                }else{
+                    result+=0;
+                }
+            }
+            if(op2.Tipo==INTEGER){
+                val2=*static_cast<int*>(op2.Value);
+                if(val2!=0){
+                    result /=val2;
+                    sym = symbol(Line,Col,"",Dominante,&result);
+                }else{
+                    tree->ErrorOut += "Error: no se puede dividir cero";
+                }
+            }else if(op2.Tipo==BOOL){
+                val4*=*static_cast<bool*>(op2.Value);
+                if(val4==true){
+                    result /=1;
+                    sym = symbol(Line,Col,"",Dominante,&result);
+                }else{
+                    tree->ErrorOut += "Error: no se puede dividir cero";
+                }
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                if(val6!=0){
+                    result *=val6;
+                    sym = symbol(Line,Col,"",Dominante,&result);
+                }else{
+                    tree->ErrorOut += "Error: no se puede dividir cero";
+                }
+            }
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para división";
         }
