@@ -57,7 +57,7 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 "-"     return Parser::symbol_type( token::MENOS, loc );
 "*"     return Parser::symbol_type( token::POR, loc );
 "/"     return Parser::symbol_type( token::DIV, loc );
-
+"%"     return Parser::symbol_type( token::MODULO, loc );
 ">"     return Parser::symbol_type( token::MAY, loc );
 "<"     return Parser::symbol_type( token::MEN, loc );
 ">="     return Parser::symbol_type( token::MAY_IG, loc );

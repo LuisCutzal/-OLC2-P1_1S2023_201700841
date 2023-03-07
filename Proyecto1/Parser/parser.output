@@ -37,28 +37,29 @@ Gramática
    22    | EXP MENOS EXP
    23    | EXP POR EXP
    24    | EXP DIV EXP
-   25    | EXP MEN EXP
-   26    | EXP MAY EXP
-   27    | EXP MEN_IG EXP
-   28    | EXP MAY_IG EXP
-   29    | EXP DIF EXP
-   30    | EXP IG EXP
-   31    | EXP AND EXP
-   32    | EXP OR EXP
-   33    | PARA EXP PARC
-   34    | PRIMITIVE
+   25    | EXP MODULO EXP
+   26    | EXP MEN EXP
+   27    | EXP MAY EXP
+   28    | EXP MEN_IG EXP
+   29    | EXP MAY_IG EXP
+   30    | EXP DIF EXP
+   31    | EXP IG EXP
+   32    | EXP AND EXP
+   33    | EXP OR EXP
+   34    | PARA EXP PARC
+   35    | PRIMITIVE
 
-   35 PRIMITIVE: NUMERO
-   36          | STRING
-   37          | BOOL
-   38          | LIST_ARR
-   39          | DECIMAL
+   36 PRIMITIVE: NUMERO
+   37          | STRING
+   38          | BOOL
+   39          | LIST_ARR
+   40          | DECIMAL
 
-   40 BOOL: RTRUE
-   41     | RFALSE
+   41 BOOL: RTRUE
+   42     | RFALSE
 
-   42 LIST_ARR: LIST_ARR CORA EXP CORC
-   43         | ID
+   43 LIST_ARR: LIST_ARR CORA EXP CORC
+   44         | ID
 
 
 Terminales con las reglas donde aparecen
@@ -67,10 +68,10 @@ Terminales con las reglas donde aparecen
     ';' (59) 5 6
     '=' (61) 9
     error (256)
-    DECIMAL <std::string> (258) 39
-    NUMERO <std::string> (259) 35
-    ID <std::string> (260) 9 43
-    STRING <std::string> (261) 36
+    DECIMAL <std::string> (258) 40
+    NUMERO <std::string> (259) 36
+    ID <std::string> (260) 9 44
+    STRING <std::string> (261) 37
     SUMA <std::string> (262) 21
     MENOS <std::string> (263) 22
     POR <std::string> (264) 23
@@ -78,79 +79,80 @@ Terminales con las reglas donde aparecen
     PRINTF <std::string> (266) 8
     RIF <std::string> (267) 10 11 14
     RELSE <std::string> (268) 14 15
-    VOID <std::string> (269) 2
-    INT <std::string> (270) 17
-    TSTRING <std::string> (271) 18
-    BOOLEAN <std::string> (272) 19
-    PARA <std::string> (273) 2 8 33
-    PARC <std::string> (274) 2 8 33
-    RMAIN <std::string> (275) 2
-    LLAVA <std::string> (276) 2 10 11 14 15
-    LLAVC <std::string> (277) 2 10 11 14 15
-    RTRUE <std::string> (278) 40
-    RFALSE <std::string> (279) 41
-    CORA <std::string> (280) 42
-    CORC <std::string> (281) 42
-    TSFLOAT <std::string> (282) 20
-    MAY <std::string> (283) 26
-    MEN <std::string> (284) 25
-    MAY_IG <std::string> (285) 28
-    MEN_IG <std::string> (286) 27
-    DIF <std::string> (287) 29
-    IG <std::string> (288) 30
-    AND <std::string> (289) 31
-    OR <std::string> (290) 32
+    MODULO <std::string> (269) 25
+    VOID <std::string> (270) 2
+    INT <std::string> (271) 17
+    TSTRING <std::string> (272) 18
+    BOOLEAN <std::string> (273) 19
+    PARA <std::string> (274) 2 8 34
+    PARC <std::string> (275) 2 8 34
+    RMAIN <std::string> (276) 2
+    LLAVA <std::string> (277) 2 10 11 14 15
+    LLAVC <std::string> (278) 2 10 11 14 15
+    RTRUE <std::string> (279) 41
+    RFALSE <std::string> (280) 42
+    CORA <std::string> (281) 43
+    CORC <std::string> (282) 43
+    TSFLOAT <std::string> (283) 20
+    MAY <std::string> (284) 27
+    MEN <std::string> (285) 26
+    MAY_IG <std::string> (286) 29
+    MEN_IG <std::string> (287) 28
+    DIF <std::string> (288) 30
+    IG <std::string> (289) 31
+    AND <std::string> (290) 32
+    OR <std::string> (291) 33
 
 
 No terminales con las reglas donde aparecen
 
-    $accept (38)
+    $accept (39)
         on left: 0
-    START <func_main*> (39)
+    START <func_main*> (40)
         on left: 1
         on right: 0
-    MAIN <func_main*> (40)
+    MAIN <func_main*> (41)
         on left: 2
         on right: 1
-    LIST_INST <list_instruction*> (41)
+    LIST_INST <list_instruction*> (42)
         on left: 3 4
         on right: 2 3 10 11 14 15
-    INSTRUCTION <instruction*> (42)
+    INSTRUCTION <instruction*> (43)
         on left: 5 6 7
         on right: 3 4
-    PRINT <instruction*> (43)
+    PRINT <instruction*> (44)
         on left: 8
         on right: 5
-    DECLARATION <instruction*> (44)
+    DECLARATION <instruction*> (45)
         on left: 9
         on right: 6
-    IF <instruction*> (45)
+    IF <instruction*> (46)
         on left: 10 11
         on right: 7
-    ELSEIF_LIST <list_instruction*> (46)
+    ELSEIF_LIST <list_instruction*> (47)
         on left: 12 13
         on right: 10 12
-    ELSEIF <instruction*> (47)
+    ELSEIF <instruction*> (48)
         on left: 14
         on right: 12 13
-    ELSE <list_instruction*> (48)
+    ELSE <list_instruction*> (49)
         on left: 15 16
         on right: 10 11
-    TYPES <TipoDato> (49)
+    TYPES <TipoDato> (50)
         on left: 17 18 19 20
         on right: 9
-    EXP <expression*> (50)
-        on left: 21 22 23 24 25 26 27 28 29 30 31 32 33 34
-        on right: 8 9 10 11 14 21 22 23 24 25 26 27 28 29 30 31 32 33 42
-    PRIMITIVE <expression*> (51)
-        on left: 35 36 37 38 39
-        on right: 34
-    BOOL <expression*> (52)
-        on left: 40 41
-        on right: 37
-    LIST_ARR <expression*> (53)
-        on left: 42 43
-        on right: 38 42
+    EXP <expression*> (51)
+        on left: 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+        on right: 8 9 10 11 14 21 22 23 24 25 26 27 28 29 30 31 32 33 34 43
+    PRIMITIVE <expression*> (52)
+        on left: 36 37 38 39 40
+        on right: 35
+    BOOL <expression*> (53)
+        on left: 41 42
+        on right: 38
+    LIST_ARR <expression*> (54)
+        on left: 43 44
+        on right: 39 43
 
 
 Estado 0
@@ -360,35 +362,35 @@ Estado 21
 
 Estado 22
 
-   39 PRIMITIVE: DECIMAL •
+   40 PRIMITIVE: DECIMAL •
 
-    $default  reduce usando la regla 39 (PRIMITIVE)
+    $default  reduce usando la regla 40 (PRIMITIVE)
 
 
 Estado 23
 
-   35 PRIMITIVE: NUMERO •
-
-    $default  reduce usando la regla 35 (PRIMITIVE)
-
-
-Estado 24
-
-   43 LIST_ARR: ID •
-
-    $default  reduce usando la regla 43 (LIST_ARR)
-
-
-Estado 25
-
-   36 PRIMITIVE: STRING •
+   36 PRIMITIVE: NUMERO •
 
     $default  reduce usando la regla 36 (PRIMITIVE)
 
 
+Estado 24
+
+   44 LIST_ARR: ID •
+
+    $default  reduce usando la regla 44 (LIST_ARR)
+
+
+Estado 25
+
+   37 PRIMITIVE: STRING •
+
+    $default  reduce usando la regla 37 (PRIMITIVE)
+
+
 Estado 26
 
-   33 EXP: PARA • EXP PARC
+   34 EXP: PARA • EXP PARC
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -406,16 +408,16 @@ Estado 26
 
 Estado 27
 
-   40 BOOL: RTRUE •
+   41 BOOL: RTRUE •
 
-    $default  reduce usando la regla 40 (BOOL)
+    $default  reduce usando la regla 41 (BOOL)
 
 
 Estado 28
 
-   41 BOOL: RFALSE •
+   42 BOOL: RFALSE •
 
-    $default  reduce usando la regla 41 (BOOL)
+    $default  reduce usando la regla 42 (BOOL)
 
 
 Estado 29
@@ -426,52 +428,54 @@ Estado 29
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    LLAVA   desplazar e ir al estado 44
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
+    MODULO  desplazar e ir al estado 44
+    LLAVA   desplazar e ir al estado 45
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
 
 
 Estado 30
 
-   34 EXP: PRIMITIVE •
+   35 EXP: PRIMITIVE •
 
-    $default  reduce usando la regla 34 (EXP)
+    $default  reduce usando la regla 35 (EXP)
 
 
 Estado 31
 
-   37 PRIMITIVE: BOOL •
+   38 PRIMITIVE: BOOL •
 
-    $default  reduce usando la regla 37 (PRIMITIVE)
+    $default  reduce usando la regla 38 (PRIMITIVE)
 
 
 Estado 32
 
-   38 PRIMITIVE: LIST_ARR •
-   42 LIST_ARR: LIST_ARR • CORA EXP CORC
+   39 PRIMITIVE: LIST_ARR •
+   43 LIST_ARR: LIST_ARR • CORA EXP CORC
 
-    CORA  desplazar e ir al estado 53
+    CORA  desplazar e ir al estado 54
 
-    $default  reduce usando la regla 38 (PRIMITIVE)
+    $default  reduce usando la regla 39 (PRIMITIVE)
 
 
 Estado 33
@@ -506,7 +510,7 @@ Estado 37
 
     9 DECLARATION: TYPES ID • '=' EXP
 
-    '='  desplazar e ir al estado 54
+    '='  desplazar e ir al estado 55
 
 
 Estado 38
@@ -516,28 +520,30 @@ Estado 38
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    PARC    desplazar e ir al estado 55
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
+    MODULO  desplazar e ir al estado 44
+    PARC    desplazar e ir al estado 56
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
 
 
 Estado 39
@@ -546,29 +552,31 @@ Estado 39
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-   33    | PARA EXP • PARC
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+   34    | PARA EXP • PARC
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    PARC    desplazar e ir al estado 56
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
+    MODULO  desplazar e ir al estado 44
+    PARC    desplazar e ir al estado 57
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
 
 
 Estado 40
@@ -583,7 +591,7 @@ Estado 40
     RTRUE    desplazar e ir al estado 27
     RFALSE   desplazar e ir al estado 28
 
-    EXP        ir al estado 57
+    EXP        ir al estado 58
     PRIMITIVE  ir al estado 30
     BOOL       ir al estado 31
     LIST_ARR   ir al estado 32
@@ -601,7 +609,7 @@ Estado 41
     RTRUE    desplazar e ir al estado 27
     RFALSE   desplazar e ir al estado 28
 
-    EXP        ir al estado 58
+    EXP        ir al estado 59
     PRIMITIVE  ir al estado 30
     BOOL       ir al estado 31
     LIST_ARR   ir al estado 32
@@ -619,7 +627,7 @@ Estado 42
     RTRUE    desplazar e ir al estado 27
     RFALSE   desplazar e ir al estado 28
 
-    EXP        ir al estado 59
+    EXP        ir al estado 60
     PRIMITIVE  ir al estado 30
     BOOL       ir al estado 31
     LIST_ARR   ir al estado 32
@@ -637,7 +645,7 @@ Estado 43
     RTRUE    desplazar e ir al estado 27
     RFALSE   desplazar e ir al estado 28
 
-    EXP        ir al estado 60
+    EXP        ir al estado 61
     PRIMITIVE  ir al estado 30
     BOOL       ir al estado 31
     LIST_ARR   ir al estado 32
@@ -645,27 +653,7 @@ Estado 43
 
 Estado 44
 
-   10 IF: RIF EXP LLAVA • LIST_INST LLAVC ELSEIF_LIST ELSE
-   11   | RIF EXP LLAVA • LIST_INST LLAVC ELSE
-
-    PRINTF   desplazar e ir al estado 9
-    RIF      desplazar e ir al estado 10
-    INT      desplazar e ir al estado 11
-    TSTRING  desplazar e ir al estado 12
-    BOOLEAN  desplazar e ir al estado 13
-    TSFLOAT  desplazar e ir al estado 14
-
-    LIST_INST    ir al estado 61
-    INSTRUCTION  ir al estado 16
-    PRINT        ir al estado 17
-    DECLARATION  ir al estado 18
-    IF           ir al estado 19
-    TYPES        ir al estado 20
-
-
-Estado 45
-
-   26 EXP: EXP MAY • EXP
+   25 EXP: EXP MODULO • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -681,27 +669,29 @@ Estado 45
     LIST_ARR   ir al estado 32
 
 
+Estado 45
+
+   10 IF: RIF EXP LLAVA • LIST_INST LLAVC ELSEIF_LIST ELSE
+   11   | RIF EXP LLAVA • LIST_INST LLAVC ELSE
+
+    PRINTF   desplazar e ir al estado 9
+    RIF      desplazar e ir al estado 10
+    INT      desplazar e ir al estado 11
+    TSTRING  desplazar e ir al estado 12
+    BOOLEAN  desplazar e ir al estado 13
+    TSFLOAT  desplazar e ir al estado 14
+
+    LIST_INST    ir al estado 63
+    INSTRUCTION  ir al estado 16
+    PRINT        ir al estado 17
+    DECLARATION  ir al estado 18
+    IF           ir al estado 19
+    TYPES        ir al estado 20
+
+
 Estado 46
 
-   25 EXP: EXP MEN • EXP
-
-    DECIMAL  desplazar e ir al estado 22
-    NUMERO   desplazar e ir al estado 23
-    ID       desplazar e ir al estado 24
-    STRING   desplazar e ir al estado 25
-    PARA     desplazar e ir al estado 26
-    RTRUE    desplazar e ir al estado 27
-    RFALSE   desplazar e ir al estado 28
-
-    EXP        ir al estado 63
-    PRIMITIVE  ir al estado 30
-    BOOL       ir al estado 31
-    LIST_ARR   ir al estado 32
-
-
-Estado 47
-
-   28 EXP: EXP MAY_IG • EXP
+   27 EXP: EXP MAY • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -717,9 +707,9 @@ Estado 47
     LIST_ARR   ir al estado 32
 
 
-Estado 48
+Estado 47
 
-   27 EXP: EXP MEN_IG • EXP
+   26 EXP: EXP MEN • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -735,9 +725,9 @@ Estado 48
     LIST_ARR   ir al estado 32
 
 
-Estado 49
+Estado 48
 
-   29 EXP: EXP DIF • EXP
+   29 EXP: EXP MAY_IG • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -753,9 +743,9 @@ Estado 49
     LIST_ARR   ir al estado 32
 
 
-Estado 50
+Estado 49
 
-   30 EXP: EXP IG • EXP
+   28 EXP: EXP MEN_IG • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -771,9 +761,9 @@ Estado 50
     LIST_ARR   ir al estado 32
 
 
-Estado 51
+Estado 50
 
-   31 EXP: EXP AND • EXP
+   30 EXP: EXP DIF • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -789,9 +779,9 @@ Estado 51
     LIST_ARR   ir al estado 32
 
 
-Estado 52
+Estado 51
 
-   32 EXP: EXP OR • EXP
+   31 EXP: EXP IG • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -807,9 +797,9 @@ Estado 52
     LIST_ARR   ir al estado 32
 
 
-Estado 53
+Estado 52
 
-   42 LIST_ARR: LIST_ARR CORA • EXP CORC
+   32 EXP: EXP AND • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -825,9 +815,9 @@ Estado 53
     LIST_ARR   ir al estado 32
 
 
-Estado 54
+Estado 53
 
-    9 DECLARATION: TYPES ID '=' • EXP
+   33 EXP: EXP OR • EXP
 
     DECIMAL  desplazar e ir al estado 22
     NUMERO   desplazar e ir al estado 23
@@ -843,81 +833,102 @@ Estado 54
     LIST_ARR   ir al estado 32
 
 
+Estado 54
+
+   43 LIST_ARR: LIST_ARR CORA • EXP CORC
+
+    DECIMAL  desplazar e ir al estado 22
+    NUMERO   desplazar e ir al estado 23
+    ID       desplazar e ir al estado 24
+    STRING   desplazar e ir al estado 25
+    PARA     desplazar e ir al estado 26
+    RTRUE    desplazar e ir al estado 27
+    RFALSE   desplazar e ir al estado 28
+
+    EXP        ir al estado 72
+    PRIMITIVE  ir al estado 30
+    BOOL       ir al estado 31
+    LIST_ARR   ir al estado 32
+
+
 Estado 55
+
+    9 DECLARATION: TYPES ID '=' • EXP
+
+    DECIMAL  desplazar e ir al estado 22
+    NUMERO   desplazar e ir al estado 23
+    ID       desplazar e ir al estado 24
+    STRING   desplazar e ir al estado 25
+    PARA     desplazar e ir al estado 26
+    RTRUE    desplazar e ir al estado 27
+    RFALSE   desplazar e ir al estado 28
+
+    EXP        ir al estado 73
+    PRIMITIVE  ir al estado 30
+    BOOL       ir al estado 31
+    LIST_ARR   ir al estado 32
+
+
+Estado 56
 
     8 PRINT: PRINTF PARA EXP PARC •
 
     $default  reduce usando la regla 8 (PRINT)
 
 
-Estado 56
-
-   33 EXP: PARA EXP PARC •
-
-    $default  reduce usando la regla 33 (EXP)
-
-
 Estado 57
+
+   34 EXP: PARA EXP PARC •
+
+    $default  reduce usando la regla 34 (EXP)
+
+
+Estado 58
 
    21 EXP: EXP • SUMA EXP
    21    | EXP SUMA EXP •
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
-    POR  desplazar e ir al estado 42
-    DIV  desplazar e ir al estado 43
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
 
     $default  reduce usando la regla 21 (EXP)
-
-
-Estado 58
-
-   21 EXP: EXP • SUMA EXP
-   22    | EXP • MENOS EXP
-   22    | EXP MENOS EXP •
-   23    | EXP • POR EXP
-   24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-
-    POR  desplazar e ir al estado 42
-    DIV  desplazar e ir al estado 43
-
-    $default  reduce usando la regla 22 (EXP)
 
 
 Estado 59
 
    21 EXP: EXP • SUMA EXP
    22    | EXP • MENOS EXP
+   22    | EXP MENOS EXP •
    23    | EXP • POR EXP
-   23    | EXP POR EXP •
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
-    $default  reduce usando la regla 23 (EXP)
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
+
+    $default  reduce usando la regla 22 (EXP)
 
 
 Estado 60
@@ -925,21 +936,68 @@ Estado 60
    21 EXP: EXP • SUMA EXP
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
+   23    | EXP POR EXP •
+   24    | EXP • DIV EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+
+    MODULO  desplazar e ir al estado 44
+
+    $default  reduce usando la regla 23 (EXP)
+
+
+Estado 61
+
+   21 EXP: EXP • SUMA EXP
+   22    | EXP • MENOS EXP
+   23    | EXP • POR EXP
    24    | EXP • DIV EXP
    24    | EXP DIV EXP •
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+
+    MODULO  desplazar e ir al estado 44
 
     $default  reduce usando la regla 24 (EXP)
 
 
-Estado 61
+Estado 62
+
+   21 EXP: EXP • SUMA EXP
+   22    | EXP • MENOS EXP
+   23    | EXP • POR EXP
+   24    | EXP • DIV EXP
+   25    | EXP • MODULO EXP
+   25    | EXP MODULO EXP •
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+
+    MODULO  desplazar e ir al estado 44
+
+    $default  reduce usando la regla 25 (EXP)
+
+
+Estado 63
 
     3 LIST_INST: LIST_INST • INSTRUCTION
    10 IF: RIF EXP LLAVA LIST_INST • LLAVC ELSEIF_LIST ELSE
@@ -950,7 +1008,7 @@ Estado 61
     INT      desplazar e ir al estado 11
     TSTRING  desplazar e ir al estado 12
     BOOLEAN  desplazar e ir al estado 13
-    LLAVC    desplazar e ir al estado 72
+    LLAVC    desplazar e ir al estado 74
     TSFLOAT  desplazar e ir al estado 14
 
     INSTRUCTION  ir al estado 34
@@ -960,76 +1018,30 @@ Estado 61
     TYPES        ir al estado 20
 
 
-Estado 62
-
-   21 EXP: EXP • SUMA EXP
-   22    | EXP • MENOS EXP
-   23    | EXP • POR EXP
-   24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   26    | EXP MAY EXP •
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-
-    SUMA   desplazar e ir al estado 40
-    MENOS  desplazar e ir al estado 41
-    POR    desplazar e ir al estado 42
-    DIV    desplazar e ir al estado 43
-
-    $default  reduce usando la regla 26 (EXP)
-
-
-Estado 63
-
-   21 EXP: EXP • SUMA EXP
-   22    | EXP • MENOS EXP
-   23    | EXP • POR EXP
-   24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   25    | EXP MEN EXP •
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-
-    SUMA   desplazar e ir al estado 40
-    MENOS  desplazar e ir al estado 41
-    POR    desplazar e ir al estado 42
-    DIV    desplazar e ir al estado 43
-
-    $default  reduce usando la regla 25 (EXP)
-
-
 Estado 64
 
    21 EXP: EXP • SUMA EXP
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   28    | EXP MAY_IG EXP •
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   27    | EXP MAY EXP •
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
-    SUMA   desplazar e ir al estado 40
-    MENOS  desplazar e ir al estado 41
-    POR    desplazar e ir al estado 42
-    DIV    desplazar e ir al estado 43
+    SUMA    desplazar e ir al estado 40
+    MENOS   desplazar e ir al estado 41
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
 
-    $default  reduce usando la regla 28 (EXP)
+    $default  reduce usando la regla 27 (EXP)
 
 
 Estado 65
@@ -1038,22 +1050,24 @@ Estado 65
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   27    | EXP MEN_IG EXP •
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   26    | EXP MEN EXP •
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
-    SUMA   desplazar e ir al estado 40
-    MENOS  desplazar e ir al estado 41
-    POR    desplazar e ir al estado 42
-    DIV    desplazar e ir al estado 43
+    SUMA    desplazar e ir al estado 40
+    MENOS   desplazar e ir al estado 41
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
 
-    $default  reduce usando la regla 27 (EXP)
+    $default  reduce usando la regla 26 (EXP)
 
 
 Estado 66
@@ -1062,24 +1076,22 @@ Estado 66
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   29    | EXP DIF EXP •
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   29    | EXP MAY_IG EXP •
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
+    MODULO  desplazar e ir al estado 44
 
     $default  reduce usando la regla 29 (EXP)
 
@@ -1090,26 +1102,24 @@ Estado 67
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   30    | EXP IG EXP •
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   28    | EXP MEN_IG EXP •
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
+    MODULO  desplazar e ir al estado 44
 
-    $default  reduce usando la regla 30 (EXP)
+    $default  reduce usando la regla 28 (EXP)
 
 
 Estado 68
@@ -1118,28 +1128,28 @@ Estado 68
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   31    | EXP AND EXP •
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   30    | EXP DIF EXP •
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
+    MODULO  desplazar e ir al estado 44
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
 
-    $default  reduce usando la regla 31 (EXP)
+    $default  reduce usando la regla 30 (EXP)
 
 
 Estado 69
@@ -1148,28 +1158,28 @@ Estado 69
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-   32    | EXP OR EXP •
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   31    | EXP IG EXP •
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
+    MODULO  desplazar e ir al estado 44
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
 
-    $default  reduce usando la regla 32 (EXP)
+    $default  reduce usando la regla 31 (EXP)
 
 
 Estado 70
@@ -1178,121 +1188,189 @@ Estado 70
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
-   42 LIST_ARR: LIST_ARR CORA EXP • CORC
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   32    | EXP AND EXP •
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    CORC    desplazar e ir al estado 73
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
+    MODULO  desplazar e ir al estado 44
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+
+    $default  reduce usando la regla 32 (EXP)
 
 
 Estado 71
+
+   21 EXP: EXP • SUMA EXP
+   22    | EXP • MENOS EXP
+   23    | EXP • POR EXP
+   24    | EXP • DIV EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+   33    | EXP OR EXP •
+
+    SUMA    desplazar e ir al estado 40
+    MENOS   desplazar e ir al estado 41
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+
+    $default  reduce usando la regla 33 (EXP)
+
+
+Estado 72
+
+   21 EXP: EXP • SUMA EXP
+   22    | EXP • MENOS EXP
+   23    | EXP • POR EXP
+   24    | EXP • DIV EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
+   43 LIST_ARR: LIST_ARR CORA EXP • CORC
+
+    SUMA    desplazar e ir al estado 40
+    MENOS   desplazar e ir al estado 41
+    POR     desplazar e ir al estado 42
+    DIV     desplazar e ir al estado 43
+    MODULO  desplazar e ir al estado 44
+    CORC    desplazar e ir al estado 75
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
+
+
+Estado 73
 
     9 DECLARATION: TYPES ID '=' EXP •
    21 EXP: EXP • SUMA EXP
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
+    MODULO  desplazar e ir al estado 44
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
 
     $default  reduce usando la regla 9 (DECLARATION)
 
 
-Estado 72
+Estado 74
 
    10 IF: RIF EXP LLAVA LIST_INST LLAVC • ELSEIF_LIST ELSE
    11   | RIF EXP LLAVA LIST_INST LLAVC • ELSE
 
-    RELSE  desplazar e ir al estado 74
+    RELSE  desplazar e ir al estado 76
 
     $default  reduce usando la regla 16 (ELSE)
 
-    ELSEIF_LIST  ir al estado 75
-    ELSEIF       ir al estado 76
-    ELSE         ir al estado 77
-
-
-Estado 73
-
-   42 LIST_ARR: LIST_ARR CORA EXP CORC •
-
-    $default  reduce usando la regla 42 (LIST_ARR)
-
-
-Estado 74
-
-   14 ELSEIF: RELSE • RIF EXP LLAVA LIST_INST LLAVC
-   15 ELSE: RELSE • LLAVA LIST_INST LLAVC
-
-    RIF    desplazar e ir al estado 78
-    LLAVA  desplazar e ir al estado 79
+    ELSEIF_LIST  ir al estado 77
+    ELSEIF       ir al estado 78
+    ELSE         ir al estado 79
 
 
 Estado 75
 
-   10 IF: RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST • ELSE
-   12 ELSEIF_LIST: ELSEIF_LIST • ELSEIF
+   43 LIST_ARR: LIST_ARR CORA EXP CORC •
 
-    RELSE  desplazar e ir al estado 74
-
-    $default  reduce usando la regla 16 (ELSE)
-
-    ELSEIF  ir al estado 80
-    ELSE    ir al estado 81
+    $default  reduce usando la regla 43 (LIST_ARR)
 
 
 Estado 76
+
+   14 ELSEIF: RELSE • RIF EXP LLAVA LIST_INST LLAVC
+   15 ELSE: RELSE • LLAVA LIST_INST LLAVC
+
+    RIF    desplazar e ir al estado 80
+    LLAVA  desplazar e ir al estado 81
+
+
+Estado 77
+
+   10 IF: RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST • ELSE
+   12 ELSEIF_LIST: ELSEIF_LIST • ELSEIF
+
+    RELSE  desplazar e ir al estado 76
+
+    $default  reduce usando la regla 16 (ELSE)
+
+    ELSEIF  ir al estado 82
+    ELSE    ir al estado 83
+
+
+Estado 78
 
    13 ELSEIF_LIST: ELSEIF •
 
     $default  reduce usando la regla 13 (ELSEIF_LIST)
 
 
-Estado 77
+Estado 79
 
    11 IF: RIF EXP LLAVA LIST_INST LLAVC ELSE •
 
     $default  reduce usando la regla 11 (IF)
 
 
-Estado 78
+Estado 80
 
    14 ELSEIF: RELSE RIF • EXP LLAVA LIST_INST LLAVC
 
@@ -1304,13 +1382,13 @@ Estado 78
     RTRUE    desplazar e ir al estado 27
     RFALSE   desplazar e ir al estado 28
 
-    EXP        ir al estado 82
+    EXP        ir al estado 84
     PRIMITIVE  ir al estado 30
     BOOL       ir al estado 31
     LIST_ARR   ir al estado 32
 
 
-Estado 79
+Estado 81
 
    15 ELSE: RELSE LLAVA • LIST_INST LLAVC
 
@@ -1321,7 +1399,7 @@ Estado 79
     BOOLEAN  desplazar e ir al estado 13
     TSFLOAT  desplazar e ir al estado 14
 
-    LIST_INST    ir al estado 83
+    LIST_INST    ir al estado 85
     INSTRUCTION  ir al estado 16
     PRINT        ir al estado 17
     DECLARATION  ir al estado 18
@@ -1329,101 +1407,57 @@ Estado 79
     TYPES        ir al estado 20
 
 
-Estado 80
+Estado 82
 
    12 ELSEIF_LIST: ELSEIF_LIST ELSEIF •
 
     $default  reduce usando la regla 12 (ELSEIF_LIST)
 
 
-Estado 81
+Estado 83
 
    10 IF: RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST ELSE •
 
     $default  reduce usando la regla 10 (IF)
 
 
-Estado 82
+Estado 84
 
    14 ELSEIF: RELSE RIF EXP • LLAVA LIST_INST LLAVC
    21 EXP: EXP • SUMA EXP
    22    | EXP • MENOS EXP
    23    | EXP • POR EXP
    24    | EXP • DIV EXP
-   25    | EXP • MEN EXP
-   26    | EXP • MAY EXP
-   27    | EXP • MEN_IG EXP
-   28    | EXP • MAY_IG EXP
-   29    | EXP • DIF EXP
-   30    | EXP • IG EXP
-   31    | EXP • AND EXP
-   32    | EXP • OR EXP
+   25    | EXP • MODULO EXP
+   26    | EXP • MEN EXP
+   27    | EXP • MAY EXP
+   28    | EXP • MEN_IG EXP
+   29    | EXP • MAY_IG EXP
+   30    | EXP • DIF EXP
+   31    | EXP • IG EXP
+   32    | EXP • AND EXP
+   33    | EXP • OR EXP
 
     SUMA    desplazar e ir al estado 40
     MENOS   desplazar e ir al estado 41
     POR     desplazar e ir al estado 42
     DIV     desplazar e ir al estado 43
-    LLAVA   desplazar e ir al estado 84
-    MAY     desplazar e ir al estado 45
-    MEN     desplazar e ir al estado 46
-    MAY_IG  desplazar e ir al estado 47
-    MEN_IG  desplazar e ir al estado 48
-    DIF     desplazar e ir al estado 49
-    IG      desplazar e ir al estado 50
-    AND     desplazar e ir al estado 51
-    OR      desplazar e ir al estado 52
-
-
-Estado 83
-
-    3 LIST_INST: LIST_INST • INSTRUCTION
-   15 ELSE: RELSE LLAVA LIST_INST • LLAVC
-
-    PRINTF   desplazar e ir al estado 9
-    RIF      desplazar e ir al estado 10
-    INT      desplazar e ir al estado 11
-    TSTRING  desplazar e ir al estado 12
-    BOOLEAN  desplazar e ir al estado 13
-    LLAVC    desplazar e ir al estado 85
-    TSFLOAT  desplazar e ir al estado 14
-
-    INSTRUCTION  ir al estado 34
-    PRINT        ir al estado 17
-    DECLARATION  ir al estado 18
-    IF           ir al estado 19
-    TYPES        ir al estado 20
-
-
-Estado 84
-
-   14 ELSEIF: RELSE RIF EXP LLAVA • LIST_INST LLAVC
-
-    PRINTF   desplazar e ir al estado 9
-    RIF      desplazar e ir al estado 10
-    INT      desplazar e ir al estado 11
-    TSTRING  desplazar e ir al estado 12
-    BOOLEAN  desplazar e ir al estado 13
-    TSFLOAT  desplazar e ir al estado 14
-
-    LIST_INST    ir al estado 86
-    INSTRUCTION  ir al estado 16
-    PRINT        ir al estado 17
-    DECLARATION  ir al estado 18
-    IF           ir al estado 19
-    TYPES        ir al estado 20
+    MODULO  desplazar e ir al estado 44
+    LLAVA   desplazar e ir al estado 86
+    MAY     desplazar e ir al estado 46
+    MEN     desplazar e ir al estado 47
+    MAY_IG  desplazar e ir al estado 48
+    MEN_IG  desplazar e ir al estado 49
+    DIF     desplazar e ir al estado 50
+    IG      desplazar e ir al estado 51
+    AND     desplazar e ir al estado 52
+    OR      desplazar e ir al estado 53
 
 
 Estado 85
 
-   15 ELSE: RELSE LLAVA LIST_INST LLAVC •
-
-    $default  reduce usando la regla 15 (ELSE)
-
-
-Estado 86
-
     3 LIST_INST: LIST_INST • INSTRUCTION
-   14 ELSEIF: RELSE RIF EXP LLAVA LIST_INST • LLAVC
+   15 ELSE: RELSE LLAVA LIST_INST • LLAVC
 
     PRINTF   desplazar e ir al estado 9
     RIF      desplazar e ir al estado 10
@@ -1440,7 +1474,53 @@ Estado 86
     TYPES        ir al estado 20
 
 
+Estado 86
+
+   14 ELSEIF: RELSE RIF EXP LLAVA • LIST_INST LLAVC
+
+    PRINTF   desplazar e ir al estado 9
+    RIF      desplazar e ir al estado 10
+    INT      desplazar e ir al estado 11
+    TSTRING  desplazar e ir al estado 12
+    BOOLEAN  desplazar e ir al estado 13
+    TSFLOAT  desplazar e ir al estado 14
+
+    LIST_INST    ir al estado 88
+    INSTRUCTION  ir al estado 16
+    PRINT        ir al estado 17
+    DECLARATION  ir al estado 18
+    IF           ir al estado 19
+    TYPES        ir al estado 20
+
+
 Estado 87
+
+   15 ELSE: RELSE LLAVA LIST_INST LLAVC •
+
+    $default  reduce usando la regla 15 (ELSE)
+
+
+Estado 88
+
+    3 LIST_INST: LIST_INST • INSTRUCTION
+   14 ELSEIF: RELSE RIF EXP LLAVA LIST_INST • LLAVC
+
+    PRINTF   desplazar e ir al estado 9
+    RIF      desplazar e ir al estado 10
+    INT      desplazar e ir al estado 11
+    TSTRING  desplazar e ir al estado 12
+    BOOLEAN  desplazar e ir al estado 13
+    LLAVC    desplazar e ir al estado 89
+    TSFLOAT  desplazar e ir al estado 14
+
+    INSTRUCTION  ir al estado 34
+    PRINT        ir al estado 17
+    DECLARATION  ir al estado 18
+    IF           ir al estado 19
+    TYPES        ir al estado 20
+
+
+Estado 89
 
    14 ELSEIF: RELSE RIF EXP LLAVA LIST_INST LLAVC •
 

@@ -438,6 +438,32 @@ symbol operation::ejecutar(environment *env, ast *tree)
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para división";
         }
+    }else if(Operator == "%"){
+        if(Dominante == INTEGER){
+            int result=0;
+            bool val1=true;
+            bool val2=true;
+            int val3=0;
+            int val4=0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                result += val1;
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result += val3;
+            }
+
+            if(op2.Tipo==BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                result %=val2;
+            }else{
+                val4 = *static_cast<int*>(op2.Value);
+                result %=val4;
+            }
+            sym = symbol(Line,Col,"",Dominante,&result);
+         }else{
+            tree->ErrorOut += "Error: tipo incorrecto para el módulo";
+        }
     }
     else if(Operator == "<"){
         if (Dominante == INTEGER)

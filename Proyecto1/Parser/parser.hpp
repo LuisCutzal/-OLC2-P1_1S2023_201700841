@@ -437,6 +437,7 @@ namespace yy {
       // PRINTF
       // RIF
       // RELSE
+      // MODULO
       // VOID
       // INT
       // TSTRING
@@ -520,28 +521,29 @@ namespace yy {
     PRINTF = 266,                  // PRINTF
     RIF = 267,                     // RIF
     RELSE = 268,                   // RELSE
-    VOID = 269,                    // VOID
-    INT = 270,                     // INT
-    TSTRING = 271,                 // TSTRING
-    BOOLEAN = 272,                 // BOOLEAN
-    PARA = 273,                    // PARA
-    PARC = 274,                    // PARC
-    RMAIN = 275,                   // RMAIN
-    LLAVA = 276,                   // LLAVA
-    LLAVC = 277,                   // LLAVC
-    RTRUE = 278,                   // RTRUE
-    RFALSE = 279,                  // RFALSE
-    CORA = 280,                    // CORA
-    CORC = 281,                    // CORC
-    TSFLOAT = 282,                 // TSFLOAT
-    MAY = 283,                     // MAY
-    MEN = 284,                     // MEN
-    MAY_IG = 285,                  // MAY_IG
-    MEN_IG = 286,                  // MEN_IG
-    DIF = 287,                     // DIF
-    IG = 288,                      // IG
-    AND = 289,                     // AND
-    OR = 290                       // OR
+    MODULO = 269,                  // MODULO
+    VOID = 270,                    // VOID
+    INT = 271,                     // INT
+    TSTRING = 272,                 // TSTRING
+    BOOLEAN = 273,                 // BOOLEAN
+    PARA = 274,                    // PARA
+    PARC = 275,                    // PARC
+    RMAIN = 276,                   // RMAIN
+    LLAVA = 277,                   // LLAVA
+    LLAVC = 278,                   // LLAVC
+    RTRUE = 279,                   // RTRUE
+    RFALSE = 280,                  // RFALSE
+    CORA = 281,                    // CORA
+    CORC = 282,                    // CORC
+    TSFLOAT = 283,                 // TSFLOAT
+    MAY = 284,                     // MAY
+    MEN = 285,                     // MEN
+    MAY_IG = 286,                  // MAY_IG
+    MEN_IG = 287,                  // MEN_IG
+    DIF = 288,                     // DIF
+    IG = 289,                      // IG
+    AND = 290,                     // AND
+    OR = 291                       // OR
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -558,7 +560,7 @@ namespace yy {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 38, ///< Number of tokens.
+        YYNTOKENS = 39, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // END
         S_YYerror = 1,                           // error
@@ -574,46 +576,47 @@ namespace yy {
         S_PRINTF = 11,                           // PRINTF
         S_RIF = 12,                              // RIF
         S_RELSE = 13,                            // RELSE
-        S_VOID = 14,                             // VOID
-        S_INT = 15,                              // INT
-        S_TSTRING = 16,                          // TSTRING
-        S_BOOLEAN = 17,                          // BOOLEAN
-        S_PARA = 18,                             // PARA
-        S_PARC = 19,                             // PARC
-        S_RMAIN = 20,                            // RMAIN
-        S_LLAVA = 21,                            // LLAVA
-        S_LLAVC = 22,                            // LLAVC
-        S_RTRUE = 23,                            // RTRUE
-        S_RFALSE = 24,                           // RFALSE
-        S_CORA = 25,                             // CORA
-        S_CORC = 26,                             // CORC
-        S_TSFLOAT = 27,                          // TSFLOAT
-        S_MAY = 28,                              // MAY
-        S_MEN = 29,                              // MEN
-        S_MAY_IG = 30,                           // MAY_IG
-        S_MEN_IG = 31,                           // MEN_IG
-        S_DIF = 32,                              // DIF
-        S_IG = 33,                               // IG
-        S_AND = 34,                              // AND
-        S_OR = 35,                               // OR
-        S_36_ = 36,                              // ';'
-        S_37_ = 37,                              // '='
-        S_YYACCEPT = 38,                         // $accept
-        S_START = 39,                            // START
-        S_MAIN = 40,                             // MAIN
-        S_LIST_INST = 41,                        // LIST_INST
-        S_INSTRUCTION = 42,                      // INSTRUCTION
-        S_PRINT = 43,                            // PRINT
-        S_DECLARATION = 44,                      // DECLARATION
-        S_IF = 45,                               // IF
-        S_ELSEIF_LIST = 46,                      // ELSEIF_LIST
-        S_ELSEIF = 47,                           // ELSEIF
-        S_ELSE = 48,                             // ELSE
-        S_TYPES = 49,                            // TYPES
-        S_EXP = 50,                              // EXP
-        S_PRIMITIVE = 51,                        // PRIMITIVE
-        S_BOOL = 52,                             // BOOL
-        S_LIST_ARR = 53                          // LIST_ARR
+        S_MODULO = 14,                           // MODULO
+        S_VOID = 15,                             // VOID
+        S_INT = 16,                              // INT
+        S_TSTRING = 17,                          // TSTRING
+        S_BOOLEAN = 18,                          // BOOLEAN
+        S_PARA = 19,                             // PARA
+        S_PARC = 20,                             // PARC
+        S_RMAIN = 21,                            // RMAIN
+        S_LLAVA = 22,                            // LLAVA
+        S_LLAVC = 23,                            // LLAVC
+        S_RTRUE = 24,                            // RTRUE
+        S_RFALSE = 25,                           // RFALSE
+        S_CORA = 26,                             // CORA
+        S_CORC = 27,                             // CORC
+        S_TSFLOAT = 28,                          // TSFLOAT
+        S_MAY = 29,                              // MAY
+        S_MEN = 30,                              // MEN
+        S_MAY_IG = 31,                           // MAY_IG
+        S_MEN_IG = 32,                           // MEN_IG
+        S_DIF = 33,                              // DIF
+        S_IG = 34,                               // IG
+        S_AND = 35,                              // AND
+        S_OR = 36,                               // OR
+        S_37_ = 37,                              // ';'
+        S_38_ = 38,                              // '='
+        S_YYACCEPT = 39,                         // $accept
+        S_START = 40,                            // START
+        S_MAIN = 41,                             // MAIN
+        S_LIST_INST = 42,                        // LIST_INST
+        S_INSTRUCTION = 43,                      // INSTRUCTION
+        S_PRINT = 44,                            // PRINT
+        S_DECLARATION = 45,                      // DECLARATION
+        S_IF = 46,                               // IF
+        S_ELSEIF_LIST = 47,                      // ELSEIF_LIST
+        S_ELSEIF = 48,                           // ELSEIF
+        S_ELSE = 49,                             // ELSE
+        S_TYPES = 50,                            // TYPES
+        S_EXP = 51,                              // EXP
+        S_PRIMITIVE = 52,                        // PRIMITIVE
+        S_BOOL = 53,                             // BOOL
+        S_LIST_ARR = 54                          // LIST_ARR
       };
     };
 
@@ -691,6 +694,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -888,6 +892,7 @@ switch (yykind)
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -1273,6 +1278,21 @@ switch (yykind)
       make_RELSE (const std::string& v, const location_type& l)
       {
         return symbol_type (token::RELSE, v, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_MODULO (std::string v, location_type l)
+      {
+        return symbol_type (token::MODULO, std::move (v), std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_MODULO (const std::string& v, const location_type& l)
+      {
+        return symbol_type (token::MODULO, v, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1935,7 +1955,7 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 235,     ///< Last index in yytable_.
+      yylast_ = 263,     ///< Last index in yytable_.
       yynnts_ = 16,  ///< Number of nonterminal symbols.
       yyfinal_ = 5 ///< Termination state number.
     };
@@ -1963,8 +1983,8 @@ switch (yykind)
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    36,
-       2,    37,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    37,
+       2,    38,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -1987,10 +2007,10 @@ switch (yykind)
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35
+      35,    36
     };
     // Last valid token kind.
-    const int code_max = 290;
+    const int code_max = 291;
 
     if (t <= 0)
       return symbol_kind::S_YYEOF;
@@ -2050,6 +2070,7 @@ switch (yykind)
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -2147,6 +2168,7 @@ switch (yykind)
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -2238,7 +2260,7 @@ switch (yykind)
 
 
 } // yy
-#line 2242 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
+#line 2264 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
 
 
 

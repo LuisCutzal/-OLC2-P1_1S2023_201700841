@@ -62,7 +62,7 @@
 %token END 0;
 
 /*tokens*/
-%token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE
+%token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE MODULO
 %token <std::string> VOID INT TSTRING BOOLEAN PARA PARC RMAIN LLAVA LLAVC RTRUE RFALSE CORA CORC TSFLOAT
 %token <std::string> MAY MEN MAY_IG MEN_IG DIF IG AND OR
 %token ';' '='
@@ -73,6 +73,7 @@
 %left MEN MEN_IG MAY MAY_IG
 %left SUMA MENOS
 %left POR DIV
+%right MODULO
 
 /* instancia de la clase que creamos */
 %lex-param {void *scanner} {yy::location& loc} { class OCL2Calc::ParserCtx & ctx }
@@ -183,6 +184,7 @@ EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+"); }
     | EXP MENOS EXP { $$ = new operation(0, 0, $1, $3, "-"); }
     | EXP POR EXP { $$ = new operation(0, 0, $1, $3, "*"); }
     | EXP DIV EXP { $$ = new operation(0, 0, $1, $3, "/"); }
+    | EXP MODULO EXP { $$ = new operation(0, 0, $1, $3, "%"); }
     | EXP MEN EXP { $$ = new operation(0, 0, $1, $3, "<"); }
     | EXP MAY EXP { $$ = new operation(0, 0, $1, $3, ">"); }
     | EXP MEN_IG EXP { $$ = new operation(0, 0, $1, $3, "<="); }

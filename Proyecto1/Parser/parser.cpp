@@ -248,6 +248,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -329,6 +330,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -410,6 +412,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -490,6 +493,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -552,291 +556,297 @@ namespace yy {
         switch (yykind)
     {
       case symbol_kind::S_DECIMAL: // DECIMAL
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 558 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 562 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_NUMERO: // NUMERO
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 564 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 568 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_ID: // ID
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 570 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 574 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_STRING: // STRING
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 576 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 580 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_SUMA: // SUMA
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 582 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 586 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MENOS: // MENOS
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 588 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 592 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_POR: // POR
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 594 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 598 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_DIV: // DIV
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 600 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 604 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRINTF: // PRINTF
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 606 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 610 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RIF: // RIF
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 612 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 616 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RELSE: // RELSE
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 618 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 622 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+        break;
+
+      case symbol_kind::S_MODULO: // MODULO
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                 { yyoutput << yysym.value.template as < std::string > (); }
+#line 628 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_VOID: // VOID
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 624 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 634 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_INT: // INT
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 630 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 640 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_TSTRING: // TSTRING
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 636 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 646 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_BOOLEAN: // BOOLEAN
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 642 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 652 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PARA: // PARA
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 648 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 658 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PARC: // PARC
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 654 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 664 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RMAIN: // RMAIN
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 660 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 670 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LLAVA: // LLAVA
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 666 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 676 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LLAVC: // LLAVC
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 672 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 682 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RTRUE: // RTRUE
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 678 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 688 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_RFALSE: // RFALSE
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 684 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 694 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_CORA: // CORA
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 690 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 700 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_CORC: // CORC
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 696 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 706 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_TSFLOAT: // TSFLOAT
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 702 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 712 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MAY: // MAY
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 708 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 718 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MEN: // MEN
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 714 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 724 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MAY_IG: // MAY_IG
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 720 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 730 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MEN_IG: // MEN_IG
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 726 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 736 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_DIF: // DIF
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 732 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 742 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_IG: // IG
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 738 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 748 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_AND: // AND
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 744 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 754 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_OR: // OR
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < std::string > (); }
-#line 750 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 760 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_START: // START
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < func_main* > (); }
-#line 756 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 766 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_MAIN: // MAIN
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < func_main* > (); }
-#line 762 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 772 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LIST_INST: // LIST_INST
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < list_instruction* > (); }
-#line 768 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 778 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_INSTRUCTION: // INSTRUCTION
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 774 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 784 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRINT: // PRINT
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 780 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 790 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_DECLARATION: // DECLARATION
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 786 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 796 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_IF: // IF
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 792 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 802 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_ELSEIF_LIST: // ELSEIF_LIST
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < list_instruction* > (); }
-#line 798 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 808 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_ELSEIF: // ELSEIF
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < instruction* > (); }
-#line 804 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 814 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_ELSE: // ELSE
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < list_instruction* > (); }
-#line 810 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 820 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_TYPES: // TYPES
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < TipoDato > (); }
-#line 816 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 826 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_EXP: // EXP
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 822 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 832 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_PRIMITIVE: // PRIMITIVE
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 828 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 838 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_BOOL: // BOOL
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 834 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 844 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       case symbol_kind::S_LIST_ARR: // LIST_ARR
-#line 99 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 100 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yyoutput << yysym.value.template as < expression* > (); }
-#line 840 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 850 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
         break;
 
       default:
@@ -1107,6 +1117,7 @@ namespace yy {
       case symbol_kind::S_PRINTF: // PRINTF
       case symbol_kind::S_RIF: // RIF
       case symbol_kind::S_RELSE: // RELSE
+      case symbol_kind::S_MODULO: // MODULO
       case symbol_kind::S_VOID: // VOID
       case symbol_kind::S_INT: // INT
       case symbol_kind::S_TSTRING: // TSTRING
@@ -1153,300 +1164,306 @@ namespace yy {
           switch (yyn)
             {
   case 2: // START: MAIN
-#line 107 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 108 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
     {
         ctx.Main = yystack_[0].value.as < func_main* > ();
         ctx.Salida = "!Ejecución realizada con éxito!";
         yylhs.value.as < func_main* > () = yystack_[0].value.as < func_main* > ();
     }
-#line 1163 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1174 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 3: // MAIN: VOID RMAIN PARA PARC LLAVA LIST_INST LLAVC
-#line 115 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 116 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
 {
     yylhs.value.as < func_main* > () = new func_main(0, 0, yystack_[6].value.as < std::string > (), yystack_[1].value.as < list_instruction* > ());
 }
-#line 1171 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1182 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 4: // LIST_INST: LIST_INST INSTRUCTION
-#line 121 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 122 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yystack_[1].value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
             yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > ();
         }
-#line 1180 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1191 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 5: // LIST_INST: INSTRUCTION
-#line 126 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 127 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yylhs.value.as < list_instruction* > () = new list_instruction();
             yylhs.value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
         }
-#line 1189 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1200 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 6: // INSTRUCTION: PRINT ';'
-#line 132 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 133 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                         { yylhs.value.as < instruction* > () = yystack_[1].value.as < instruction* > (); }
-#line 1195 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1206 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 7: // INSTRUCTION: DECLARATION ';'
-#line 133 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 134 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                               { yylhs.value.as < instruction* > () = yystack_[1].value.as < instruction* > (); }
-#line 1201 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1212 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 8: // INSTRUCTION: IF
-#line 134 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 135 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  { yylhs.value.as < instruction* > () = yystack_[0].value.as < instruction* > (); }
-#line 1207 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1218 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 9: // PRINT: PRINTF PARA EXP PARC
-#line 137 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 138 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                              { yylhs.value.as < instruction* > () = new print(0,0,yystack_[1].value.as < expression* > ()); }
-#line 1213 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1224 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 10: // DECLARATION: TYPES ID '=' EXP
-#line 140 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 141 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                                { yylhs.value.as < instruction* > () = new declaration(0,0,yystack_[3].value.as < TipoDato > (),yystack_[2].value.as < std::string > (),yystack_[0].value.as < expression* > ()); }
-#line 1219 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1230 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 11: // IF: RIF EXP LLAVA LIST_INST LLAVC ELSEIF_LIST ELSE
-#line 145 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 146 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
     {
         yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[5].value.as < expression* > (),yystack_[3].value.as < list_instruction* > (),yystack_[1].value.as < list_instruction* > (),yystack_[0].value.as < list_instruction* > ());
     }
-#line 1227 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1238 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 12: // IF: RIF EXP LLAVA LIST_INST LLAVC ELSE
-#line 149 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 150 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
     {
         yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[4].value.as < expression* > (),yystack_[2].value.as < list_instruction* > (),nullptr,yystack_[0].value.as < list_instruction* > ());
     }
-#line 1235 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1246 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 13: // ELSEIF_LIST: ELSEIF_LIST ELSEIF
-#line 155 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 156 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yystack_[1].value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
             yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > ();
         }
-#line 1244 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1255 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 14: // ELSEIF_LIST: ELSEIF
-#line 160 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 161 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yylhs.value.as < list_instruction* > () = new list_instruction();
             yylhs.value.as < list_instruction* > ()->newInst(yystack_[0].value.as < instruction* > ());
         }
-#line 1253 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1264 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 15: // ELSEIF: RELSE RIF EXP LLAVA LIST_INST LLAVC
-#line 167 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 168 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
         {
             yylhs.value.as < instruction* > () = new func_if(0,0,yystack_[3].value.as < expression* > (),yystack_[1].value.as < list_instruction* > (), nullptr, nullptr);
         }
-#line 1261 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1272 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 16: // ELSE: RELSE LLAVA LIST_INST LLAVC
-#line 172 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 173 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                                    { yylhs.value.as < list_instruction* > () = yystack_[1].value.as < list_instruction* > (); }
-#line 1267 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1278 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 17: // ELSE: %empty
-#line 173 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 174 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
              { }
-#line 1273 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1284 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 18: // TYPES: INT
-#line 176 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 177 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
             { yylhs.value.as < TipoDato > () = INTEGER; }
-#line 1279 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1290 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 19: // TYPES: TSTRING
-#line 177 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 178 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
               { yylhs.value.as < TipoDato > () = STRING; }
-#line 1285 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1296 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 20: // TYPES: BOOLEAN
-#line 178 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 179 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
               { yylhs.value.as < TipoDato > () = BOOL; }
-#line 1291 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1302 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 21: // TYPES: TSFLOAT
-#line 179 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 180 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
               { yylhs.value.as < TipoDato > () = FLOAT; }
-#line 1297 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1308 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 22: // EXP: EXP SUMA EXP
-#line 182 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 183 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                    { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "+"); }
-#line 1303 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1314 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 23: // EXP: EXP MENOS EXP
-#line 183 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 184 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "-"); }
-#line 1309 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1320 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 24: // EXP: EXP POR EXP
-#line 184 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 185 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                   { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "*"); }
-#line 1315 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1326 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
   case 25: // EXP: EXP DIV EXP
-#line 185 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "/"); }
-#line 1321 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 26: // EXP: EXP MEN EXP
 #line 186 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<"); }
-#line 1327 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "/"); }
+#line 1332 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 27: // EXP: EXP MAY EXP
+  case 26: // EXP: EXP MODULO EXP
 #line 187 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">"); }
-#line 1333 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "%"); }
+#line 1338 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 28: // EXP: EXP MEN_IG EXP
+  case 27: // EXP: EXP MEN EXP
 #line 188 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<="); }
-#line 1339 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<"); }
+#line 1344 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 29: // EXP: EXP MAY_IG EXP
+  case 28: // EXP: EXP MAY EXP
 #line 189 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">="); }
-#line 1345 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">"); }
+#line 1350 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 30: // EXP: EXP DIF EXP
+  case 29: // EXP: EXP MEN_IG EXP
 #line 190 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "!="); }
-#line 1351 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "<="); }
+#line 1356 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 31: // EXP: EXP IG EXP
+  case 30: // EXP: EXP MAY_IG EXP
 #line 191 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "=="); }
-#line 1357 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                     { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), ">="); }
+#line 1362 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 32: // EXP: EXP AND EXP
+  case 31: // EXP: EXP DIF EXP
 #line 192 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "&&"); }
-#line 1363 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "!="); }
+#line 1368 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 33: // EXP: EXP OR EXP
+  case 32: // EXP: EXP IG EXP
 #line 193 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "||"); }
-#line 1369 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "=="); }
+#line 1374 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 34: // EXP: PARA EXP PARC
+  case 33: // EXP: EXP AND EXP
 #line 194 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                    { yylhs.value.as < expression* > () = yystack_[1].value.as < expression* > (); }
-#line 1375 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                  { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "&&"); }
+#line 1380 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 35: // EXP: PRIMITIVE
+  case 34: // EXP: EXP OR EXP
 #line 195 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
-#line 1381 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+                 { yylhs.value.as < expression* > () = new operation(0, 0, yystack_[2].value.as < expression* > (), yystack_[0].value.as < expression* > (), "||"); }
+#line 1386 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 36: // PRIMITIVE: NUMERO
-#line 198 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 35: // EXP: PARA EXP PARC
+#line 196 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                    { yylhs.value.as < expression* > () = yystack_[1].value.as < expression* > (); }
+#line 1392 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 36: // EXP: PRIMITIVE
+#line 197 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1398 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 37: // PRIMITIVE: NUMERO
+#line 200 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                   {
             int num = std::stoi(yystack_[0].value.as < std::string > ());
             yylhs.value.as < expression* > () = new primitive(0,0,INTEGER,"",num,false,0.0);
         }
-#line 1390 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1407 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 37: // PRIMITIVE: STRING
-#line 202 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 38: // PRIMITIVE: STRING
+#line 204 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                 {
             std::string str1 = yystack_[0].value.as < std::string > ().erase(0,1);
             std::string str2 = str1.erase(str1.length()-1,1);
             yylhs.value.as < expression* > () = new primitive(0,0,STRING,str2,0,false,0.0);
         }
-#line 1400 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1417 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 38: // PRIMITIVE: BOOL
-#line 207 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-               { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
-#line 1406 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 39: // PRIMITIVE: LIST_ARR
-#line 208 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
-                   { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
-#line 1412 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
-    break;
-
-  case 40: // PRIMITIVE: DECIMAL
+  case 39: // PRIMITIVE: BOOL
 #line 209 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+               { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1423 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 40: // PRIMITIVE: LIST_ARR
+#line 210 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+                   { yylhs.value.as < expression* > () = yystack_[0].value.as < expression* > (); }
+#line 1429 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+    break;
+
+  case 41: // PRIMITIVE: DECIMAL
+#line 211 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                  {
             float num2 = std::stof(yystack_[0].value.as < std::string > ());
             yylhs.value.as < expression* > () = new primitive(0,0,FLOAT,"",0,false,num2);
         }
-#line 1421 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1438 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 41: // BOOL: RTRUE
-#line 215 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 42: // BOOL: RTRUE
+#line 217 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
              { yylhs.value.as < expression* > () = new primitive(0,0,BOOL,"",0,true,0.0); }
-#line 1427 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1444 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 42: // BOOL: RFALSE
-#line 216 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 43: // BOOL: RFALSE
+#line 218 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
              { yylhs.value.as < expression* > () = new primitive(0,0,BOOL,"",0,false,0.0); }
-#line 1433 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1450 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 43: // LIST_ARR: LIST_ARR CORA EXP CORC
-#line 219 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 44: // LIST_ARR: LIST_ARR CORA EXP CORC
+#line 221 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
                                   { yylhs.value.as < expression* > () = new array_access(0,0,yystack_[3].value.as < expression* > (),yystack_[1].value.as < expression* > ()); }
-#line 1439 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1456 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
-  case 44: // LIST_ARR: ID
-#line 220 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+  case 45: // LIST_ARR: ID
+#line 222 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
              {
             yylhs.value.as < expression* > () = new access(0,0,yystack_[0].value.as < std::string > ()); }
-#line 1446 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1463 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
     break;
 
 
-#line 1450 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 1467 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
 
             default:
               break;
@@ -1798,22 +1815,22 @@ namespace yy {
   }
 
 
-  const signed char Parser::yypact_ninf_ = -43;
+  const signed char Parser::yypact_ninf_ = -44;
 
   const signed char Parser::yytable_ninf_ = -1;
 
   const short
   Parser::yypact_[] =
   {
-      -9,    -7,    12,   -43,    -2,   -43,    -1,    -4,   208,    17,
-     177,   -43,   -43,   -43,   -43,    -8,   -43,     0,     7,   -43,
-      39,   177,   -43,   -43,   -43,   -43,   177,   -43,   -43,    31,
-     -43,   -43,    20,   -43,   -43,   -43,   -43,    14,    65,    73,
-     177,   177,   177,   177,   208,   177,   177,   177,   177,   177,
-     177,   177,   177,   177,   177,   -43,   -43,     1,     1,   -43,
-     -43,   182,    40,    40,    40,    40,   161,   161,   146,   146,
-     102,   132,    41,   -43,     3,    41,   -43,   -43,   177,   208,
-     -43,   -43,   117,   191,   208,   -43,   199,   -43
+     -12,   -17,     5,   -44,    -9,   -44,    -2,    14,    -3,     0,
+     196,   -44,   -44,   -44,   -44,   206,   -44,     7,     8,   -44,
+      48,   196,   -44,   -44,   -44,   -44,   196,   -44,   -44,    32,
+     -44,   -44,    11,   -44,   -44,   -44,   -44,     9,    67,    75,
+     196,   196,   196,   196,   196,    -3,   196,   196,   196,   196,
+     196,   196,   196,   196,   196,   196,   -44,   -44,     2,     2,
+      41,    41,    41,   214,    42,    42,    42,    42,   182,   182,
+     174,   174,   105,   144,    44,   -44,    -5,    44,   -44,   -44,
+     196,    -3,   -44,   -44,   135,   227,    -3,   -44,   235,   -44
   };
 
   const signed char
@@ -1821,109 +1838,115 @@ namespace yy {
   {
        0,     0,     0,     2,     0,     1,     0,     0,     0,     0,
        0,    18,    19,    20,    21,     0,     5,     0,     0,     8,
-       0,     0,    40,    36,    44,    37,     0,    41,    42,     0,
-      35,    38,    39,     3,     4,     6,     7,     0,     0,     0,
+       0,     0,    41,    37,    45,    38,     0,    42,    43,     0,
+      36,    39,    40,     3,     4,     6,     7,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     9,    34,    22,    23,    24,
-      25,     0,    27,    26,    29,    28,    30,    31,    32,    33,
-       0,    10,    17,    43,     0,    17,    14,    12,     0,     0,
-      13,    11,     0,     0,     0,    16,     0,    15
+       0,     0,     0,     0,     0,     0,     9,    35,    22,    23,
+      24,    25,    26,     0,    28,    27,    30,    29,    31,    32,
+      33,    34,     0,    10,    17,    44,     0,    17,    14,    12,
+       0,     0,    13,    11,     0,     0,     0,    16,     0,    15
   };
 
   const signed char
   Parser::yypgoto_[] =
   {
-     -43,   -43,   -43,   -42,   -15,   -43,   -43,   -43,   -43,   -22,
-     -19,   -43,   -20,   -43,   -43,   -43
+     -44,   -44,   -44,   -43,   -15,   -44,   -44,   -44,   -44,   -19,
+     -18,   -44,   -20,   -44,   -44,   -44
   };
 
   const signed char
   Parser::yydefgoto_[] =
   {
-       0,     2,     3,    15,    16,    17,    18,    19,    75,    76,
-      77,    20,    29,    30,    31,    32
+       0,     2,     3,    15,    16,    17,    18,    19,    77,    78,
+      79,    20,    29,    30,    31,    32
   };
 
   const signed char
   Parser::yytable_[] =
   {
-      34,    38,    61,     9,    10,     1,    39,    11,    12,    13,
-      42,    43,     5,     4,    33,    78,     6,     8,     7,    14,
-      57,    58,    59,    60,    79,    62,    63,    64,    65,    66,
-      67,    68,    69,    70,    71,    21,    35,    83,    40,    41,
-      42,    43,    86,    36,    37,    53,    34,    40,    41,    42,
-      43,    54,    44,    80,    74,     0,    81,     0,    82,    45,
-      46,    47,    48,    49,    50,    51,    52,     0,    34,     0,
-       0,    34,    40,    41,    42,    43,     0,     0,     0,     0,
-      40,    41,    42,    43,    55,     0,     0,     0,     0,     0,
-       0,     0,    56,    45,    46,    47,    48,    49,    50,    51,
-      52,    45,    46,    47,    48,    49,    50,    51,    52,    40,
-      41,    42,    43,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    40,    41,    42,    43,    73,     0,
-      45,    46,    47,    48,    49,    50,    51,    52,    84,    40,
-      41,    42,    43,     0,     0,    45,    46,    47,    48,    49,
-      50,    51,    52,    40,    41,    42,    43,     0,     0,     0,
-      45,    46,    47,    48,    49,    50,    51,    52,    40,    41,
-      42,    43,     0,     0,    45,    46,    47,    48,    49,    50,
-      22,    23,    24,    25,     0,     0,     0,     0,     0,    45,
-      46,    47,    48,     9,    10,    26,     0,    11,    12,    13,
-      27,    28,     9,    10,    72,     0,    11,    12,    13,    14,
-       9,    10,     0,    85,    11,    12,    13,     0,    14,     9,
-      10,    87,     0,    11,    12,    13,    14,     0,     0,     0,
-       0,     0,     0,     0,     0,    14
+      34,    38,    63,     1,     4,     5,    39,    80,     9,    10,
+       6,    42,    43,    11,    12,    13,    44,    81,     7,    21,
+      58,    59,    60,    61,    62,    14,    64,    65,    66,    67,
+      68,    69,    70,    71,    72,    73,     8,    54,    85,    40,
+      41,    42,    43,    88,    35,    36,    44,    55,    34,    40,
+      41,    42,    43,    37,    45,    44,    44,    76,    82,    83,
+      84,    46,    47,    48,    49,    50,    51,    52,    53,     0,
+      34,     0,     0,    34,    40,    41,    42,    43,     0,     0,
+       0,    44,    40,    41,    42,    43,     0,    56,     0,    44,
+       0,     0,     0,     0,     0,    57,    46,    47,    48,    49,
+      50,    51,    52,    53,    46,    47,    48,    49,    50,    51,
+      52,    53,    40,    41,    42,    43,     0,     0,     0,    44,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,    75,     0,    46,    47,    48,    49,    50,    51,
+      52,    53,    40,    41,    42,    43,     0,     0,     0,    44,
+       0,    40,    41,    42,    43,     0,     0,    86,    44,     0,
+       0,     0,     0,     0,    46,    47,    48,    49,    50,    51,
+      52,    53,     0,    46,    47,    48,    49,    50,    51,    52,
+      53,    40,    41,    42,    43,     0,     0,     0,    44,    40,
+      41,    42,    43,     0,     0,     0,    44,     0,     0,    22,
+      23,    24,    25,    46,    47,    48,    49,    50,    51,     0,
+       0,    46,    47,    48,    49,    26,     0,     9,    10,     0,
+      27,    28,    11,    12,    13,     9,    10,     0,     0,    33,
+      11,    12,    13,     0,    14,     0,     0,    74,     9,    10,
+       0,     0,    14,    11,    12,    13,     9,    10,     0,     0,
+      87,    11,    12,    13,     0,    14,     0,     0,    89,     0,
+       0,     0,     0,    14
   };
 
   const signed char
   Parser::yycheck_[] =
   {
-      15,    21,    44,    11,    12,    14,    26,    15,    16,    17,
-       9,    10,     0,    20,    22,    12,    18,    21,    19,    27,
-      40,    41,    42,    43,    21,    45,    46,    47,    48,    49,
-      50,    51,    52,    53,    54,    18,    36,    79,     7,     8,
-       9,    10,    84,    36,     5,    25,    61,     7,     8,     9,
-      10,    37,    21,    75,    13,    -1,    75,    -1,    78,    28,
-      29,    30,    31,    32,    33,    34,    35,    -1,    83,    -1,
-      -1,    86,     7,     8,     9,    10,    -1,    -1,    -1,    -1,
-       7,     8,     9,    10,    19,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    19,    28,    29,    30,    31,    32,    33,    34,
-      35,    28,    29,    30,    31,    32,    33,    34,    35,     7,
-       8,     9,    10,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,     7,     8,     9,    10,    26,    -1,
-      28,    29,    30,    31,    32,    33,    34,    35,    21,     7,
-       8,     9,    10,    -1,    -1,    28,    29,    30,    31,    32,
-      33,    34,    35,     7,     8,     9,    10,    -1,    -1,    -1,
-      28,    29,    30,    31,    32,    33,    34,    35,     7,     8,
-       9,    10,    -1,    -1,    28,    29,    30,    31,    32,    33,
-       3,     4,     5,     6,    -1,    -1,    -1,    -1,    -1,    28,
-      29,    30,    31,    11,    12,    18,    -1,    15,    16,    17,
-      23,    24,    11,    12,    22,    -1,    15,    16,    17,    27,
-      11,    12,    -1,    22,    15,    16,    17,    -1,    27,    11,
-      12,    22,    -1,    15,    16,    17,    27,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    27
+      15,    21,    45,    15,    21,     0,    26,    12,    11,    12,
+      19,     9,    10,    16,    17,    18,    14,    22,    20,    19,
+      40,    41,    42,    43,    44,    28,    46,    47,    48,    49,
+      50,    51,    52,    53,    54,    55,    22,    26,    81,     7,
+       8,     9,    10,    86,    37,    37,    14,    38,    63,     7,
+       8,     9,    10,     5,    22,    14,    14,    13,    77,    77,
+      80,    29,    30,    31,    32,    33,    34,    35,    36,    -1,
+      85,    -1,    -1,    88,     7,     8,     9,    10,    -1,    -1,
+      -1,    14,     7,     8,     9,    10,    -1,    20,    -1,    14,
+      -1,    -1,    -1,    -1,    -1,    20,    29,    30,    31,    32,
+      33,    34,    35,    36,    29,    30,    31,    32,    33,    34,
+      35,    36,     7,     8,     9,    10,    -1,    -1,    -1,    14,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    27,    -1,    29,    30,    31,    32,    33,    34,
+      35,    36,     7,     8,     9,    10,    -1,    -1,    -1,    14,
+      -1,     7,     8,     9,    10,    -1,    -1,    22,    14,    -1,
+      -1,    -1,    -1,    -1,    29,    30,    31,    32,    33,    34,
+      35,    36,    -1,    29,    30,    31,    32,    33,    34,    35,
+      36,     7,     8,     9,    10,    -1,    -1,    -1,    14,     7,
+       8,     9,    10,    -1,    -1,    -1,    14,    -1,    -1,     3,
+       4,     5,     6,    29,    30,    31,    32,    33,    34,    -1,
+      -1,    29,    30,    31,    32,    19,    -1,    11,    12,    -1,
+      24,    25,    16,    17,    18,    11,    12,    -1,    -1,    23,
+      16,    17,    18,    -1,    28,    -1,    -1,    23,    11,    12,
+      -1,    -1,    28,    16,    17,    18,    11,    12,    -1,    -1,
+      23,    16,    17,    18,    -1,    28,    -1,    -1,    23,    -1,
+      -1,    -1,    -1,    28
   };
 
   const signed char
   Parser::yystos_[] =
   {
-       0,    14,    39,    40,    20,     0,    18,    19,    21,    11,
-      12,    15,    16,    17,    27,    41,    42,    43,    44,    45,
-      49,    18,     3,     4,     5,     6,    18,    23,    24,    50,
-      51,    52,    53,    22,    42,    36,    36,     5,    50,    50,
-       7,     8,     9,    10,    21,    28,    29,    30,    31,    32,
-      33,    34,    35,    25,    37,    19,    19,    50,    50,    50,
-      50,    41,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    22,    26,    13,    46,    47,    48,    12,    21,
-      47,    48,    50,    41,    21,    22,    41,    22
+       0,    15,    40,    41,    21,     0,    19,    20,    22,    11,
+      12,    16,    17,    18,    28,    42,    43,    44,    45,    46,
+      50,    19,     3,     4,     5,     6,    19,    24,    25,    51,
+      52,    53,    54,    23,    43,    37,    37,     5,    51,    51,
+       7,     8,     9,    10,    14,    22,    29,    30,    31,    32,
+      33,    34,    35,    36,    26,    38,    20,    20,    51,    51,
+      51,    51,    51,    42,    51,    51,    51,    51,    51,    51,
+      51,    51,    51,    51,    23,    27,    13,    47,    48,    49,
+      12,    22,    48,    49,    51,    42,    22,    23,    42,    23
   };
 
   const signed char
   Parser::yyr1_[] =
   {
-       0,    38,    39,    40,    41,    41,    42,    42,    42,    43,
-      44,    45,    45,    46,    46,    47,    48,    48,    49,    49,
-      49,    49,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    50,    50,    50,    50,    51,    51,    51,    51,
-      51,    52,    52,    53,    53
+       0,    39,    40,    41,    42,    42,    43,    43,    43,    44,
+      45,    46,    46,    47,    47,    48,    49,    49,    50,    50,
+      50,    50,    51,    51,    51,    51,    51,    51,    51,    51,
+      51,    51,    51,    51,    51,    51,    51,    52,    52,    52,
+      52,    52,    53,    53,    54,    54
   };
 
   const signed char
@@ -1932,8 +1955,8 @@ namespace yy {
        0,     2,     1,     7,     2,     1,     2,     2,     1,     4,
        4,     7,     6,     2,     1,     6,     4,     0,     1,     1,
        1,     1,     3,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     1,     1,     1,     1,     1,
-       1,     1,     1,     4,     1
+       3,     3,     3,     3,     3,     3,     1,     1,     1,     1,
+       1,     1,     1,     1,     4,     1
   };
 
 
@@ -1945,12 +1968,12 @@ namespace yy {
   {
   "END", "error", "\"invalid token\"", "DECIMAL", "NUMERO", "ID",
   "STRING", "SUMA", "MENOS", "POR", "DIV", "PRINTF", "RIF", "RELSE",
-  "VOID", "INT", "TSTRING", "BOOLEAN", "PARA", "PARC", "RMAIN", "LLAVA",
-  "LLAVC", "RTRUE", "RFALSE", "CORA", "CORC", "TSFLOAT", "MAY", "MEN",
-  "MAY_IG", "MEN_IG", "DIF", "IG", "AND", "OR", "';'", "'='", "$accept",
-  "START", "MAIN", "LIST_INST", "INSTRUCTION", "PRINT", "DECLARATION",
-  "IF", "ELSEIF_LIST", "ELSEIF", "ELSE", "TYPES", "EXP", "PRIMITIVE",
-  "BOOL", "LIST_ARR", YY_NULLPTR
+  "MODULO", "VOID", "INT", "TSTRING", "BOOLEAN", "PARA", "PARC", "RMAIN",
+  "LLAVA", "LLAVC", "RTRUE", "RFALSE", "CORA", "CORC", "TSFLOAT", "MAY",
+  "MEN", "MAY_IG", "MEN_IG", "DIF", "IG", "AND", "OR", "';'", "'='",
+  "$accept", "START", "MAIN", "LIST_INST", "INSTRUCTION", "PRINT",
+  "DECLARATION", "IF", "ELSEIF_LIST", "ELSEIF", "ELSE", "TYPES", "EXP",
+  "PRIMITIVE", "BOOL", "LIST_ARR", YY_NULLPTR
   };
 #endif
 
@@ -1959,11 +1982,11 @@ namespace yy {
   const unsigned char
   Parser::yyrline_[] =
   {
-       0,   106,   106,   114,   120,   125,   132,   133,   134,   137,
-     140,   144,   148,   154,   159,   166,   172,   173,   176,   177,
-     178,   179,   182,   183,   184,   185,   186,   187,   188,   189,
-     190,   191,   192,   193,   194,   195,   198,   202,   207,   208,
-     209,   215,   216,   219,   220
+       0,   107,   107,   115,   121,   126,   133,   134,   135,   138,
+     141,   145,   149,   155,   160,   167,   173,   174,   177,   178,
+     179,   180,   183,   184,   185,   186,   187,   188,   189,   190,
+     191,   192,   193,   194,   195,   196,   197,   200,   204,   209,
+     210,   211,   217,   218,   221,   222
   };
 
   void
@@ -1995,9 +2018,9 @@ namespace yy {
 
 
 } // yy
-#line 1999 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
+#line 2022 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp"
 
-#line 224 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
+#line 226 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y"
 
 
 /* función de error */
