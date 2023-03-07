@@ -62,7 +62,7 @@
 %token END 0;
 
 /*tokens*/
-%token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE MODULO
+%token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE MODULO INCREMENTO
 %token <std::string> VOID INT TSTRING BOOLEAN PARA PARC RMAIN LLAVA LLAVC RTRUE RFALSE CORA CORC TSFLOAT
 %token <std::string> MAY MEN MAY_IG MEN_IG DIF IG AND OR
 %token ';' '='
@@ -74,6 +74,7 @@
 %left SUMA MENOS
 %left POR DIV
 %right MODULO
+%right UMINUS
 
 /* instancia de la clase que creamos */
 %lex-param {void *scanner} {yy::location& loc} { class OCL2Calc::ParserCtx & ctx }
@@ -180,21 +181,23 @@ TYPES : INT { $$ = INTEGER; }
     | TSFLOAT { $$ = FLOAT; }
 ;
 
-EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+"); }
-    | EXP MENOS EXP { $$ = new operation(0, 0, $1, $3, "-"); }
-    | EXP POR EXP { $$ = new operation(0, 0, $1, $3, "*"); }
-    | EXP DIV EXP { $$ = new operation(0, 0, $1, $3, "/"); }
-    | EXP MODULO EXP { $$ = new operation(0, 0, $1, $3, "%"); }
-    | EXP MEN EXP { $$ = new operation(0, 0, $1, $3, "<"); }
-    | EXP MAY EXP { $$ = new operation(0, 0, $1, $3, ">"); }
-    | EXP MEN_IG EXP { $$ = new operation(0, 0, $1, $3, "<="); }
-    | EXP MAY_IG EXP { $$ = new operation(0, 0, $1, $3, ">="); }
-    | EXP DIF EXP { $$ = new operation(0, 0, $1, $3, "!="); }
-    | EXP IG EXP { $$ = new operation(0, 0, $1, $3, "=="); }
-    | EXP AND EXP { $$ = new operation(0, 0, $1, $3, "&&"); }
-    | EXP OR EXP { $$ = new operation(0, 0, $1, $3, "||"); }
+EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+",false); }
+    | EXP MENOS EXP { $$ = new operation(0, 0, $1, $3, "-",false); }
+    | EXP POR EXP { $$ = new operation(0, 0, $1, $3, "*",false); }
+    | EXP DIV EXP { $$ = new operation(0, 0, $1, $3, "/",false); }
+    | EXP MODULO EXP { $$ = new operation(0, 0, $1, $3, "%",false); }
+    | EXP MEN EXP { $$ = new operation(0, 0, $1, $3, "<",false); }
+    | EXP MAY EXP { $$ = new operation(0, 0, $1, $3, ">",false); }
+    | EXP MEN_IG EXP { $$ = new operation(0, 0, $1, $3, "<=",false); }
+    | EXP MAY_IG EXP { $$ = new operation(0, 0, $1, $3, ">=",false); }
+    | EXP DIF EXP { $$ = new operation(0, 0, $1, $3, "!=",false); }
+    | EXP IG EXP { $$ = new operation(0, 0, $1, $3, "==",false); }
+    | EXP AND EXP { $$ = new operation(0, 0, $1, $3, "&&",false); }
+    | EXP OR EXP { $$ = new operation(0, 0, $1, $3, "||",false); }
     | PARA EXP PARC { $$ = $2; }
     | PRIMITIVE { $$ = $1; }
+    | ID INCREMENTO { }
+    | MENOS EXP %prec UMINUS { $$ = new operation(0, 0, $2, 0, "UNARIO",true); }
 ;
 
 PRIMITIVE : NUMERO{

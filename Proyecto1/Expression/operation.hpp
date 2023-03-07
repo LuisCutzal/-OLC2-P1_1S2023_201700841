@@ -10,7 +10,8 @@ public:
     expression *Op_izq;
     expression *Op_der;
     string Operator;
-    operation(int line, int col, expression *op_izq, expression *op_der, string operador);
+    bool Unario;
+    operation(int line, int col, expression *op_izq, expression *op_der, string operador, bool Unario);
     symbol ejecutar(environment *env, ast *tree) override;
 };
 

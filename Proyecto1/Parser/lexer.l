@@ -64,6 +64,7 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 "<="     return Parser::symbol_type( token::MEN_IG, loc );
 "!="     return Parser::symbol_type( token::DIF, loc );
 "=="     return Parser::symbol_type( token::IG, loc );
+"++"     return Parser::symbol_type( token::INCREMENTO, loc );
 
 "&&"     return Parser::symbol_type( token::AND, loc );
 "||"     return Parser::symbol_type( token::OR, loc );
