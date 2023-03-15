@@ -10,8 +10,10 @@
 #define UI_PROYECTO1_OLC2_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -28,6 +30,7 @@ public:
     QTextEdit *textEdit_2;
     QPushButton *pushButton;
     QMenuBar *menubar;
+    QMenu *menuolC;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *Proyecto1_OLC2)
@@ -50,10 +53,14 @@ public:
         menubar = new QMenuBar(Proyecto1_OLC2);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 22));
+        menuolC = new QMenu(menubar);
+        menuolC->setObjectName(QString::fromUtf8("menuolC"));
         Proyecto1_OLC2->setMenuBar(menubar);
         statusbar = new QStatusBar(Proyecto1_OLC2);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         Proyecto1_OLC2->setStatusBar(statusbar);
+
+        menubar->addAction(menuolC->menuAction());
 
         retranslateUi(Proyecto1_OLC2);
 
@@ -64,6 +71,7 @@ public:
     {
         Proyecto1_OLC2->setWindowTitle(QCoreApplication::translate("Proyecto1_OLC2", "Proyecto1_OLC2", nullptr));
         pushButton->setText(QCoreApplication::translate("Proyecto1_OLC2", "RUN", nullptr));
+        menuolC->setTitle(QCoreApplication::translate("Proyecto1_OLC2", "olC++", nullptr));
     } // retranslateUi
 
 };

@@ -12,3 +12,4 @@ public:
 };
 
 #endif // MAP_STRUCT_DEC_HPP
+

@@ -1,7 +1,11 @@
-/* comando   ./bison --verbose -o /home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp  /home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y */
+/* comando
+
+./bison --verbose -o /home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.cpp  /home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.y
+
+*/
 
 /* Se requiere una versión minima de Bison */
-%require  "3.8.2"
+%require  "3.0.4"
 /* Se usa el skeleton más recienta para c++ */
 %skeleton "lalr1.cc"
 
@@ -41,9 +45,15 @@
     #include "../Proyecto1/Expression/primitive.hpp"
     #include "../Proyecto1/Expression/access.hpp"
     #include "../Proyecto1/Expression/array_access.hpp"
+    #include "../Proyecto1/Expression/struct_access.hpp"
     #include "../Proyecto1/Expression/operation.hpp"
     #include "../Proyecto1/Environment/type.h"
     #include "../Proyecto1/Interfaces/expression.hpp"
+    #include "../Proyecto1/Expression/map_struct_dec.hpp"
+    #include "../Proyecto1/Expression/list_expression.hpp"
+    #include "../Proyecto1/Expression/call_exp.hpp"
+    #include "../Proyecto1/Expression/array_exp.hpp"
+
 
     /* instrucciones */
     #include "../Proyecto1/Interfaces/instruction.hpp"
@@ -52,6 +62,12 @@
     #include "../Proyecto1/Instruction/func_main.hpp"
     #include "../Proyecto1/Instruction/func_if.hpp"
     #include "../Proyecto1/Instruction/declaration.hpp"
+    #include "../Proyecto1/Instruction/dec_struct.hpp"
+    #include "../Proyecto1/Instruction/create_struct.hpp"
+    #include "../Proyecto1/Instruction/function.hpp"
+    #include "../Proyecto1/Instruction/call_inst.hpp"
+    #include "../Proyecto1/Instruction/inst_return.hpp"
+
 
 }
 
@@ -64,8 +80,8 @@
 /*tokens*/
 %token <std::string> DECIMAL NUMERO ID STRING SUMA MENOS POR DIV PRINTF RIF RELSE MODULO INCREMENTO
 %token <std::string> VOID INT TSTRING BOOLEAN PARA PARC RMAIN LLAVA LLAVC RTRUE RFALSE CORA CORC TSFLOAT
-%token <std::string> MAY MEN MAY_IG MEN_IG DIF IG AND OR
-%token ';' '='
+%token <std::string> MAY MEN MAY_IG MEN_IG DIF IG AND OR STRUCT RRETURN ARRAY
+%token ';' '=' '.' ','
 
 /* precedencia de operadores */
 %left AND OR
@@ -85,17 +101,27 @@
 %type<expression*> EXP;
 %type<expression*> BOOL;
 %type<expression*> LIST_ARR;
+%type<expression*> CALL_EXP;
 %type<func_main*> START;
 %type<list_instruction*> LIST_INST;
 %type<list_instruction*> ELSEIF_LIST;
 %type<list_instruction*> ELSE;
+%type<list_instruction*> LIST_FUNC;
+%type<list_expression*> EXP_LIST;
 %type<func_main*> MAIN;
 %type<instruction*> INSTRUCTION;
 %type<instruction*> PRINT;
 %type<instruction*> DECLARATION;
 %type<instruction*> IF;
 %type<instruction*> ELSEIF;
+%type<instruction*> STRUCT_DECLARATION;
+%type<instruction*> STRUCT_CREATION;
+%type<instruction*> FUNCTION;
+%type<instruction*> CALL_INST;
+%type<instruction*> RETURN;
 %type<TipoDato> TYPES;
+%type<map_struct_dec*> DEC_LIST;
+%type<map_struct_dec*> FUNC_LIST;
 
 /* printer */
 %printer { yyoutput << $$; } <*>;
@@ -108,10 +134,53 @@
 START : MAIN
     {
         ctx.Main = $1;
+        ctx.Functions = nullptr;
         ctx.Salida = "!Ejecución realizada con éxito!";
         $$ = $1;
     }
+    | LIST_FUNC MAIN
+    {
+        ctx.Main = $2;
+        ctx.Functions = $1;
+        ctx.Salida = "!Ejecución realizada con éxito!";
+        $$ = $2;
+    }
 ;
+
+LIST_FUNC : LIST_FUNC FUNCTION
+        {
+            $1->newInst($2);
+            $$ = $1;
+        }
+        | FUNCTION
+        {
+            $$ = new list_instruction();
+            $$->newInst($1);
+        }
+;
+
+FUNCTION : TYPES ID PARA FUNC_LIST PARC LLAVA LIST_INST LLAVC
+        {
+            $$ = new function(0,0,$1,$2,$4,$7);
+        }
+        | TYPES ID PARA PARC LLAVA LIST_INST LLAVC
+        {
+            $$ = new function(0,0,$1,$2,nullptr,$6);
+        }
+;
+
+FUNC_LIST : FUNC_LIST ',' TYPES ID
+        {
+            $1->newMap($4,$3);
+            $$ = $1;
+        }
+        | TYPES ID
+        {
+            $$ = new map_struct_dec();
+            $$->newMap($2, $1);
+        }
+;
+
 
 MAIN : VOID RMAIN PARA PARC LLAVA LIST_INST LLAVC
 {
@@ -134,7 +203,16 @@ LIST_INST : LIST_INST INSTRUCTION
 INSTRUCTION : PRINT ';' { $$ = $1; }
             | DECLARATION ';' { $$ = $1; }
             | IF { $$ = $1; }
+            | STRUCT_DECLARATION { $$ = $1; }
+            | STRUCT_CREATION { $$ = $1; }
+            | CALL_INST { $$ = $1; }
+            | RETURN ';' { $$ = $1; }
 ;
+
+RETURN : RRETURN EXP { $$ = new inst_return(0,0,$2); }
+    | RRETURN { $$ = new inst_return(0,0,nullptr); }
+;
+
 
 PRINT : PRINTF PARA EXP PARC { $$ = new print(0,0,$3); }
 ;
@@ -175,10 +253,45 @@ ELSE : RELSE LLAVA LIST_INST LLAVC { $$ = $3; }
     | %empty { }
 ;
 
+STRUCT_DECLARATION : STRUCT ID LLAVA DEC_LIST LLAVC {$$ = new dec_struct(0,0,$4,$2); }
+;
+
+DEC_LIST : DEC_LIST TYPES ID ';'
+        {
+            $1->newMap($3,$2);
+            $$ = $1;
+        }
+        | TYPES ID ';'
+        {
+            $$ = new map_struct_dec();
+            $$->newMap($2, $1);
+        }
+;
+
+STRUCT_CREATION : STRUCT ID ID '=' LLAVA EXP_LIST LLAVC
+                {
+                    $$ = new create_struct(0,0,$2,$3,$6);
+                }
+;
+
+EXP_LIST : EXP_LIST ',' EXP
+        {
+            $1->newExp($3);
+            $$ = $1;
+        }
+        | EXP
+        {
+            $$ = new list_expression();
+            $$->newExp($1);
+        }
+;
+
 TYPES : INT { $$ = INTEGER; }
     | TSTRING { $$ = STRING; }
     | BOOLEAN { $$ = BOOL; }
     | TSFLOAT { $$ = FLOAT; }
+    | VOID { $$ = NULO; }
+    | ARRAY { $$ = ARRAY; }
 ;
 
 EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+",false); }
@@ -195,6 +308,8 @@ EXP : EXP SUMA EXP { $$ = new operation(0, 0, $1, $3, "+",false); }
     | EXP AND EXP { $$ = new operation(0, 0, $1, $3, "&&",false); }
     | EXP OR EXP { $$ = new operation(0, 0, $1, $3, "||",false); }
     | PARA EXP PARC { $$ = $2; }
+    | LLAVA EXP_LIST LLAVC { $$ = new array_exp(0,0,$2); }
+    | CALL_EXP { $$ = $1; }
     | PRIMITIVE { $$ = $1; }
     | ID INCREMENTO { }
     | MENOS EXP %prec UMINUS { $$ = new operation(0, 0, $2, 0, "UNARIO",true); }
@@ -222,8 +337,16 @@ BOOL : RTRUE { $$ = new primitive(0,0,BOOL,"",0,true,0.0); }
 ;
 
 LIST_ARR : LIST_ARR CORA EXP CORC { $$ = new array_access(0,0,$1,$3); }
-        | ID {
-            $$ = new access(0,0,$1); }
+        | LIST_ARR '.' ID { $$ = new struct_access(0,0,$1,$3); }
+        | ID {$$ = new access(0,0,$1); }
+;
+
+CALL_EXP : ID PARA EXP_LIST PARC { $$ = new call_exp(0,0,$1,$3); }
+        | ID PARA PARC { $$ = new call_exp(0,0,$1,nullptr); }
+;
+
+CALL_INST : ID PARA EXP_LIST PARC ';' { $$ = new call_inst(0,0,$1,$3);}
+        | ID PARA PARC ';' { $$ = new call_inst(0,0,$1,nullptr); }
 ;
 
 %%

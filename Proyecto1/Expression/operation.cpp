@@ -1,6 +1,5 @@
 #include "operation.hpp"
-using namespace std;
-operation::operation(int line, int col, expression *op_izq, expression *op_der, string operador, bool unario){
+operation::operation(int line, int col, expression *op_izq, expression *op_der, std::string operador, bool unario){
     Line = line;
     Col = col;
     Op_izq = op_izq;
@@ -90,9 +89,9 @@ symbol operation::ejecutar(environment *env, ast *tree)
         }
         else if(Dominante == STRING)
         {
-            string result;
-            string *val1;
-            string *val2;
+            std::string result;
+            std::string *val1;
+            std::string *val2;
             int res =0;
             int res2=0;
             float rersf=0.0;
@@ -101,10 +100,10 @@ symbol operation::ejecutar(environment *env, ast *tree)
             bool resb2;
             if(op1.Tipo == INTEGER){//cuando el primer valor es un entero
                 res = *static_cast<int*>(op1.Value);
-                result +=to_string(res);
+                result +=std::to_string(res);
             }else if (op1.Tipo == FLOAT){//cuando el primer valor es un decimal
                 rersf = *static_cast<float *>(op1.Value);
-                result +=to_string(rersf);
+                result +=std::to_string(rersf);
             }else if(op1.Tipo == BOOL){//cuando el primer valor es un boolean
                 resb = *static_cast<bool *>(op1.Value);
                 if(resb==1){
@@ -113,16 +112,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result +="false";
                 }
             }else{
-                val1 = (string *)op1.Value;
+                val1 = (std::string *)op1.Value;
                 result +=*val1;
             }
             //para el tipo 2
             if(op2.Tipo == INTEGER){
                 res2 = *static_cast<int*>(op2.Value);
-                result +=to_string(res2);
+                result +=std::to_string(res2);
             }else if(op2.Tipo == FLOAT){
                 rersf2 = *static_cast<float *>(op2.Value);
-                result +=to_string(rersf2);
+                result +=std::to_string(rersf2);
             }else if(op2.Tipo == BOOL){
                 resb2 = *static_cast<bool *>(op2.Value);
                 if(resb2 == 1){
@@ -131,7 +130,7 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result +="false";
                 }
             }else{
-                val2 = (string *)op2.Value;
+                val2 = (std::string *)op2.Value;
                 result +=*val2;
             }
             sym = symbol(Line,Col,"",Dominante, &result);

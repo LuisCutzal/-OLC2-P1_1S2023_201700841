@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include "parserctx.hpp"
 #include <iostream>
-using namespace std;
+
 Proyecto1_OLC2::Proyecto1_OLC2(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Proyecto1_OLC2)
@@ -21,6 +21,7 @@ Proyecto1_OLC2::~Proyecto1_OLC2()
 void Proyecto1_OLC2::on_pushButton_clicked()
 {
     QMessageBox *msg = new QMessageBox();
+    //QMessageBox *msg3 = new QMessageBox();
     //creando entorno global
     environment *GlobalEnv = new environment(nullptr, "Global");
     //creando ast
@@ -28,6 +29,11 @@ void Proyecto1_OLC2::on_pushButton_clicked()
     //ejecuta el analizador
     OCL2Calc::ParserCtx analizador;
     analizador.Analizar(ui->textEdit->toPlainText().toStdString());
+    //ejecutando funcinoes
+    if(analizador.Functions != nullptr)
+    {
+       analizador.Functions->ejecutar(GlobalEnv, Root);
+    }
     //ejecutar main
     analizador.Main->ejecutar(GlobalEnv, Root);
     //valio errores

@@ -11,6 +11,7 @@ public:
     expression *Valor;
 
     print(int line, int col, expression *valor);
+    std::string ArrayToString(QVector<symbol> array);
     void ejecutar(environment *env, ast *tree) override;
 };
 

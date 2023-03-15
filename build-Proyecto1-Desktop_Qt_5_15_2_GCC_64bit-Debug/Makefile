@@ -65,9 +65,14 @@ SOURCES       = ../Proyecto1/Environment/ast.cpp \
 		../Proyecto1/Expression/operation.cpp \
 		../Proyecto1/Expression/primitive.cpp \
 		../Proyecto1/Expression/struct_access.cpp \
+		../Proyecto1/Instruction/call_inst.cpp \
+		../Proyecto1/Instruction/create_struct.cpp \
+		../Proyecto1/Instruction/dec_struct.cpp \
 		../Proyecto1/Instruction/declaration.cpp \
 		../Proyecto1/Instruction/func_if.cpp \
 		../Proyecto1/Instruction/func_main.cpp \
+		../Proyecto1/Instruction/function.cpp \
+		../Proyecto1/Instruction/inst_return.cpp \
 		../Proyecto1/Instruction/list_instruction.cpp \
 		../Proyecto1/Instruction/print.cpp \
 		../Proyecto1/Interfaces/expression.cpp \
@@ -89,9 +94,14 @@ OBJECTS       = ast.o \
 		operation.o \
 		primitive.o \
 		struct_access.o \
+		call_inst.o \
+		create_struct.o \
+		dec_struct.o \
 		declaration.o \
 		func_if.o \
 		func_main.o \
+		function.o \
+		inst_return.o \
 		list_instruction.o \
 		print.o \
 		expression.o \
@@ -329,9 +339,14 @@ DIST          = ../Proyecto1/Parser/lexer.l \
 		../Proyecto1/Expression/operation.hpp \
 		../Proyecto1/Expression/primitive.hpp \
 		../Proyecto1/Expression/struct_access.hpp \
+		../Proyecto1/Instruction/call_inst.hpp \
+		../Proyecto1/Instruction/create_struct.hpp \
+		../Proyecto1/Instruction/dec_struct.hpp \
 		../Proyecto1/Instruction/declaration.hpp \
 		../Proyecto1/Instruction/func_if.hpp \
 		../Proyecto1/Instruction/func_main.hpp \
+		../Proyecto1/Instruction/function.hpp \
+		../Proyecto1/Instruction/inst_return.hpp \
 		../Proyecto1/Instruction/list_instruction.hpp \
 		../Proyecto1/Instruction/print.hpp \
 		../Proyecto1/Interfaces/expression.hpp \
@@ -354,9 +369,14 @@ DIST          = ../Proyecto1/Parser/lexer.l \
 		../Proyecto1/Expression/operation.cpp \
 		../Proyecto1/Expression/primitive.cpp \
 		../Proyecto1/Expression/struct_access.cpp \
+		../Proyecto1/Instruction/call_inst.cpp \
+		../Proyecto1/Instruction/create_struct.cpp \
+		../Proyecto1/Instruction/dec_struct.cpp \
 		../Proyecto1/Instruction/declaration.cpp \
 		../Proyecto1/Instruction/func_if.cpp \
 		../Proyecto1/Instruction/func_main.cpp \
+		../Proyecto1/Instruction/function.cpp \
+		../Proyecto1/Instruction/inst_return.cpp \
 		../Proyecto1/Instruction/list_instruction.cpp \
 		../Proyecto1/Instruction/print.cpp \
 		../Proyecto1/Interfaces/expression.cpp \
@@ -816,8 +836,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/luis/Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.hpp ../Proyecto1/Environment/environment.hpp ../Proyecto1/Environment/func_symbol.hpp ../Proyecto1/Environment/symbol.hpp ../Proyecto1/Environment/type.h ../Proyecto1/Expression/access.hpp ../Proyecto1/Expression/array_access.hpp ../Proyecto1/Expression/array_exp.hpp ../Proyecto1/Expression/call_exp.hpp ../Proyecto1/Expression/list_expression.hpp ../Proyecto1/Expression/map_struct_dec.hpp ../Proyecto1/Expression/operation.hpp ../Proyecto1/Expression/primitive.hpp ../Proyecto1/Expression/struct_access.hpp ../Proyecto1/Instruction/declaration.hpp ../Proyecto1/Instruction/func_if.hpp ../Proyecto1/Instruction/func_main.hpp ../Proyecto1/Instruction/list_instruction.hpp ../Proyecto1/Instruction/print.hpp ../Proyecto1/Interfaces/expression.hpp ../Proyecto1/Interfaces/instruction.hpp ../Proyecto1/Parser/location.hh ../Proyecto1/Parser/parser.hpp Parser/position.hh Parser/stack.hh ../Proyecto1/parserctx.hpp ../Proyecto1/proyecto1_olc2.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.cpp ../Proyecto1/Environment/environment.cpp ../Proyecto1/Environment/func_symbol.cpp ../Proyecto1/Environment/symbol.cpp ../Proyecto1/Expression/access.cpp ../Proyecto1/Expression/array_access.cpp ../Proyecto1/Expression/array_exp.cpp ../Proyecto1/Expression/call_exp.cpp ../Proyecto1/Expression/list_expression.cpp ../Proyecto1/Expression/map_struct_dec.cpp ../Proyecto1/Expression/operation.cpp ../Proyecto1/Expression/primitive.cpp ../Proyecto1/Expression/struct_access.cpp ../Proyecto1/Instruction/declaration.cpp ../Proyecto1/Instruction/func_if.cpp ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/Instruction/print.cpp ../Proyecto1/Interfaces/expression.cpp ../Proyecto1/Interfaces/instruction.cpp ../Proyecto1/Parser/parser.cpp ../Proyecto1/main.cpp ../Proyecto1/parserctx.cpp ../Proyecto1/proyecto1_olc2.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.hpp ../Proyecto1/Environment/environment.hpp ../Proyecto1/Environment/func_symbol.hpp ../Proyecto1/Environment/symbol.hpp ../Proyecto1/Environment/type.h ../Proyecto1/Expression/access.hpp ../Proyecto1/Expression/array_access.hpp ../Proyecto1/Expression/array_exp.hpp ../Proyecto1/Expression/call_exp.hpp ../Proyecto1/Expression/list_expression.hpp ../Proyecto1/Expression/map_struct_dec.hpp ../Proyecto1/Expression/operation.hpp ../Proyecto1/Expression/primitive.hpp ../Proyecto1/Expression/struct_access.hpp ../Proyecto1/Instruction/call_inst.hpp ../Proyecto1/Instruction/create_struct.hpp ../Proyecto1/Instruction/dec_struct.hpp ../Proyecto1/Instruction/declaration.hpp ../Proyecto1/Instruction/func_if.hpp ../Proyecto1/Instruction/func_main.hpp ../Proyecto1/Instruction/function.hpp ../Proyecto1/Instruction/inst_return.hpp ../Proyecto1/Instruction/list_instruction.hpp ../Proyecto1/Instruction/print.hpp ../Proyecto1/Interfaces/expression.hpp ../Proyecto1/Interfaces/instruction.hpp ../Proyecto1/Parser/location.hh ../Proyecto1/Parser/parser.hpp Parser/position.hh Parser/stack.hh ../Proyecto1/parserctx.hpp ../Proyecto1/proyecto1_olc2.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/Environment/ast.cpp ../Proyecto1/Environment/environment.cpp ../Proyecto1/Environment/func_symbol.cpp ../Proyecto1/Environment/symbol.cpp ../Proyecto1/Expression/access.cpp ../Proyecto1/Expression/array_access.cpp ../Proyecto1/Expression/array_exp.cpp ../Proyecto1/Expression/call_exp.cpp ../Proyecto1/Expression/list_expression.cpp ../Proyecto1/Expression/map_struct_dec.cpp ../Proyecto1/Expression/operation.cpp ../Proyecto1/Expression/primitive.cpp ../Proyecto1/Expression/struct_access.cpp ../Proyecto1/Instruction/call_inst.cpp ../Proyecto1/Instruction/create_struct.cpp ../Proyecto1/Instruction/dec_struct.cpp ../Proyecto1/Instruction/declaration.cpp ../Proyecto1/Instruction/func_if.cpp ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/function.cpp ../Proyecto1/Instruction/inst_return.cpp ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/Instruction/print.cpp ../Proyecto1/Interfaces/expression.cpp ../Proyecto1/Interfaces/instruction.cpp ../Proyecto1/Parser/parser.cpp ../Proyecto1/main.cpp ../Proyecto1/parserctx.cpp ../Proyecto1/proyecto1_olc2.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Proyecto1/proyecto1_olc2.ui $(DISTDIR)/
 
 
@@ -1520,6 +1540,158 @@ struct_access.o: ../Proyecto1/Expression/struct_access.cpp ../Proyecto1/Expressi
 		../Proyecto1/Environment/func_symbol.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o struct_access.o ../Proyecto1/Expression/struct_access.cpp
 
+call_inst.o: ../Proyecto1/Instruction/call_inst.cpp ../Proyecto1/Instruction/call_inst.hpp \
+		../Proyecto1/Expression/list_expression.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/QVector \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Environment/func_symbol.hpp \
+		../Proyecto1/Interfaces/instruction.hpp \
+		../Proyecto1/Expression/map_struct_dec.hpp \
+		../Proyecto1/Instruction/list_instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o call_inst.o ../Proyecto1/Instruction/call_inst.cpp
+
+create_struct.o: ../Proyecto1/Instruction/create_struct.cpp ../Proyecto1/Instruction/create_struct.hpp \
+		../Proyecto1/Expression/list_expression.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/QVector \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Environment/func_symbol.hpp \
+		../Proyecto1/Interfaces/instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o create_struct.o ../Proyecto1/Instruction/create_struct.cpp
+
+dec_struct.o: ../Proyecto1/Instruction/dec_struct.cpp ../Proyecto1/Instruction/dec_struct.hpp \
+		../Proyecto1/Expression/map_struct_dec.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/QVector \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Environment/func_symbol.hpp \
+		../Proyecto1/Interfaces/instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dec_struct.o ../Proyecto1/Instruction/dec_struct.cpp
+
 declaration.o: ../Proyecto1/Instruction/declaration.cpp ../Proyecto1/Instruction/declaration.hpp \
 		../Proyecto1/Interfaces/expression.hpp \
 		../Proyecto1/Environment/ast.hpp \
@@ -1667,6 +1839,58 @@ func_main.o: ../Proyecto1/Instruction/func_main.cpp ../Proyecto1/Instruction/fun
 		../Proyecto1/Environment/func_symbol.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o func_main.o ../Proyecto1/Instruction/func_main.cpp
 
+function.o: ../Proyecto1/Instruction/function.cpp ../Proyecto1/Instruction/function.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o function.o ../Proyecto1/Instruction/function.cpp
+
+inst_return.o: ../Proyecto1/Instruction/inst_return.cpp ../Proyecto1/Instruction/inst_return.hpp \
+		../Proyecto1/Interfaces/expression.hpp \
+		../Proyecto1/Environment/ast.hpp \
+		../Proyecto1/Environment/symbol.hpp \
+		../Proyecto1/Environment/type.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/QVector \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		../Proyecto1/Environment/environment.hpp \
+		../Proyecto1/Environment/func_symbol.hpp \
+		../Proyecto1/Interfaces/instruction.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inst_return.o ../Proyecto1/Instruction/inst_return.cpp
+
 list_instruction.o: ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/Instruction/list_instruction.hpp \
 		../Proyecto1/Interfaces/instruction.hpp \
 		../Proyecto1/Environment/ast.hpp \
@@ -1712,7 +1936,9 @@ list_instruction.o: ../Proyecto1/Instruction/list_instruction.cpp ../Proyecto1/I
 		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
 		/home/luis/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
 		../Proyecto1/Environment/environment.hpp \
-		../Proyecto1/Environment/func_symbol.hpp
+		../Proyecto1/Environment/func_symbol.hpp \
+		../Proyecto1/Instruction/inst_return.hpp \
+		../Proyecto1/Interfaces/expression.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o list_instruction.o ../Proyecto1/Instruction/list_instruction.cpp
 
 print.o: ../Proyecto1/Instruction/print.cpp ../Proyecto1/Instruction/print.hpp \

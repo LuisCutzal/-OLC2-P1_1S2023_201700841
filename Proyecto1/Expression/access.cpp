@@ -1,6 +1,5 @@
 #include "access.hpp"
-using namespace std;
-access::access(int line, int col, string id)
+access::access(int line, int col, std::string id)
 {
     Line = line;
     Col = col;

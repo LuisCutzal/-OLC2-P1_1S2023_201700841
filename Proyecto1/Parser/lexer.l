@@ -57,13 +57,16 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 "-"     return Parser::symbol_type( token::MENOS, loc );
 "*"     return Parser::symbol_type( token::POR, loc );
 "/"     return Parser::symbol_type( token::DIV, loc );
+
 "%"     return Parser::symbol_type( token::MODULO, loc );
+
 ">"     return Parser::symbol_type( token::MAY, loc );
 "<"     return Parser::symbol_type( token::MEN, loc );
 ">="     return Parser::symbol_type( token::MAY_IG, loc );
 "<="     return Parser::symbol_type( token::MEN_IG, loc );
 "!="     return Parser::symbol_type( token::DIF, loc );
 "=="     return Parser::symbol_type( token::IG, loc );
+
 "++"     return Parser::symbol_type( token::INCREMENTO, loc );
 
 "&&"     return Parser::symbol_type( token::AND, loc );
@@ -71,6 +74,8 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 
 ";"     return Parser::symbol_type( token_type(';'), loc );
 "="     return Parser::symbol_type( token_type('='), loc );
+"."     return Parser::symbol_type( token_type('.'), loc );
+","     return Parser::symbol_type( token_type(','), loc );
 
 "("     return Parser::symbol_type( token::PARA, loc );
 ")"     return Parser::symbol_type( token::PARC, loc );
@@ -91,6 +96,9 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 "false"     return Parser::symbol_type( token::RFALSE, loc );
 "if"        return Parser::symbol_type( token::RIF, loc );
 "else"      return Parser::symbol_type( token::RELSE, loc );
+"struct"    return Parser::symbol_type( token::STRUCT, loc );
+"return"    return Parser::symbol_type( token::RRETURN, loc );
+"array"    return Parser::symbol_type( token::ARRAY, loc );
 
 "float"     return Parser::symbol_type( token::TSFLOAT, loc );
 
