@@ -22,7 +22,7 @@ void Proyecto1_OLC2::on_pushButton_clicked()
 {
     QMessageBox *msg = new QMessageBox();
     //creando entorno global
-    environment *GlobalEnv = new environment();
+    environment *GlobalEnv = new environment(nullptr, "Global");
     //creando ast
     ast *Root = new ast();
     //ejecuta el analizador

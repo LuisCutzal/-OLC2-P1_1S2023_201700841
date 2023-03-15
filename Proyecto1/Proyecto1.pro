@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     Environment/ast.cpp \
     Environment/environment.cpp \
+    Environment/func_symbol.cpp \
     Environment/symbol.cpp \
     Expression/access.cpp \
     Expression/array_access.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
 HEADERS += \
     Environment/ast.hpp \
     Environment/environment.hpp \
+    Environment/func_symbol.hpp \
     Environment/symbol.hpp \
     Environment/type.h \
     Expression/access.hpp \
