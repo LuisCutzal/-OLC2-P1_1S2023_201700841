@@ -510,16 +510,84 @@ symbol operation::ejecutar(environment *env, ast *tree)
         }
     }
 
-
-
-
-
     else if(Operator == "<"){
         if (Dominante == INTEGER)
         {
-            int *val1 = (int *)op1.Value;
+            int result1 =0;
+            int result2=0;
+            int result=0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else{
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }
+            result = result1 < result2;
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 < *val2;
+            int result = *val1 < *val2;*/
+            sym = symbol(Line,Col,"",BOOL,&result);
+        }else if(Dominante == FLOAT){
+            float result1 =0.0;
+            float result2 = 0.0;
+            int result = 0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            float val5 = 0.0;
+            float val6 = 0.0;
+
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = result1 < result2;
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para menor qué";
@@ -527,65 +595,408 @@ symbol operation::ejecutar(environment *env, ast *tree)
     }
     else if(Operator == ">"){
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
+            int result1 =0;
+            int result2=0;
+            int result=0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else{
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }
+            result = result1 > result2;
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 > *val2;
+            int result = *val1 > *val2;*/
+            sym = symbol(Line,Col,"",BOOL,&result);
+        }else if(Dominante == FLOAT){
+            float result1 =0.0;
+            float result2 = 0.0;
+            int result = 0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            float val5 = 0.0;
+            float val6 = 0.0;
+
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = result1 > result2;
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para mayor qué";
         }
     }else if(Operator == "<="){
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
+            int result1 =0;
+            int result2=0;
+            int result=0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else{
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }
+            result = result1 <= result2;
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 <= *val2;
+            int result = *val1 <= *val2;*/
+            sym = symbol(Line,Col,"",BOOL,&result);
+        }else if(Dominante == FLOAT){
+            float result1 =0.0;
+            float result2 = 0.0;
+            int result = 0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            float val5 = 0.0;
+            float val6 = 0.0;
+
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = result1 <= result2;
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para menor o igual";
         }
     }else if(Operator == ">="){
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
+            int result1 =0;
+            int result2=0;
+            int result=0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else{
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2==true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else{
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }
+            result = result1 >= result2;
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 >= *val2;
+            int result = *val1 >= *val2;*/
+            sym = symbol(Line,Col,"",BOOL,&result);
+        }else if(Dominante == FLOAT){
+            float result1 =0.0;
+            float result2 = 0.0;
+            int result = 0;
+            bool val1 = true;
+            bool val2 = true;
+            int val3 = 0;
+            int val4 = 0;
+            float val5 = 0.0;
+            float val6 = 0.0;
+
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 = 0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1 = val3;
+            }else{
+                val5=*static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 = 0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2 = val4;
+            }else{
+                val6=*static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = result1 >= result2;
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para mayor o igual";
         }
     }else if(Operator == "!="){
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
-            int *val2 = (int *)op2.Value;
-            int result = *val1 != *val2;
+            int result=0;
+            int result1=0;
+            int result2=0;
+            bool val1=true;
+            bool val2= true;
+            int val3=0;
+            int val4=0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 =0;
+                }
+            }else {
+                val3 = *static_cast<int*>(op1.Value);
+                result1= val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 =0;
+                }
+            }else {
+                val4 = *static_cast<int*>(op2.Value);
+                result2= val4;
+            }
+            result = (result1 != result2);
             sym = symbol(Line,Col,"",BOOL,&result);
         }else if(Dominante == STRING){
             std::string *val1 = (std::string *)op1.Value;
             std::string *val2 = (std::string *)op2.Value;
             int result = *val1 != *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
-        }else if(Dominante == BOOL){
-            bool *val1 = (bool *)op1.Value;
-            bool *val2 = (bool *)op2.Value;
-            int result = *val1 != *val2;
+        }else if(Dominante == FLOAT){
+            int result=0;
+            int result1=0;
+            int result2=0;
+            bool val1=true;
+            bool val2= true;
+            int val3=0;
+            int val4=0;
+            float val5=0.0;
+            float val6=0.0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 =0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1= val3;
+            }else{
+                val5= *static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 =0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2= val4;
+            }else{
+                val6= *static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = (result1 != result2);
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para diferencia";
         }
     }else if(Operator == "=="){
         if(Dominante == INTEGER){
-            int *val1 = (int *)op1.Value;
+            int result=0;
+            int result1=0;
+            int result2=0;
+            bool val1=true;
+            bool val2= true;
+            int val3=0;
+            int val4=0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 =0;
+                }
+            }else {
+                val3 = *static_cast<int*>(op1.Value);
+                result1= val3;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 =0;
+                }
+            }else {
+                val4 = *static_cast<int*>(op2.Value);
+                result2= val4;
+            }
+            result = (result1 == result2);
+            /*int *val1 = (int *)op1.Value;
             int *val2 = (int *)op2.Value;
-            int result = *val1 == *val2;
+            int result = *val1 == *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
         }else if(Dominante == STRING){
             std::string *val1 = (std::string *)op1.Value;
             std::string *val2 = (std::string *)op2.Value;
             int result = *val1 == *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
-        }else if(Dominante == BOOL){
-            bool *val1 = (bool *)op1.Value;
-            bool *val2 = (bool *)op2.Value;
-            int result = *val1 == *val2;
+        }else if(Dominante == FLOAT){
+            int result=0;
+            int result1=0;
+            int result2=0;
+            bool val1=true;
+            bool val2= true;
+            int val3=0;
+            int val4=0;
+            float val5=0.0;
+            float val6=0.0;
+            if(op1.Tipo == BOOL){
+                val1 = *static_cast<bool*>(op1.Value);
+                if(val1 == true){
+                    result1 = 1;
+                }else{
+                    result1 =0;
+                }
+            }else if(op1.Tipo == INTEGER){
+                val3 = *static_cast<int*>(op1.Value);
+                result1= val3;
+            }else{
+                val5= *static_cast<float*>(op1.Value);
+                result1 = val5;
+            }
+            if(op2.Tipo == BOOL){
+                val2 = *static_cast<bool*>(op2.Value);
+                if(val2 == true){
+                    result2 = 1;
+                }else{
+                    result2 =0;
+                }
+            }else if(op2.Tipo == INTEGER){
+                val4 = *static_cast<int*>(op2.Value);
+                result2= val4;
+            }else{
+                val6= *static_cast<float*>(op2.Value);
+                result2 = val6;
+            }
+            result = (result1 == result2);
             sym = symbol(Line,Col,"",BOOL,&result);
         }else{
             tree->ErrorOut += "Error: tipo incorrecto para igualación";
