@@ -1,4 +1,5 @@
 #include "operation.hpp"
+#include <QRandomGenerator>
 operation::operation(int line, int col, expression *op_izq, expression *op_der, std::string operador, bool unario){
     Line = line;
     Col = col;
@@ -10,6 +11,9 @@ operation::operation(int line, int col, expression *op_izq, expression *op_der, 
 
 symbol operation::ejecutar(environment *env, ast *tree)
 {
+    quint32 value1 = QRandomGenerator::global()->generate();
+    quint32 value2 = QRandomGenerator::global()->generate();
+    quint32 value3 = QRandomGenerator::global()->generate();
     symbol op1;
     symbol op2;
 
@@ -39,6 +43,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
 
     if(Operator == "+")
     {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"SUMA\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER)
         {
             int result=0;
@@ -46,23 +52,6 @@ symbol operation::ejecutar(environment *env, ast *tree)
             bool val2;
             int *val3=0;
             int *val4=0;
-            /*if(op1.Tipo==INTEGER && op2.Tipo==INTEGER){
-                val = static_cast<int*>(op1.Value);
-                val2 = static_cast<int*>(op2.Value);
-                result = *val + *val2;
-            }
-
-            if(op1.Tipo==BOOL && op2.Tipo == BOOL){
-                result = *static_cast<int*>(op1.Value) + *static_cast<int*>(op2.Value);
-            }
-            if(op1.Tipo == BOOL && op2.Tipo==INTEGER){
-                result = 1+*static_cast<int*>(op2.Value);
-            }
-            if(op1.Tipo == INTEGER && op2.Tipo==BOOL){
-                result = *static_cast<int*>(op1.Value) + 1;
-            }
-            sym = symbol(Line,Col,"",Dominante,&result);*/
-
             if(op1.Tipo == BOOL){
                 val = *static_cast<bool*>(op1.Value);
                 if(val == true){
@@ -86,6 +75,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result += *val4;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }
         else if(Dominante == STRING)
         {
@@ -134,6 +125,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result +=*val2;
             }
             sym = symbol(Line,Col,"",Dominante, &result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+(*static_cast<std::string*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+(*static_cast<std::string*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result=0;
             bool val;
@@ -171,15 +164,20 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result += val6;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }
         else
         {
             //se reporta un error
-            tree->ErrorOut += "Error: tipo incorrecto para la suma";
+            //tree->ErrorOut += "Error: tipo incorrecto para la suma";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error: Tipo incorrecto para suma</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
     }
     else if(Operator == "-")
     {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"RESTA\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER)
         {
             //en esta resta op1 siempre sera positivo y op2 siempre sera negativo
@@ -212,12 +210,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result =result -*val4;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
-
-            /*
-            int *val1 = (int *)op1.Value;
-            int *val2 = (int *)op2.Value;
-            int result = *val1 - *val2;
-            sym = symbol(Line,Col,"",Dominante,&result);*/
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result=0.0;
             int val1=0;
@@ -255,7 +249,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result -= val6;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
-
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
             //se reporta un error
             tree->ErrorOut += "Error: tipo incorrecto para la resta";
@@ -263,6 +258,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
     }
     else if(Operator == "*")
     {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MULTIPLICACIÓN\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER)
         {
             int result=0;
@@ -292,10 +289,9 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 val4=*static_cast<int*>(op2.Value);
                 result *=val4;
             }
-            /*int *val1 = (int *)op1.Value;
-            int *val2 = (int *)op2.Value;
-            int result = *val1 * *val2;*/
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result=0.0;
             int val1=0;
@@ -334,6 +330,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result *=val6;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
             //se reporta un error
             tree->ErrorOut += "Error: tipo incorrecto para multiplicacion";
@@ -341,6 +339,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
     }
     else if(Operator == "/")
     {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"DIVISION\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result = 0;
             int *val1 = 0;
@@ -381,7 +381,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 }
             }
             //sym = symbol(Line,Col,"",Dominante,&result);
-
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
             /*if (*val1 != 0)
             {
                  result = *val1 / *val2;
@@ -426,7 +427,7 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result /=val2;
                     sym = symbol(Line,Col,"",Dominante,&result);
                 }else{
-                    tree->ErrorOut += "Error: no se puede dividir cero";
+                    tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">No se puede dividir en 0</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
                 }
             }else if(op2.Tipo==BOOL){
                 val4=*static_cast<bool*>(op2.Value);
@@ -434,7 +435,7 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result /=1;
                     sym = symbol(Line,Col,"",Dominante,&result);
                 }else{
-                    tree->ErrorOut += "Error: no se puede dividir cero";
+                    tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">No se puede dividir en 0</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
                 }
             }else{
                 val6=*static_cast<float*>(op2.Value);
@@ -442,13 +443,18 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result *=val6;
                     sym = symbol(Line,Col,"",Dominante,&result);
                 }else{
-                    tree->ErrorOut += "Error: no se puede dividir cero";
+                    tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">No se puede dividir en 0</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
                 }
             }
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para división";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para division</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == "%"){//modulo
+    }else if(Operator == "%")//modulo
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MÓDULO\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result=0;
             bool val1=true;
@@ -471,12 +477,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result %=val4;
             }
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
          }else{
-            tree->ErrorOut += "Error: tipo incorrecto para el módulo";
+            //tree->ErrorOut += "Error: tipo incorrecto para el módulo";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error, Tipo incorrecto para el módulo</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
 
     }else if(Operator=="UNARIO"){
-
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"UNARIO\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+"}; \n";
         if(Dominante==INTEGER){
             int result =0;
             int *val1=0;
@@ -492,9 +502,11 @@ symbol operation::ejecutar(environment *env, ast *tree)
                     result =0;
                 }
             }else{
-                tree->ErrorOut += "Error: tipo incorrecto para el unario";
+                tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error, Tipo incorrecto para el unario</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
             }
             sym = symbol(Line,Col,"",Dominante,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+
         }else if(Dominante == FLOAT){
             float result =0.0;
             float val1=0.0;
@@ -503,14 +515,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
                 result = -val1;
                 sym = symbol(Line,Col,"",Dominante,&result);
             }else{
-                tree->ErrorOut += "Error: tipo incorrecto para el Unario";
+                tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error, Tipo incorrecto para el unario</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
             }
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para el unario";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error, Tipo incorrecto para el unario</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
     }
 
     else if(Operator == "<"){
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MENOR QUE\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if (Dominante == INTEGER)
         {
             int result1 =0;
@@ -547,6 +561,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int *val2 = (int *)op2.Value;
             int result = *val1 < *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result1 =0.0;
             float result2 = 0.0;
@@ -589,11 +605,17 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = result1 < result2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para menor qué";
+            //tree->ErrorOut += "Error: tipo incorrecto para menor qué";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para menor que</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
     }
-    else if(Operator == ">"){
+    else if(Operator == ">")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MAYOR QUE\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result1 =0;
             int result2=0;
@@ -629,6 +651,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int *val2 = (int *)op2.Value;
             int result = *val1 > *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result1 =0.0;
             float result2 = 0.0;
@@ -671,10 +695,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = result1 > result2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para mayor qué";
+            //tree->ErrorOut += "Error: tipo incorrecto para mayor qué";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error: tipo incorrecto para mayor qué</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == "<="){
+    }else if(Operator == "<=")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MENOR O IGUAL QUE\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result1 =0;
             int result2=0;
@@ -710,6 +740,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int *val2 = (int *)op2.Value;
             int result = *val1 <= *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result1 =0.0;
             float result2 = 0.0;
@@ -752,10 +784,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = result1 <= result2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para menor o igual";
+            //tree->ErrorOut += "Error: tipo incorrecto para menor o igual";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error: tipo incorrecto para menor o igual</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == ">="){
+    }else if(Operator == ">=")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"MAYOR O IGUAL QUE\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result1 =0;
             int result2=0;
@@ -791,6 +829,8 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int *val2 = (int *)op2.Value;
             int result = *val1 >= *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == FLOAT){
             float result1 =0.0;
             float result2 = 0.0;
@@ -833,10 +873,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = result1 >= result2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para mayor o igual";
+            //tree->ErrorOut += "Error: tipo incorrecto para mayor o igual";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Error: tipo incorrecto para mayor o igual</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == "!="){
+    }else if(Operator == "!=")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"DIFERENTE DE\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result=0;
             int result1=0;
@@ -869,11 +915,15 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = (result1 != result2);
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == STRING){
             std::string *val1 = (std::string *)op1.Value;
             std::string *val2 = (std::string *)op2.Value;
             int result = *val1 != *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+*val1+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+*val2+"\"];\n";
         }else if(Dominante == FLOAT){
             int result=0;
             int result1=0;
@@ -914,10 +964,16 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = (result1 != result2);
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para diferencia";
+            //tree->ErrorOut += "Error: tipo incorrecto para diferencia";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para diferencia</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == "=="){
+    }else if(Operator == "==")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"IGUAL A\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == INTEGER){
             int result=0;
             int result1=0;
@@ -953,11 +1009,15 @@ symbol operation::ejecutar(environment *env, ast *tree)
             int *val2 = (int *)op2.Value;
             int result = *val1 == *val2;*/
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<int*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<int*>(op2.Value))+"\"];\n";
         }else if(Dominante == STRING){
             std::string *val1 = (std::string *)op1.Value;
             std::string *val2 = (std::string *)op2.Value;
             int result = *val1 == *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+*val1+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+*val2+"\"];\n";
         }else if(Dominante == FLOAT){
             int result=0;
             int result1=0;
@@ -998,26 +1058,41 @@ symbol operation::ejecutar(environment *env, ast *tree)
             }
             result = (result1 == result2);
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*static_cast<float*>(op1.Value))+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*static_cast<float*>(op2.Value))+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para igualación";
+            //tree->ErrorOut += "Error: tipo incorrecto para igualación";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para igualacion</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator == "&&"){
+    }else if(Operator == "&&")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"AND\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == BOOL){
             bool *val1 = (bool *)op1.Value;
             bool *val2 = (bool *)op2.Value;
             bool result = *val1 && *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*val1)+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*val2)+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para operación lógica";
+            //tree->ErrorOut += "Error: tipo incorrecto para operación lógica";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para operacion logica AND</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
-    }else if(Operator =="||"){
+    }else if(Operator =="||")
+    {
+        tree->auxGraphOutNodos += std::to_string(value1) + "[label=\"OR\"];\n";
+        tree->auxGraphOutEnlaces += std::to_string(value1) + "; \n" + std::to_string(value1) + " -> {"+std::to_string(value2)+" "+std::to_string(value3) + "}; \n";
         if(Dominante == BOOL){
             bool *val1 = (bool *)op1.Value;
             bool *val2 = (bool *)op2.Value;
             bool result = *val1 || *val2;
             sym = symbol(Line,Col,"",BOOL,&result);
+            tree->auxGraphOutNodos += std::to_string(value2) + "[label=\""+std::to_string(*val1)+"\"];\n";
+            tree->auxGraphOutNodos += std::to_string(value3) + "[label=\""+std::to_string(*val2)+"\"];\n";
         }else{
-            tree->ErrorOut += "Error: tipo incorrecto para operacion lógica";
+            //tree->ErrorOut += "Error: tipo incorrecto para operacion lógica";
+            tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">operation</TD> \n <TD bgcolor=\"green\">Tipo incorrecto para operacion logica OR</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
         }
     }
     return sym;

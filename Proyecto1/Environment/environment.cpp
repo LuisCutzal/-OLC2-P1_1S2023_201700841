@@ -15,7 +15,8 @@ void environment::SaveVariable(symbol sym, std::string id, ast *tree)
     else
     {
         //se reporta un error
-        tree->ErrorOut += "Ya existe la variable "+id;
+        //tree->ErrorOut += "Ya existe la variable "+id;
+        tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">func_if</TD> \n <TD bgcolor=\"green\">La variable ya existe "+id+"</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
     }
 }
 
@@ -28,7 +29,8 @@ void environment::SaveStruct(map<std::string, TipoDato> tabla, std::string id, a
     else
     {
         //se reporta un error
-        tree->ErrorOut += "Ya existe el struct "+id;
+        //tree->ErrorOut += "Ya existe el struct "+id;
+        tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">func_if</TD> \n <TD bgcolor=\"green\">El struct ya existente "+id+"</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
     }
 }
 
@@ -42,7 +44,8 @@ void environment::SaveFunc(func_symbol funcSym, std::string id, ast *tree)
     else
     {
         //se reporta un error
-        tree->ErrorOut += "Error: ya existe la funcion "+id;
+        //tree->ErrorOut += "Error: ya existe la funcion "+id;
+        tree->ErrorOut += "<TR>\n<TD bgcolor=\"orange\">-</TD> \n <TD bgcolor=\"yellow\">func_if</TD> \n <TD bgcolor=\"green\">La función ya existente "+id+"</TD> \n <TD bgcolor=\"darkgreen\">Semantico</TD> \n </TR>\n";
     }
 }
 

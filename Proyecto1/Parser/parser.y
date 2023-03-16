@@ -40,7 +40,7 @@
     #include <string> 
     #include <vector>
     #include "parserctx.hpp"
-
+    #include <sstream>
     /* expresiones */
     #include "../Proyecto1/Expression/primitive.hpp"
     #include "../Proyecto1/Expression/access.hpp"
@@ -68,7 +68,8 @@
     #include "../Proyecto1/Instruction/call_inst.hpp"
     #include "../Proyecto1/Instruction/inst_return.hpp"
 
-
+    /*errores*/
+    #include "../Proyecto1/Environment/ast.hpp"
 }
 
 /* enlace con la función del retorno de simbolos */
@@ -354,6 +355,9 @@ CALL_INST : ID PARA EXP_LIST PARC ';' { $$ = new call_inst(0,0,$1,$3);}
 /* función de error */
 void yy::Parser::error(const yy::location& l, const std::string& m)
 {
+    ast *Root = new ast();
+    std::ostringstream ss;
     std::cerr << l << ": " << m << std::endl;
+    Root->ErrorOut +  ss.str();
 }
 

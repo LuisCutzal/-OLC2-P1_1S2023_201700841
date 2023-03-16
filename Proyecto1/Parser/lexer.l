@@ -44,9 +44,13 @@ ID  ({LETRAS}|"_")({DIGITO}|{LETRAS}|"_")*
 
     /* caracteres ignorados */
 
+
 "//"[^\n]*\n            ; /* comentarios de una linea */
 
 [ \t\v\r\n\f]             ; /* caracteres en blanco */
+
+\/\*[^*]*\*+(?:[^*\/][^*]*\*+)*\/ ; //comentario multilinea
+
     /* Lexemas */
     /* defincion moderna
         token::ID ID sin caracteres especiales

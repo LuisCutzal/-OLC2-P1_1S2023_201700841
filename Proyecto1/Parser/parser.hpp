@@ -52,7 +52,7 @@
     #include <string> 
     #include <vector>
     #include "parserctx.hpp"
-
+    #include <sstream>
     /* expresiones */
     #include "../Proyecto1/Expression/primitive.hpp"
     #include "../Proyecto1/Expression/access.hpp"
@@ -80,9 +80,10 @@
     #include "../Proyecto1/Instruction/call_inst.hpp"
     #include "../Proyecto1/Instruction/inst_return.hpp"
 
+    /*errores*/
+    #include "../Proyecto1/Environment/ast.hpp"
 
-
-#line 86 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
+#line 87 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
 
 
 # include <cstdlib> // std::abort
@@ -217,7 +218,7 @@
 #endif
 
 namespace yy {
-#line 221 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
+#line 222 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
 
 
 
@@ -2495,7 +2496,7 @@ switch (yykind)
 
 
 } // yy
-#line 2499 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
+#line 2500 "/home/luis/Escritorio/COMPI2/Proyectos/-OLC2-P1_1S2023_201700841/Proyecto1/Parser/parser.hpp"
 
 
 
